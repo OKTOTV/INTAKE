@@ -1,0 +1,255 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="de" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="0">
+                <source>intake.project_name</source>
+                <target>INTAKE</target>
+            </trans-unit>
+
+            <trans-unit id="100">
+                <source>intake.menu.list_files</source>
+                <target>Dateien</target>
+            </trans-unit>
+            <trans-unit id="101">
+                <source>intake.menu.list_contacts</source>
+                <target>Kontakte</target>
+            </trans-unit>
+            <trans-unit id="102">
+                <source>intake.menu.backend</source>
+                <target>Administration</target>
+            </trans-unit>
+            <trans-unit id="103">
+                <source>intake.menu.uploadForm</source>
+                <target>Hochladen</target>
+            </trans-unit>
+            <trans-unit id="104">
+                <source>intake.menu.about</source>
+                <target>Über OKTO Intake</target>
+            </trans-unit>
+
+            <trans-unit id="200">
+                <source>intake.message.file_already_deleted</source>
+                <target>Die Datei ist bereits gelöscht</target>
+            </trans-unit>
+            <trans-unit id="201">
+                <source>intake.message.file_submit_success</source>
+                <target>Die Dateien wurden erfolgreich hochgeladen</target>
+            </trans-unit>
+            <trans-unit id="202">
+                <source>intake.message.file_submit_error</source>
+                <target>Das Formular konnte nicht verarbeitet werden</target>
+            </trans-unit>
+            <trans-unit id="203">
+                <source>intake.message.contact_delete_success</source>
+                <target>Kontakt erfolgreich gelöscht</target>
+            </trans-unit>
+            <trans-unit id="204">
+                <source>intake.message.contact_create_success</source>
+                <target>Kontakt erfolgreich angelegt</target>
+            </trans-unit>
+            <trans-unit id="205">
+                <source>intake.message.contact_create_error</source>
+                <target>Der Kontakt konnte nicht angelegt werden</target>
+            </trans-unit>
+            <trans-unit id="206">
+                <source>intake.message.contact_edit_success</source>
+                <target>Kontakt erfolgreich geändert</target>
+            </trans-unit>
+            <trans-unit id="207">
+                <source>intake.message.contact_edit_error</source>
+                <target>Die Änderungen konnten nicht gespeichert werden</target>
+            </trans-unit>
+            <trans-unit id="208">
+                <source>intake.message.file_delete_success</source>
+                <target>Datei erfolgreich gelöscht</target>
+            </trans-unit>
+
+            <trans-unit id="300">
+                <source>intake.file.series</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="301">
+                <source>intake.file.episode_name</source>
+                <target>Episode</target>
+            </trans-unit>
+            <trans-unit id="302">
+                <source>intake.file.episode_description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="303">
+                <source>intake.file.submit</source>
+                <target>Hochladen und Abschicken</target>
+            </trans-unit>
+            <trans-unit id="304">
+                <source>intake.file.readAGB</source>
+                <target>Ich habe die AGB gelesen und stimme ihnen zu</target>
+            </trans-unit>
+            <trans-unit id="305">
+                <source>intake.file.series_placeholder</source>
+                <target>Name der Serie oder des Projekts (max 100 Zeichen)</target>
+            </trans-unit>
+            <trans-unit id="306">
+                <source>intake.file.episodeName_placeholder</source>
+                <target>Name der Folge (max 100 Zeichen)</target>
+            </trans-unit>
+            <trans-unit id="307">
+                <source>intake.file.episodeDescription_placeholder</source>
+                <target>Inhaltsbeschreibung (max 500 Zeichen)</target>
+            </trans-unit>
+            <trans-unit id="308">
+                <source>intake.file.contact</source>
+                <target>Email senden an</target>
+            </trans-unit>
+            <trans-unit id="309">
+                <source>intake.file.add_files</source>
+                <target>Dateien auswählen</target>
+            </trans-unit>
+
+            <trans-unit id="400">
+                <source>intake.contact.name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="401">
+                <source>intake.contact.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="402">
+                <source>intake.contact.name_placeholder</source>
+                <target>Vor- und Nachname</target>
+            </trans-unit>
+            <trans-unit id="403">
+                <source>intake.contact.email_placeholder</source>
+                <target>E-Mail-Adresse oder Verteiler</target>
+            </trans-unit>
+
+            <trans-unit id="500">
+                <source>intake.index.fileupload_label</source>
+                <target>Anhänge</target>
+            </trans-unit>
+            <trans-unit id="501">
+                <source>intake.index.header</source>
+                <target>Abgabemaske</target>
+            </trans-unit>
+
+            <trans-unit id="600">
+                <source>intake.success.header</source>
+                <target>Vielen Dank</target>
+            </trans-unit>
+            <trans-unit id="601">
+                <source>intake.success.paragraph</source>
+                <target>Unsere Mitarbeiter werden sich so bald wie möglich darum kümmern</target>
+            </trans-unit>
+
+            <trans-unit id="700">
+                <source>intake.list_files.name</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="701">
+                <source>intake.list_files.header</source>
+                <target>Dateiliste</target>
+            </trans-unit>
+            <trans-unit id="702">
+                <source>intake.list_files.deleteFile</source>
+                <target>Dateien löschen</target>
+            </trans-unit>
+            <trans-unit id="703">
+                <source>intake.list_files.noFiles</source>
+                <target>Nothing here but us chickens!</target>
+            </trans-unit>
+            <trans-unit id="704">
+                <source>intake.list_files.files</source>
+                <target>Dateien</target>
+            </trans-unit>
+            <trans-unit id="705">
+                <source>intake.list_files.episodeName</source>
+                <target>Episodenname</target>
+            </trans-unit>
+
+            <trans-unit id="800">
+                <source>intake.list_contacts.header</source>
+                <target>Kontaktliste</target>
+            </trans-unit>
+            <trans-unit id="801">
+                <source>intake.list_contacts.new_contact</source>
+                <target>Neuen Kontakt anlegen</target>
+            </trans-unit>
+            <trans-unit id="802">
+                <source>intake.list_contacts.no_contacts</source>
+                <target>Keine Kontakte in der Datenbank gefunden</target>
+            </trans-unit>
+            <trans-unit id="803">
+                <source>intake.list_contacts.contact_name</source>
+                <target>Name</target>
+            </trans-unit>
+            <trans-unit id="804">
+                <source>intake.list_contacts.contact_email</source>
+                <target>E-Mail-Adresse</target>
+            </trans-unit>
+            <trans-unit id="805">
+                <source>intake.list_contacts.contact_edit</source>
+                <target>Bearbeiten</target>
+            </trans-unit>
+
+            <trans-unit id="900">
+                <source>intake.error404.title</source>
+                <target>OKTO Intake - 404</target>
+            </trans-unit>
+            <trans-unit id="901">
+                <source>intake.error404.header</source>
+                <target>Nichts gefunden</target>
+            </trans-unit>
+            <trans-unit id="902">
+                <source>intake.error404.paragraph</source>
+                <target>Wonach auch immer du gesucht hast, es ist nicht hier</target>
+            </trans-unit>
+            <trans-unit id="903">
+                <source>intake.error404.report_button</source>
+                <target>Fehler melden</target>
+            </trans-unit>
+            <trans-unit id="904">
+                <source>intake.error404.upload_button</source>
+                <target>Neue Dateien abgeben</target>
+            </trans-unit>
+
+            <trans-unit id="1005">
+                <source>intake.error.title</source>
+                <target>OKTO Intake - Fehler</target>
+            </trans-unit>
+            <trans-unit id="1006">
+                <source>intake.error.header</source>
+                <target>Fehler</target>
+            </trans-unit>
+            <trans-unit id="1007">
+                <source>intake.error.paragraph</source>
+                <target>Das hätte nicht passieren dürfen. Unser Team arbeitet bereits an einer Lösung. Du kannst uns helfen, indem du uns sagst, was du getan hast bevor diese Seite kam.</target>
+            </trans-unit>
+            <trans-unit id="1008">
+                <source>intake.error.report_button</source>
+                <target>Fehler melden</target>
+            </trans-unit>
+
+            <trans-unit id="1100">
+                <source>intake.new_contact.header</source>
+                <target>Neuer Kontakt</target>
+            </trans-unit>
+            <trans-unit id="1101">
+                <source>intake.new_contact.submit</source>
+                <target>Kontakt anlegen</target>
+            </trans-unit>
+
+            <trans-unit id="1200">
+                <source>intake.edit_contact.header</source>
+                <target>Kontakt bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="1201">
+                <source>intake.edit_contact.contact_delete</source>
+                <target>Löschen</target>
+            </trans-unit>
+            <trans-unit id="1202">
+                <source>intake.edit_contact.submit</source>
+                <target>Änderungen speichern</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

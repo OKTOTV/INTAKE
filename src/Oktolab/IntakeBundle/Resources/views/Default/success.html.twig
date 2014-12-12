@@ -1,0 +1,11 @@
+{% extends "OktolabIntakeBundle::layout.html.twig" %}
+
+{% block nav_head%}
+    {% include 'OktolabIntakeBundle::menu.html.twig' with {'selected': '', 'dropdown': ''} %}
+{% endblock %}
+
+{% block body_main %}
+    <h1>{{ 'intake.success.header'|trans}}</h1>
+    <p>{{ 'intake.success.paragraph'|trans }}</p>
+    <p><a class="btn btn-default" href="{{ path('intake_new') }}">Weitere Dateien hochladen</a></p>
+{% endblock%}

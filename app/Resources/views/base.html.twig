@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}OKTO Intake{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block header %}{% endblock %}
+        {% block messages%}{% endblock %}
+        {% block body %}{% endblock %}
+        {% block footer %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('bundles/oktolabintake/js/jquery2.1.1.js') }}"></script>
+            <script src="{{ asset('bundles/oktolabintake/js/bootstrap.min.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

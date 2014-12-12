@@ -1,0 +1,21 @@
+        <p>Downloads:
+            <ul>
+                {% for source in file.sources %}
+                    <li>
+                        <a href="{{ url('intake_download', { 'file_id': file.uniqueID, 'source_id': source.id }) }}">{{ source.name }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </p>
+        <p>
+            Serie: {{file.series }}<br />
+            Episode: {{ file.episodeName }}<br />
+            Beschreibung:<br />
+            - - - - - - - - - - - - - - - - - - - -<br />
+            {{ file.episodeDescription }}<br />
+            - - - - - - - - - - - - - - - - - - - -
+        </p>
+        <p>
+            Alle Dateien löschen:<br />
+            <a href="{{ url('intake_backend_delete', { 'file': file.id }) }}">Löschen</a>
+        </p>

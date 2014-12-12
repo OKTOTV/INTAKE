@@ -1,0 +1,19 @@
+{% extends "OktolabIntakeBundle::layout.html.twig" %}
+
+{% block nav_head %}
+    {% include 'OktolabIntakeBundle::menu.html.twig' with {'selected': '', 'dropdown': 'backend'} %}
+{% endblock %}
+
+{% block body_main %}
+    <h1>{{ 'intake.new_contact.header'|trans }}</h1>
+
+    {{ form_start(form) }}
+
+        {{ form_errors(form) }}
+        
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.save) }}       
+
+    {{ form_end(form) }}
+{% endblock %}

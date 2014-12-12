@@ -1,0 +1,14 @@
+{% extends "OktolabIntakeBundle::layout.html.twig" %}
+{% block title %}{{ 'intake.error404.title'|trans }}{% endblock %}
+
+{% block nav_head%}
+{% include 'OktolabIntakeBundle::menu.html.twig' with {'selected': '', 'dropdown': ''} %}
+{% endblock %}
+
+{% block body_main %}
+    <h1>{{ 'intake.error404.header'|trans }}</h1>
+    <img src="{{ asset('bundles/oktolabintake/img/panne.png') }}" class="img-responsive img-rounded" alt="Responsive image">
+    <p>{{ 'intake.error404.paragraph'|trans }}</p>
+    <a role="button" class="btn btn-primary" href="mailto:technik@okto.tv?subject=OKTO%20INTAKE%20404">{{ 'intake.error404.report_button'|trans }}</a>
+    <a role="button" class="btn btn-default" href="{{ path('intake_new')}}">{{ 'intake.error404.upload_button'|trans }}</a>
+{% endblock %}

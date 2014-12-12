@@ -1,0 +1,39 @@
+{% extends "OktolabIntakeBundle::layout.html.twig" %}
+
+{% block nav_head %}
+    {% include 'OktolabIntakeBundle::menu.html.twig' with {'selected': 'intake_list_files', 'dropdown': 'backend'} %}
+{% endblock %}
+
+{% block body_main %}
+<h1>{{ 'intake.list_files.header'|trans }}</h1>
+{% if files is empty %}
+{{ 'intake.list_files.noFiles'|trans }}
+{% else %}
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>{{ 'intake.list_files.name'|trans }}</th>
+                <th>{{ 'intake.list_files.episodeName'|trans }}</th>
+                <th>{{ 'intake.list_files.files'|trans }}</th>
+                <th><span class="glyphicon glyphicon-cog"></span></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in files %}
+            <tr>
+                <td>{{ file.series }}</td>
+                <td>{{ file.episodeName }}</td>
+                <td>
+                    {% for source in file.sources %}
+                        <p><a href="{{ path('intake_download', { 'file_id': file.uniqueID, 'source_id': source.id})}}"><span class="glyphicon glyphicon-download"></span> {{ source.name }}</a></p>
+                    {% endfor %}
+                </td>
+                <td>
+                    <a class="btn btn-danger btn-xs" href="{{ path('intake_backend_delete', { 'file': file.id }) }}"><span class="glyphicon glyphicon-trash"></span> {{ 'intake.list_files.deleteFile'|trans }}</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+{% endblock%}

@@ -1,0 +1,15 @@
+{% extends "OktolabIntakeBundle::layout.html.twig" %}
+{% block title %}{{ 'intake.error.title'|trans }}{% endblock %}
+
+{% block nav_head%}
+    {% include 'OktolabIntakeBundle::menu.html.twig' with {'selected': '', 'dropdown': ''} %}
+{% endblock %}
+
+{% block body_main %}
+    <h1>{{ 'intake.error.header'|trans}}</h1>
+    <img src="{{ asset('bundles/oktolabintake/img/panne.png') }}" class="img-responsive" alt="Responsive image">
+    <p>{{ 'intake.error.paragraph'}}</p>
+    <a role="button" class="btn btn-primary" href="mailto:technik@okto.tv?subject=OKTO%20INTAKE%20AUSFALL">
+        {{ 'intake.error.report_button'|trans }}
+    </a>
+{% endblock %}

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="de" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="10">
+                <source>intake.file.series.notblank</source>
+                <target>The title must not be empty</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>intake.file.series.lengthMax</source>
+                <target>The title is too long (max 100 characters)</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>intake.file.episode_name.notblank</source>
+                <target>The episode name must not be empty</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>intake.file.episode_name.lengthMax</source>
+                <target>The episode name is too long (max 100 zeichen)</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>intake.file.episode_description.notblank</source>
+                <target>You must provide a description</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>intake.file.episode_description.lengthMax</source>
+                <target>Your description is too long (max 500 characters)</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>intake.file.readAGB.notFalse</source>
+                <target>You have to agree to our terms and conditions</target>
+            </trans-unit>
+
+            <trans-unit id="20">
+                <source>intake.contact.email_notblank</source>
+                <target>You must provide an email adress</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>intake.contact.name_notblank</source>
+                <target>You must provide a name</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>intake.contact.name_lengthMax</source>
+                <target>The name is too long (really?)</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

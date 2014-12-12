@@ -1,0 +1,16 @@
+parameters:
+    oktolab.upload_listener.class:            Oktolab\IntakeBundle\Model\jQueryUploadService
+    oktolab.locale_listener.class:            Oktolab\IntakeBundle\Model\LocaleListener
+
+services:
+    oktolab.upload_listener:
+        class:     %oktolab.upload_listener.class%
+        arguments: [ @doctrine.orm.entity_manager, @mailer, @templating ]
+        tags:
+            - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: uploadedFile }
+
+    oktolab.locale_listener:
+        class:     %oktolab.locale_listener.class%
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }

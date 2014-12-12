@@ -1,0 +1,6 @@
+oktolab_intake_homepage:
+    resource: "@OktolabIntakeBundle/Controller/"
+    type:     annotation
+    prefix: /{_locale}
+    requirements:
+        _locale: ^de|en|ru|uk|pl$

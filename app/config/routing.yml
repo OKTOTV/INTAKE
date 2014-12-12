@@ -1,0 +1,10 @@
+oktolab_intake:
+    resource: "@OktolabIntakeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+oktolab_intake_logout:
+    path: /logout
+
+oneup_uploader:
+    resource: .
+    type: uploader
