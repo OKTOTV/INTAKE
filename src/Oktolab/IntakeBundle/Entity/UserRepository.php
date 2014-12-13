@@ -1,5 +1,5 @@
 <?php
-
+//TODO: translations
 namespace Oktolab\IntakeBundle\Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
