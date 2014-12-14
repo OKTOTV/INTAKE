@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Oktolab\IntakeBundle\Entity\User;
 
 /**
  * @Route("/backend/user")
@@ -46,6 +47,18 @@ class UserController extends Controller
             $this->get('session')->getFlashBag()->add('error', "intake.message.user_edit_error"); 
         }
         return array('form' => $form->createView());
+    }
 
+    /**
+     * @Route("/{user}/delete", name="intake_backend_user_delete")
+     * @Template()
+     */
+    public function deleteUserAction(User $user)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($user);
+        $em->flush();
+        $this->get('session')->getFlashBag()->add('success', 'intake.message.user_delete_success');
+        $this->redirect($this->generateUrl('intake_backend_users'));
     }
 }
