@@ -25,10 +25,10 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/{contact}/edit", name="intake_backend_show_user")
+     * @Route("/{user}/edit", name="intake_backend_show_user")
      * @Template
      */
-    public function edit_userAction(Request $request, User $user)
+    public function editUserAction(Request $request, User $user)
     {
         $form = $this->createForm(new UserType(), $user);
         $form->add('save', 'submit', array('label' => 'intake.edit_user.submit'));

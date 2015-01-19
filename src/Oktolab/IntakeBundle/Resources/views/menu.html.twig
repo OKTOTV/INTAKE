@@ -11,6 +11,9 @@
             <li {% if selected == "intake_list_contacts" %}class="active"{% endif %}>
                 <a href="{{ path('intake_backend_contacts') }}">{{ 'intake.menu.list_contacts'|trans }}</a>
             </li>
+            <li {% if selected == "intake_list_users" %}class="active"{% endif %}>
+                <a href="{{ path('intake_backend_users') }}">{{ 'intake.menu.list_users'|trans }}</a>
+            </li>
         </ul>
     </li>
     <li {% if selected == "intake_about" %}class="active"{% endif %}>

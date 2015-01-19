@@ -103,9 +103,7 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * Get password
-     *
-     * @return string 
+     * @inheritDoc
      */
     public function getPassword()
     {
@@ -161,8 +159,6 @@ class User implements AdvancedUserInterface, \Serializable
     public function __construct()
     {
         $this->isActive = true;
-        // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid(null, true));
     }
 
     /**
@@ -170,8 +166,6 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function getSalt()
     {
-        // you *may* need a real salt depending on your encoder
-        // see section on salt below
         return null;
     }
 
@@ -180,7 +174,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return array('ROLE_ADMIN');
     }
 
     /**
@@ -219,9 +213,7 @@ class User implements AdvancedUserInterface, \Serializable
             $this->id,
             $this->username,
             $this->password,
-            $this->isActive,
-            // see section on salt below
-            // $this->salt,
+            $this->isActive
         ));
     }
 
@@ -234,8 +226,7 @@ class User implements AdvancedUserInterface, \Serializable
             $this->id,
             $this->username,
             $this->password,
-            // see section on salt below
-            // $this->salt
+            $this->isActive
         ) = unserialize($serialized);
     }
 }

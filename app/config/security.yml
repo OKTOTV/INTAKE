@@ -1,20 +1,22 @@
 security:
     encoders:
-        Oktolab\IntakeBundle\Entity\User:
+        Oktolab\IntakeBundle\Entity\User: #plaintext
             algorithm: bcrypt
-
-    role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+            cost: 12
 
     providers:
-        administrators:
-            entity: { class: OktolabIntakeBundle:User }
+        database:
+            entity: 
+                class: OktolabIntakeBundle:User
+                property: username
 
     firewalls:
         admin_area:
             pattern:    /backend
             http_basic: ~
+            logout:
+                path:   /logout
+                target: /de
 
     access_control:
         - { path: /backend, roles: ROLE_ADMIN }

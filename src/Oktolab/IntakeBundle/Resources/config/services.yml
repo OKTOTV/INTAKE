@@ -1,8 +1,16 @@
 parameters:
     oktolab.upload_listener.class:            Oktolab\IntakeBundle\Model\jQueryUploadService
     oktolab.locale_listener.class:            Oktolab\IntakeBundle\Model\LocaleListener
+    oktolab.user_command.class:               Oktolab\IntakeBundle\Command\UserCommand
 
 services:
+
+    oktolab.user_command:
+        class: %oktolab.user_command.class%
+        arguments: [ @doctrine.orm.entity_manager, @security.password_encoder]
+        tags:
+            -  { name: console.command }
+
     oktolab.upload_listener:
         class:     %oktolab.upload_listener.class%
         arguments: [ @doctrine.orm.entity_manager, @mailer, @templating ]

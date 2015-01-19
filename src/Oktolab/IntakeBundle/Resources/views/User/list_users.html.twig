@@ -1,0 +1,38 @@
+{% extends "OktolabIntakeBundle::layout.html.twig" %}
+
+{% block nav_head %}
+    {% include 'OktolabIntakeBundle::menu.html.twig' with {'selected': 'intake_list_users', 'dropdown': 'backend'} %}
+{% endblock %}
+
+{% block body_main %}
+    <h1>{{ 'intake.list_users.header'|trans }}</h1>
+    <a href="{{ path('intake_backend_user_new') }}" class="btn btn-default">
+        <i class="glyphicon glyphicon-plus"></i> {{ 'intake.list_users.new_user'|trans }}
+    </a>
+    {% if users is empty %}
+        <p>{{ 'intake.list_users.no_users'|trans }}</p>
+    {% else %}
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>{{ 'intake.list_users.user_name'|trans }}</th>
+                    <th>{{ 'intake.list_users.user_email'|trans }}</th>
+                    <th><span class="glyphicon glyphicon-cog"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
+                    <td>
+                        <a class="btn btn-default btn-xs" href="{{ path('intake_backend_user_edit', { 'user': user.id }) }}">
+                            <span class="glyphicon glyphicon-edit"></span> {{ 'intake.list_users.user_edit'|trans }}
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock%}
