@@ -23,7 +23,7 @@
             <tbody>
                 {% for user in users %}
                 <tr>
-                    <td>{{ user.name }}</td>
+                    <td>{{ user.username }}</td>
                     <td><a href="mailto:{{ user.email }}">{{ user.email }}</a></td>
                     <td>
                         <a class="btn btn-default btn-xs" href="{{ path('intake_backend_user_edit', { 'user': user.id }) }}">

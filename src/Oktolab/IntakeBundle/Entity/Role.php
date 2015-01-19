@@ -4,7 +4,6 @@ namespace Oktolab\IntakeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\Role\RoleInterface;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Role
@@ -26,26 +25,10 @@ class Role implements RoleInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=30)
+     * @ORM\Column(name="name", type="string", length=25)
      */
     private $name;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="role", type="string", length=20)
-     */
-    private $role;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="User", mappedBy="roles")
-     */
-    private $users;
-
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -81,46 +64,10 @@ class Role implements RoleInterface
     }
 
     /**
-     * Set role
-     *
-     * @param string $role
-     * @return Role
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return string 
+     * @see RoleInterface
      */
     public function getRole()
     {
-        return $this->role;
-    }
-
-    /**
-     * Add user
-     *
-     * @return Role
-     */
-    public function addUser($user)
-    {
-        $this->users[] = $user;
-
-        return $this;
-    }
-
-    /**
-     * remove user
-     *
-     */
-    public function removeUser($user)
-    {
-        return $this->users->removeElement($user);
+        return $this->name;
     }
 }

@@ -48,6 +48,8 @@ class UserCommand extends Command
         $user->setEmail($input->getOption('email'));
         $password = $this->password_encoder->encodePassword($user, $input->getOption('password'));
         $user->setPassword($password);
+        $role = $this->em->getRepository('OktolabIntakeBundle:Role')->findOneBy(array('name' => 'ROLE_ADMIN'));
+        $user->addRole($role);
 
         $this->em->persist($user);
         $this->em->flush();

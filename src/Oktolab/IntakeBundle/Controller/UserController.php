@@ -8,9 +8,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Oktolab\IntakeBundle\Entity\User;
+use Oktolab\IntakeBundle\Form\UserType;
 
 /**
- * @Route("/backend/user")
+ * @Route("/backend/admin/user")
  */
 class UserController extends Controller
 {
@@ -18,17 +19,41 @@ class UserController extends Controller
      * @Route("/", name="intake_backend_users")
      * @Template
      */
-    public function indexAction()
+    public function list_usersAction()
     {
         $users = $this->getDoctrine()->getManager()->getRepository('OktolabIntakeBundle:User')->findAll();
         return array('users' => $users);
     }
 
     /**
-     * @Route("/{user}/edit", name="intake_backend_show_user")
+     * @Route("/new", name="intake_backend_user_new")
      * @Template
      */
-    public function editUserAction(Request $request, User $user)
+    public function new_userAction(Request $request, User $user)
+    {
+        $form = $this->createForm(new UserType(), $user);
+        $form->add('create', 'submit', array('label' => 'intake.new_user.submit'));
+
+        if ($request->getMethod() == "POST") { //form send
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                $this->get('session')->getFlashBag()->add('success', 'intake.message.user_create_success');
+                return $this->redirect($this->generateUrl('intake_backend_users'));
+            }
+            $this->get('session')->getFlashBag()->add('error', 'intake.message.user_create_error');
+        }
+        return array('form' => $form->createView());
+    }
+
+    /**
+     * @Route("/{user}/edit", name="intake_backend_user_edit")
+     * @Template
+     */
+    public function edit_userAction(Request $request, User $user)
     {
         $form = $this->createForm(new UserType(), $user);
         $form->add('save', 'submit', array('label' => 'intake.edit_user.submit'));
@@ -38,7 +63,7 @@ class UserController extends Controller
 
             if ($form->isValid()) { 
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($contact);
+                $em->persist($user);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('success', "intake.message.user_edit_success");
                 return $this->redirect($this->generateUrl('intake_backend_users'));
@@ -51,7 +76,7 @@ class UserController extends Controller
 
     /**
      * @Route("/{user}/delete", name="intake_backend_user_delete")
-     * @Template()
+     * @Template
      */
     public function deleteUserAction(User $user)
     {

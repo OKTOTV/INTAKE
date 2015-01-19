@@ -2,6 +2,7 @@ parameters:
     oktolab.upload_listener.class:            Oktolab\IntakeBundle\Model\jQueryUploadService
     oktolab.locale_listener.class:            Oktolab\IntakeBundle\Model\LocaleListener
     oktolab.user_command.class:               Oktolab\IntakeBundle\Command\UserCommand
+    oktolab.warmup_command.class:             Oktolab\IntakeBundle\Command\WarmupCommand
 
 services:
 
@@ -10,6 +11,12 @@ services:
         arguments: [ @doctrine.orm.entity_manager, @security.password_encoder]
         tags:
             -  { name: console.command }
+
+    oktolab.warmup_command:
+        class: %oktolab.warmup_command.class%
+        arguments: [ @doctrine.orm.entity_manager]
+        tags:
+            - { name: console.command }
 
     oktolab.upload_listener:
         class:     %oktolab.upload_listener.class%
