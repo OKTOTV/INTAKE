@@ -31,6 +31,14 @@
                 <source>intake.menu.list_users</source>
                 <target>Benutzer</target>
             </trans-unit>
+            <trans-unit id="106">
+                <source>intake.menu.login</source>
+                <target>Anmelden</target>
+            </trans-unit>
+            <trans-unit id="107">
+                <source>intake.menu.logout</source>
+                <target>Abmelden</target>
+            </trans-unit>
 
             <trans-unit id="200">
                 <source>intake.message.file_already_deleted</source>

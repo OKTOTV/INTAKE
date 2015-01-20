@@ -19,10 +19,8 @@
                 <a class="navbar-brand" href="{{ path('intake_new')}}">{{ 'intake.project_name'|trans }}</a>
             </div>
             <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    {% block nav_head%}
-                    {% endblock %}
-                </ul>
+                {% block nav_head%}
+                {% endblock %}
             </div>
         </div>
     </div>

@@ -15,17 +15,19 @@ security:
                 property: username
 
     firewalls:
-        admin_area:
-            pattern:    /backend
+        main:
+            pattern:    /
             http_basic: ~
             form_login:
                 login_path: intake_login
                 check_path: intake_login_check
-                #csrf_provider: form.csrf_provider
+                default_target_path: intake_backend
+                csrf_provider: form.csrf_provider
                 default_target_path: /de
             logout: 
                 path: oktolab_intake_logout
                 target: /de
+            anonymous: ~
 
     access_control:
         - { path: /backend, roles: ROLE_USER }
