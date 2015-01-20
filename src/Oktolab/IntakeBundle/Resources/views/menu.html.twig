@@ -2,20 +2,6 @@
     <li {% if selected == "intake_new" %}class="active"{% endif %}>
         <a href="{{ path('intake_new') }}">{{ 'intake.menu.uploadForm'|trans }}</a>
     </li>
-    <li {% if dropdown == "backend" %}class="dropdown active"{% else %}class="dropdown"{% endif %}>
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ 'intake.menu.backend'|trans }} <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-            <li {% if selected == "intake_list_files" %}class="active"{% endif %}>
-                <a href="{{ path('intake_backend') }}">{{ 'intake.menu.list_files'|trans }}</a>
-            </li>
-            <li {% if selected == "intake_list_contacts" %}class="active"{% endif %}>
-                <a href="{{ path('intake_backend_contacts') }}">{{ 'intake.menu.list_contacts'|trans }}</a>
-            </li>
-            <li {% if selected == "intake_list_users" %}class="active"{% endif %}>
-                <a href="{{ path('intake_backend_users') }}">{{ 'intake.menu.list_users'|trans }}</a>
-            </li>
-        </ul>
-    </li>
     <li {% if selected == "intake_about" %}class="active"{% endif %}>
         <a href="{{ path('intake_about') }}">{{ 'intake.menu.about'|trans }}</a>
     </li>
@@ -27,4 +13,30 @@
             <li></li>
         </ul>
     </li>
+        {#% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
+            <li {% if dropdown == "backend" %}class="dropdown active"{% else %}class="dropdown"{% endif %}>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="">{{app.user.username}}</a></li>
+                    <li class="divider"></li>
+                    <li {% if selected == "intake_list_files" %}class="active"{% endif %}>
+                        <a href="{{ path('intake_backend') }}">{{ 'intake.menu.list_files'|trans }}</a>
+                    </li>
+                    <li {% if selected == "intake_list_contacts" %}class="active"{% endif %}>
+                        <a href="{{ path('intake_backend_contacts') }}">{{ 'intake.menu.list_contacts'|trans }}</a>
+                    </li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li {% if selected == "intake_list_users" %}class="active"{% endif %}>
+                            <a href="{{ path('intake_backend_users') }}">{{ 'intake.menu.list_users'|trans }}</a>
+                        </li>
+                    {% endif %}
+                    <li class="divider"></li>
+                    <li>
+                        <a href="">{{ 'intake.menu.logout'|trans }}</a>
+                    <li>
+                </ul>
+            </li>
+        {% else %}
+            <li><a href="">{{ 'intake.menu.login'|trans }}</a></li>
+        {% endif %#}
 {% endblock %}

@@ -18,8 +18,13 @@ security:
         admin_area:
             pattern:    /backend
             http_basic: ~
-            logout:
-                path:   /logout
+            form_login:
+                login_path: intake_login
+                check_path: intake_login_check
+                #csrf_provider: form.csrf_provider
+                default_target_path: /de
+            logout: 
+                path: oktolab_intake_logout
                 target: /de
 
     access_control:

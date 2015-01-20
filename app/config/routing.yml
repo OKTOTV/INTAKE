@@ -3,7 +3,7 @@ oktolab_intake:
     prefix:   /
 
 oktolab_intake_logout:
-    path: /logout
+    path: /backend/logout
 
 oneup_uploader:
     resource: .
