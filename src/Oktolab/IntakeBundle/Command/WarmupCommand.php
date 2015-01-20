@@ -9,7 +9,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use Oktolab\IntakeBundle\Entity\Role;
 
-//TODO: check if roles already exist!
 class WarmupCommand extends Command
 {
     private $em;
