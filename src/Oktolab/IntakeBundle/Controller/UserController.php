@@ -29,10 +29,11 @@ class UserController extends Controller
      * @Route("/new", name="intake_backend_user_new")
      * @Template
      */
-    public function new_userAction(Request $request, User $user)
+    public function new_userAction(Request $request)
     {
+        $user = new User();
         $form = $this->createForm(new UserType(), $user);
-        $form->add('create', 'submit', array('label' => 'intake.new_user.submit'));
+        $form->add('save', 'submit', array('label' => 'intake.new_user.submit'));
 
         if ($request->getMethod() == "POST") { //form send
             $form->handleRequest($request);
