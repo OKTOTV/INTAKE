@@ -35,14 +35,31 @@ class WarmupCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $userRole = new Role();
-        $userRole->setName('ROLE_USER');
-        $adminRole = new Role();
-        $adminRole->setName('ROLE_ADMIN');
+        $userRole = $this->em->getRepository('OktolabIntakeBundle:Role')->findOneBy(array('name' => 'ROLE_USER'));
+        $adminRole = $this->em->getRepository('OktolabIntakeBundle:Role')->findOneBy(array('name' => 'ROLE_ADMIN'));
+        
+        if (!$userRole) {
+            $output->writeln('No USER Role found. Adding USER Role to Database.');
 
-        $this->em->persist($userRole);
-        $this->em->persist($adminRole);
+            $userRole = new Role();
+            $userRole->setName('ROLE_USER');
+            $this->em->persist($userRole);
+        } else {
+            $output->writeln('USER Role found');
+        }
+
+        if (!$adminRole) {
+            $output->writeln('No ADMIN Role found. Adding ADMIN Role to Database.');
+            $adminRole = new Role();
+            $adminRole->setName('ROLE_ADMIN');
+
+            $this->em->persist($adminRole);
+        } else {
+            $output->writeln('ADMIN Role found');
+        }
 
         $this->em->flush();
+
+        $output->writeln('Warmup Complete! You may want to add an ADMIN to the Database with >>intake:create_admin<< next');
     }
 }
