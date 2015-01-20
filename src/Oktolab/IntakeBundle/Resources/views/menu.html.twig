@@ -17,7 +17,7 @@
     </ul>
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
             <ul class="nav navbar-nav navbar-right">
-                <li {% if dropdown == "backend" %}class="dropdown active"{% else %}class="dropdown"{% endif %}>
+                <li {% if dropdown == "intake_backend" %}class="dropdown active"{% else %}class="dropdown"{% endif %}>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"> {{ app.user.username }}</span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li {% if selected == "intake_list_files" %}class="active"{% endif %}>
@@ -40,7 +40,7 @@
             </ul>
         {% else %}
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ path('intake_login')}}">{{ 'intake.menu.login'|trans }}</a></li>
+                <li {% if selected == "intake_backend" %}class="active"{% endif %}><a href="{{ path('intake_login')}}">{{ 'intake.menu.login'|trans }}</a></li>
             </ul>
         {% endif %}
 {% endblock %}

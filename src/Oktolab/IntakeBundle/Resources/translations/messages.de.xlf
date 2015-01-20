@@ -316,6 +316,23 @@
                 <source>intake.user.email_placeholder</source>
                 <target>m.mustermann@example.com</target>
             </trans-unit>
+
+            <trans-unit id="1500">
+                <source>intake.login.header</source>
+                <target>Anmeldung</target>
+            </trans-unit>
+            <trans-unit id="1501">
+                <source>intake.login.username_label</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="1502">
+                <source>intake.login.password_label</source>
+                <target>Passwort</target>
+            </trans-unit>
+            <trans-unit id="1503">
+                <source>intake.login.submit</source>
+                <target>Einloggen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
