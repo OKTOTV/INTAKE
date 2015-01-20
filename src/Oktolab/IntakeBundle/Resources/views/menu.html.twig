@@ -18,7 +18,7 @@
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
             <ul class="nav navbar-nav navbar-right">
                 <li {% if dropdown == "intake_backend" %}class="dropdown active"{% else %}class="dropdown"{% endif %}>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"> {{ app.user.username }}</span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a>
                     <ul class="dropdown-menu" role="menu">
                         <li {% if selected == "intake_list_files" %}class="active"{% endif %}>
                             <a href="{{ path('intake_backend') }}">{{ 'intake.menu.list_files'|trans }}</a>
@@ -31,16 +31,13 @@
                                 <a href="{{ path('intake_backend_users') }}">{{ 'intake.menu.list_users'|trans }}</a>
                             </li>
                         {% endif %}
-                        <li class="divider"></li>
-                        <li>
-                            <a href="{{ path('oktolab_intake_logout')}}">{{ 'intake.menu.logout'|trans }}</a>
-                        <li>
                     </ul>
                 </li>
+                <li><a href="{{ path('oktolab_intake_logout')}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a><li>
             </ul>
         {% else %}
             <ul class="nav navbar-nav navbar-right">
-                <li {% if selected == "intake_backend" %}class="active"{% endif %}><a href="{{ path('intake_login')}}">{{ 'intake.menu.login'|trans }}</a></li>
+                <li {% if selected == "intake_backend" %}class="active"{% endif %}><a href="{{ path('intake_login')}}"><span class="glyphicon glyphicon-user"></span> {{ 'intake.menu.login'|trans }}</a></li>
             </ul>
         {% endif %}
 {% endblock %}
