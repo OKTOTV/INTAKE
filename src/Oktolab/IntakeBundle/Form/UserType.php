@@ -28,16 +28,6 @@ class UserType extends AbstractType
                 )
             )
             ->add(
-                'roles', 
-                'collection', 
-                array(
-                    'type'  => 'entity',
-                    'options' => array('class' => 'Oktolab\IntakeBundle\Entity\Role', 'property' => 'id'),
-                    'allow_add' => true,
-                    'allow_delete' => true
-                )
-            )
-            ->add(
                 'isActive', 
                 'checkbox', 
                 array(

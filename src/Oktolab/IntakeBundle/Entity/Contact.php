@@ -51,6 +51,11 @@ class Contact
      */
     private $files;
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * Get id
      *

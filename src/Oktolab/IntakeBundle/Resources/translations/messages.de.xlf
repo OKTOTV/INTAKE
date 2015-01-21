@@ -6,6 +6,14 @@
                 <source>intake.project_name</source>
                 <target>INTAKE</target>
             </trans-unit>
+            <trans-unit id="1">
+                <source>ROLE_USER</source>
+                <target>Benutzer</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>ROLE_ADMIN</source>
+                <target>Administrator</target>
+            </trans-unit>
 
             <trans-unit id="100">
                 <source>intake.menu.list_files</source>
@@ -75,6 +83,14 @@
             <trans-unit id="208">
                 <source>intake.message.file_delete_success</source>
                 <target>Datei erfolgreich gelöscht</target>
+            </trans-unit>
+            <trans-unit id="209">
+                <source>intake.message.user_removeRole_success</source>
+                <target>Benutzer erfolgreich aus Gruppe entfernt</target>
+            </trans-unit>
+            <trans-unit id="210">
+                <source>intake.message.user_addRole_success</source>
+                <target>Benutzer erfolgreich zu Gruppe hinzugefügt</target>
             </trans-unit>
 
             <trans-unit id="300">

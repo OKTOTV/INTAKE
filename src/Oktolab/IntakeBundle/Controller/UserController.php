@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Oktolab\IntakeBundle\Entity\User;
+use Oktolab\IntakeBundle\Entity\Role;
 use Oktolab\IntakeBundle\Form\UserType;
 
 /**
@@ -58,12 +59,12 @@ class UserController extends Controller
     {
         $form = $this->createForm(new UserType(), $user);
         $form->add('save', 'submit', array('label' => 'intake.edit_user.submit'));
+        $em = $this->getDoctrine()->getManager();
 
         if ($request->getMethod() == "POST") { //form sent
             $form->handleRequest($request);
 
             if ($form->isValid()) { 
-                $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('success', "intake.message.user_edit_success");
@@ -72,7 +73,11 @@ class UserController extends Controller
             }
             $this->get('session')->getFlashBag()->add('error', "intake.message.user_edit_error"); 
         }
-        return array('form' => $form->createView());
+
+        $all_roles = $em->getRepository('OktolabIntakeBundle:Role')->findAll();
+        $open_roles = array_diff($all_roles, $user->getRoles());
+
+        return array('form' => $form->createView(), 'roles' => $open_roles);
     }
 
     /**
@@ -86,5 +91,33 @@ class UserController extends Controller
         $em->flush();
         $this->get('session')->getFlashBag()->add('success', 'intake.message.user_delete_success');
         $this->redirect($this->generateUrl('intake_backend_users'));
+    }
+
+    /**
+     * @Route("/{user}/addRole/{role}", name="intake_backend_user_addRole")
+     */
+    public function addRoleAction(User $user, Role $role)
+    {
+        $user->addRole($role);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success', 'intake.message.user_addRole_success');
+        return $this->redirect($this->generateUrl('intake_backend_user_edit', array('user' => $user->getId())));
+    }
+
+    /**
+     * @Route("/{user}/removeRole/{role}", name="intake_backend_user_removeRole")
+     */
+    public function removeRoleAction(User $user, Role $role)
+    {
+        $user->removeRole($role);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
+
+        $this->get('session')->getFlashBag()->add('success', 'intake.message.user_removeRole_success');
+        return $this->redirect($this->generateUrl('intake_backend_user_edit', array('user' => $user->getId())));
     }
 }

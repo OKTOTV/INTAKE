@@ -59,6 +59,11 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $roles;
 
+    public function __toString()
+    {
+        return $this->username;
+    }
+
     /**
      * Get id
      *
@@ -179,6 +184,11 @@ class User implements AdvancedUserInterface, \Serializable
     public function getRoles()
     {
         return $this->roles->toArray();
+    }
+
+    public function getRoleObjects()
+    {
+        return $this->roles;
     }
 
     public function addRole($role)

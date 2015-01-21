@@ -13,12 +13,16 @@
         
         {{ form_row(form.username) }}
         {{ form_row(form.email) }}
-        <ul>
-        {% for role in form.roles %}
-            <li>{{ form_row(role) }}</li>
-        {% endfor %}
-        </ul>
         {{ form_row(form.isActive) }}
+
+        <div class="list-group">
+            {% for user_role in form.vars.value.roles%}
+                <a href="{{ path('intake_backend_user_removeRole', { 'user': form.vars.value.id, 'role': user_role.id }) }}" class="list-group-item list-group-item-success">{{ user_role.name|trans }}</a>
+            {% endfor %}
+            {% for role in roles %}
+                <a href="{{ path('intake_backend_user_addRole', { 'user': form.vars.value.id, 'role': role.id }) }}" class="list-group-item">{{ role.name|trans }}</a>
+            {% endfor %}
+        </div>
         {{ form_row(form.save) }}
         <a role="button" class="btn btn-danger" href="{{ path('intake_backend_user_delete', { 'user': form.vars.value.id }) }}">
             <span class="glyphicon glyphicon-remove"></span> {{ 'intake.edit_user.user_delete'|trans }}
