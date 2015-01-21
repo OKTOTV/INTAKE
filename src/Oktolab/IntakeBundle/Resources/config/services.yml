@@ -23,6 +23,7 @@ services:
         arguments: [ @doctrine.orm.entity_manager, @mailer, @templating ]
         tags:
             - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: uploadedFile }
+            - { name: kernel.event_listener, event: oneup_uploader.pre_upload, method: onUpload }
 
     oktolab.locale_listener:
         class:     %oktolab.locale_listener.class%

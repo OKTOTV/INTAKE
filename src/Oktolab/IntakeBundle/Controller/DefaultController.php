@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Oktolab\IntakeBundle\Entity\File;
+use Oktolab\IntakeBundle\Entity\Source;
 use Oktolab\IntakeBundle\Form\FileType;
 
 class DefaultController extends Controller
@@ -64,29 +65,16 @@ class DefaultController extends Controller
 
     /**
      * Allows download of all sources available
-     * @Route("/download/{file_id}/{source_id}", name="intake_download")
+     * @Route("/download/{source}", name="intake_download")
      */
-    public function download($file_id, $source_id)
+    public function download(Source $source)
     {
-        $file = $this->getDoctrine()->getManager()->getRepository('OktolabIntakeBundle:File')->findOneBy(array('uniqueID' => $file_id));
-        if (!$file) { // already deleted
-            $this->get('session')->getFlashBag()->add('warning', 'intake.file.already_deleted');
-            return $this->redirect($this->generateUrl('intake_new'));
-        }
-        $found_source = null;
-
-        foreach ($file->getSources() as $source) {
-            if ($source->getId() == $source_id) {
-                $found_source = $source;
-            }
-        }
-
         $response = new Response();
 
         // Set headers
         $response->headers->set('Cache-Control', 'private');
         $response->headers->set('Content-type', mime_content_type($source->getPath()));
-        $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"',$source->getName()));
+        $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"',$source->getOriginalName()));
         $response->headers->set('Content-length', filesize($source->getPath()));
 
         // // Send headers before outputting anything

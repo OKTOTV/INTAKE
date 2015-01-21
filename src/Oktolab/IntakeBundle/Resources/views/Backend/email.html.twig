@@ -2,7 +2,7 @@
             <ul>
                 {% for source in file.sources %}
                     <li>
-                        <a href="{{ url('intake_download', { 'file_id': file.uniqueID, 'source_id': source.id }) }}">{{ source.name }}</a>
+                        <a href="{{ url('intake_download', { 'source_id': source.id }) }}">{{ source.name }}</a>
                     </li>
                 {% endfor %}
             </ul>

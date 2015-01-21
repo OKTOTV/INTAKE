@@ -3,15 +3,16 @@
 namespace Oktolab\IntakeBundle\Model;
 
 use Oneup\UploaderBundle\Event\PostPersistEvent;
+use Oneup\UploaderBundle\Event\PreUploadEvent;
 use Oktolab\IntakeBundle\Entity\File;
 use Oktolab\IntakeBundle\Entity\Source;
 
 class jQueryUploadService
 {
-
     private $em;
     private $mailer;
     private $templating;
+    private $originalName;
 
     public function __construct($entityManager, $mailer, $templating)
     {
@@ -21,11 +22,11 @@ class jQueryUploadService
     }
 
     /**
-     * Links a sourcefile in the database to a File
+     * Links a sourcefile in the database to a real File in your Filesystem
      */
     public function uploadedFile(PostPersistEvent $event)
     {
-        $request = $even->getRequest();
+        $request = $event->getRequest();
         $uniqueID = $event->getRequest()->get('oktolab_intake_bundle_filetype')['uniqueID'];
         $file = $this->em->getRepository('OktolabIntakeBundle:File')->findOneBy( array('uniqueID' => $uniqueID) );
 
@@ -34,8 +35,10 @@ class jQueryUploadService
             $file->setUniqueID($uniqueID);
         }
         $source = new Source();
+        
         $source->setName($event->getFile()->getFilename());
         $source->setPath($event->getFile()->getRealPath());
+        $source->setOriginalName($this->originalName);
 
         $file->addSource($source);
         $source->setFile($file);
@@ -43,6 +46,11 @@ class jQueryUploadService
         $this->em->persist($file);
         $this->em->persist($source);
         $this->em->flush();
+    }
+
+    public function onUpload(PreUploadEvent $event)
+    {
+        $this->originalName = $event->getFile()->getClientOriginalName();
     }
 
     /**
@@ -59,8 +67,8 @@ class jQueryUploadService
             $databaseFile->setContact($file->getContact());
 
             $this->em->persist($databaseFile);
-            //$this->moveSourcefiles($databaseFile);
             $this->sendMail($databaseFile);
+
         } else {
             $this->em->persist($file);
         }
@@ -87,18 +95,6 @@ class jQueryUploadService
         }
         $this->em->remove($file);
 
-        $this->em->flush();
-    }
-
-    private function moveSourcefiles(File $file) {
-
-        foreach ($file->getSources() as $source) {
-            $info = new \SplFileInfo($source->getPath());
-            $newPath = $info->getPath().'/'.$file->getSeries().' - '.$file->getEpisodeName().'_'.$source->getName();
-            rename($source->getPath(), $newPath);
-            $source->setPath($newPath);
-            $this->em->persist($source);
-        }
         $this->em->flush();
     }
 }

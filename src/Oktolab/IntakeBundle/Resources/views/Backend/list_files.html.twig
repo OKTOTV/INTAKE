@@ -25,7 +25,7 @@
                 <td>{{ file.episodeName }}</td>
                 <td>
                     {% for source in file.sources %}
-                        <p><a href="{{ path('intake_download', { 'file_id': file.uniqueID, 'source_id': source.id})}}"><span class="glyphicon glyphicon-download"></span> {{ source.name }}</a></p>
+                        <p><a href="{{ path('intake_download', { 'source': source.id}) }}"><span class="glyphicon glyphicon-download"></span> {{ source.originalName }}</a></p>
                     {% endfor %}
                 </td>
                 <td>
