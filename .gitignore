@@ -4,5 +4,6 @@
 /app/cache/
 /app/logs/
 /app/intake.db3
+composer.lock
 
 web/app_dev.php

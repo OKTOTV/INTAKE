@@ -13,12 +13,6 @@
         
         {{ form_row(form.username) }}
         {{ form_row(form.email) }}
-        {{ form_row(form.roles) }}
-        <ul>
-        {% for role in form.roles %}
-            <li>{{ form_row(role) }}</li>
-        {% endfor %}
-        </ul>
         {{ form_row(form.isActive) }}
         {{ form_row(form.save) }}     
 

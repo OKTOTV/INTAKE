@@ -332,6 +332,14 @@
                 <source>intake.user.email_placeholder</source>
                 <target>m.mustermann@example.com</target>
             </trans-unit>
+            <trans-unit id="1408">
+                <source>intake.new_user.header</source>
+                <target>Neuer Benutzer</target>
+            </trans-unit>
+            <trans-unit id="1409">
+                <source>intake.new_user.submit</source>
+                <target>Benutzer anlegen</target>
+            </trans-unit>
 
             <trans-unit id="1500">
                 <source>intake.login.header</source>
