@@ -73,7 +73,7 @@ class DefaultController extends Controller
 
         // Set headers
         $response->headers->set('Cache-Control', 'private');
-        $response->headers->set('Content-type', mime_content_type($source->getPath()));
+        $response->headers->set('Content-type', \finfo_file($source->getPath()));
         $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"',$source->getOriginalName()));
         $response->headers->set('Content-length', filesize($source->getPath()));
 
