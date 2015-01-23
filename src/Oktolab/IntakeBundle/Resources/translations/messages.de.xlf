@@ -349,6 +349,11 @@
                 <source>intake.login.submit</source>
                 <target>Einloggen</target>
             </trans-unit>
+
+            <trans-unit id="1600">
+                <source>intake.about.title</source>
+                <target>OKTO INTAKE</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
