@@ -3,18 +3,19 @@ parameters:
     oktolab.locale_listener.class:            Oktolab\IntakeBundle\Model\LocaleListener
     oktolab.user_command.class:               Oktolab\IntakeBundle\Command\UserCommand
     oktolab.warmup_command.class:             Oktolab\IntakeBundle\Command\WarmupCommand
+    oktolab.iforgot.class:                    Oktolab\IntakeBundle\Model\iForgotService
 
 services:
 
     oktolab.user_command:
         class: %oktolab.user_command.class%
-        arguments: [ @doctrine.orm.entity_manager, @security.password_encoder]
+        arguments: [ @doctrine.orm.entity_manager, @security.password_encoder ]
         tags:
             -  { name: console.command }
 
     oktolab.warmup_command:
         class: %oktolab.warmup_command.class%
-        arguments: [ @doctrine.orm.entity_manager]
+        arguments: [ @doctrine.orm.entity_manager ]
         tags:
             - { name: console.command }
 
@@ -30,3 +31,7 @@ services:
         arguments: ["%kernel.default_locale%"]
         tags:
             - { name: kernel.event_subscriber }
+
+    oktolab.iforgot:
+        class:     %oktolab.iforgot.class%
+        arguments: [ @doctrine.orm.entity_manager, @mailer, @templating, @security.password_encoder ]

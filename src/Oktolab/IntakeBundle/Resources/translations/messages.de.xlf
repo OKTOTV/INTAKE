@@ -92,6 +92,10 @@
                 <source>intake.message.user_addRole_success</source>
                 <target>Benutzer erfolgreich zu Gruppe hinzugefügt</target>
             </trans-unit>
+            <trans-unit id="211">
+                <source>intake.message.user_not_allowed</source>
+                <target>Computer sagt nein</target>
+            </trans-unit>
 
             <trans-unit id="300">
                 <source>intake.file.series</source>
@@ -356,6 +360,10 @@
             <trans-unit id="1503">
                 <source>intake.login.submit</source>
                 <target>Einloggen</target>
+            </trans-unit>
+            <trans-unit id="1504">
+                <source>intake.login.reset_password</source>
+                <target>Passwort vergessen?</target>
             </trans-unit>
 
             <trans-unit id="1600">

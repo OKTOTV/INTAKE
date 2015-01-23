@@ -20,6 +20,7 @@
     <div class="form-group">
     <label for="password">{{ 'intake.login.password_label'|trans }}</label>
     <input type="password" id="password" name="_password" class="form-control" placeholder="Password" required />
+    <a href="{{ path('intake_iforgot') }}">{{ 'intake.login.reset_password'|trans }}</a>
     </div>
     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
     <button class="btn btn-primary btn-block" type="submit">{{ 'intake.login.submit'|trans }}</button>

@@ -3,6 +3,7 @@
 namespace Oktolab\IntakeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
@@ -23,21 +24,29 @@ class User implements AdvancedUserInterface, \Serializable
     private $id;
 
     /**
-     * @var string
+     * @Assert\NotBlank(message = "intake.user.username.notblank")
      *
-     * @ORM\Column(name="username", type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255, unique=true)
      */
     private $username;
 
     /**
-     * @var string
+     * @Assert\NotBlank(message = "intake.user.password.notblank", groups={"iforgot"} )
+     * @Assert\Length(
+     *      min = 6,
+     *      minMessage = "intake.user.password.lengthMin"
+     * )
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=255, nullable=true)
      */
     private $password;
 
     /**
-     * @var string
+     * @Assert\NotBlank(message = "intake.user.email_notblank" )
+     * @Assert\Email(
+     *     message = "intake.user.email_wrong",
+     *     checkMX = true 
+     * )
      *
      * @ORM\Column(name="email", type="string", length=255)
      */
@@ -58,6 +67,11 @@ class User implements AdvancedUserInterface, \Serializable
      *      )
      */
     private $roles;
+
+    /**
+     * @ORM\Column(name="resetHash", type="string", length=40, nullable=true)
+     */
+    private $resetHash;
 
     public function __toString()
     {
@@ -166,7 +180,8 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function __construct()
     {
-        $this->isActive = true;
+        $this->isActive = false;
+        $this->resetHash = null;
         $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -227,6 +242,16 @@ class User implements AdvancedUserInterface, \Serializable
     public function isEnabled()
     {
         return $this->isActive;
+    }
+
+    public function setResetHash($resetHash)
+    {
+        $this->resetHash = $resetHash;
+    }
+
+    public function getResetHash()
+    {
+        return $this->resetHash;
     }
 
     /**

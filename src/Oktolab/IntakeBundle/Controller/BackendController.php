@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Oktolab\IntakeBundle\Entity\File;
 use Oktolab\IntakeBundle\Entity\Contact;
 use Oktolab\IntakeBundle\Form\ContactType;
+use Oktolab\IntakeBundle\Form\UserSettingsType;
 
 /**
  * @Route("/backend")
@@ -115,5 +116,36 @@ class BackendController extends Controller
         $em->flush();
         $this->get('session')->getFlashBag()->add('success', 'intake.message.contact_delete_success');
         return $this->redirect($this->generateUrl('intake_backend_contacts'));
+    }
+
+    /**
+     * Allow users to change their settings. (Email, password)
+     * TODO: 
+     * 
+     * @Route("/user/{user}/edit", name="intake_backend_user_change_settings")
+     * @Template
+     */
+    public function changeSettings(Request $request, User $user)
+    {
+        // only admins and the user himself can change his settings
+        if (in_array('ROLE_ADMIN', $user->getRoles()) || $user == $this->getUser()) {
+
+            $form = $this->createForm(new UserSettingsType(), $user);
+            $form->add('save', 'submit', array('label' => 'intake.edit_user.submit'));
+
+            if ($request->getMethod() == "POST") { //form sent
+                $form->handleRequest($request);
+
+                if ($form->isValid()) {
+
+                }
+                $this->get('session')->getFlashBag()->add('error', 'intake.message.user_edit_error');
+            }
+            return array('form' => $form->createView());
+        }
+
+        $this->get('session')->getFlashBag()->add('error', 'intake.message.user_not_allowed');
+        return $this->redirect($this->generateUrl('intake_backend_users'));
+            
     }
 }
