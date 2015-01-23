@@ -14,7 +14,8 @@ Zur installation werden benötigt:
 
 Nach entpacken in deinem Webverzeichnis, solltest du die Commandline Befehle
 
-intake:warmup sowie intake:create_admin ausführen.
+composer.phar install, intake:warmup sowie intake:create_admin ausführen.
 
-intake:warmup solltest du bei jedem Update von INTAKE durchführen
-intake:create_admin erstellt einen Administrator. Du kannst andere Benutzer anschließend im Administrationsbereich erstellen.
+- composer.phar install installiert alle erforderlichen Pakete und führt dich durch die erstkonfiguration von INTAKE
+- intake:warmup solltest du bei jedem Update von INTAKE durchführen
+- intake:create_admin erstellt einen Administrator. Du kannst andere Benutzer anschließend im Administrationsbereich erstellen.
