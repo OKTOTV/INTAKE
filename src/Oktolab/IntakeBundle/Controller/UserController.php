@@ -90,7 +90,7 @@ class UserController extends Controller
         $em->remove($user);
         $em->flush();
         $this->get('session')->getFlashBag()->add('success', 'intake.message.user_delete_success');
-        $this->redirect($this->generateUrl('intake_backend_users'));
+        return $this->redirect($this->generateUrl('intake_backend_users'));
     }
 
     /**
