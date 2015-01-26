@@ -96,6 +96,18 @@
                 <source>intake.message.user_not_allowed</source>
                 <target>Computer sagt nein</target>
             </trans-unit>
+            <trans-unit id="212">
+                <source>intake.message.iforgot_error</source>
+                <target>Beim zurücksetzen ist ein Fehler aufgetreten</target>
+            </trans-unit>
+            <trans-unit id="213">
+                <source>intake.message.user_delete_success</source>
+                <target>Benutzer erfolgreich gelöscht</target>
+            </trans-unit>
+            <trans-unit id="214">
+                <source>intake.message.iforgot_reset_success</source>
+                <target>Neues Passwort erfolgreich gespeichert</target>
+            </trans-unit>
 
             <trans-unit id="300">
                 <source>intake.file.series</source>
@@ -364,6 +376,30 @@
             <trans-unit id="1504">
                 <source>intake.login.reset_password</source>
                 <target>Passwort vergessen?</target>
+            </trans-unit>
+            <trans-unit id="1505">
+                <source>intake.login.reset_password_mail_header</source>
+                <target>Passwort zurücksetzen</target>
+            </trans-unit>
+            <trans-unit id="1506">
+                <source>intake.iforgot.username</source>
+                <target>Dein Benutzername</target>
+            </trans-unit>
+            <trans-unit id="1507">
+                <source>intake.iforgot.reset_password_submit</source>
+                <target>Passwort zurücksetzen</target>
+            </trans-unit>
+            <trans-unit id="1508">
+                <source>intake.login.reset_password_header</source>
+                <target>Neues Passwort</target>
+            </trans-unit>
+            <trans-unit id="1509">
+                <source>intake.iforgot.password</source>
+                <target>Dein neues Passwort</target>
+            </trans-unit>
+            <trans-unit id="1510">
+                <source>intake.iforgot.save_password</source>
+                <target>Passwort speichern</target>
             </trans-unit>
 
             <trans-unit id="1600">

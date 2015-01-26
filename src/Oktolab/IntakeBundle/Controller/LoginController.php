@@ -23,10 +23,14 @@ class LoginController extends Controller
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
+        if ($error) {
+            $this->get('session')->getFlashBag()->add('error', $error->getMessage());
+        }
+
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return array('last_username' => $lastUsername, 'error' => $error);
+        return array('last_username' => $lastUsername);
     }
 
     /**

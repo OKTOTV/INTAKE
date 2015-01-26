@@ -5,9 +5,6 @@
 {% endblock %}
 
 {% block body_main %}
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData) }}</div>
-{% endif %}
 
   <form class="form-signin" action="{{ path('intake_login_check') }}" method="post">
     <h1 class="form-signin-heading">{{ 'intake.login.header'|trans }}</h1>
