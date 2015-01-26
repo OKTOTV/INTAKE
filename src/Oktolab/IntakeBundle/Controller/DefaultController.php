@@ -69,6 +69,14 @@ class DefaultController extends Controller
      */
     public function download(Source $source)
     {
+        if ($this->container->getParameter('xsendfile')) {
+            $response = new Response();
+            $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"', $source->getOriginalName()));
+            $response->headers->set('Content-type', \finfo_file($source->getPath()));
+            $response->headers->set('X-Sendfile', $source->getPath());
+            $response->sendHeaders();
+            return $response;
+        }
         $response = new Response();
 
         // Set headers
@@ -83,5 +91,6 @@ class DefaultController extends Controller
         $response->setContent(readfile($source->getPath()));
 
         return $response;
+        
     }
 }

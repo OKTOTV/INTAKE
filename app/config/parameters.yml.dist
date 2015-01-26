@@ -19,3 +19,4 @@ parameters:
     debug_redirects:        false
     use_assetic_controller: true
     version:           Beta
+    xsendfile:         ~
