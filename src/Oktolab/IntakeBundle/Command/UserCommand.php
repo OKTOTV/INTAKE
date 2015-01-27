@@ -9,18 +9,18 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 use Oktolab\IntakeBundle\Entity\User;
 
-//TODO: remove the password option as it is not save to have it written in the commandline
-// set it blank and use the password 'reset' option and send it via email
-
 class UserCommand extends Command
 {
     private $em;
-    private $password_encoder;
+    private $mailer;
+    private $templating;
 
-    public function __construct($entityManager, $passwEnc)
+
+    public function __construct($entityManager, $mailer, $templating)
     {
         $this->em = $entityManager;
-        $this->password_encoder = $passwEnc;
+        $this->mailer = $mailer;
+        $this->templating = $templating;
         parent::__construct();
     }
 
@@ -33,9 +33,7 @@ class UserCommand extends Command
             ->setName('intake:create_admin')
             ->setDescription('creates an admin user')
             ->addOption('name', '-1', InputOption::VALUE_REQUIRED, 'name of the account')
-            ->addOption('email', '-2', InputOption::VALUE_REQUIRED, 'email of the account')
-            ->addOption('password', '-3', InputOption::VALUE_REQUIRED, 'password of the account')
-        ;
+            ->addOption('email', '-2', InputOption::VALUE_REQUIRED, 'email of the account. Needed for password creation');
     }
 
     /**
@@ -44,14 +42,22 @@ class UserCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $user = new User();
+        $user->setIsActive(true);
         $user->setUsername($input->getOption('name'));
         $user->setEmail($input->getOption('email'));
-        $password = $this->password_encoder->encodePassword($user, $input->getOption('password'));
-        $user->setPassword($password);
+
         $role = $this->em->getRepository('OktolabIntakeBundle:Role')->findOneBy(array('name' => 'ROLE_ADMIN'));
         $user->addRole($role);
 
         $this->em->persist($user);
         $this->em->flush();
+
+        //TODO: send email
+        $message = \Swift_Message::newInstance()
+            ->setSubject('INTAKE Willkommen')
+            ->setFrom(array('intake@okto.tv' => 'OKTOBOT'))
+            ->setTo($user->getEmail())
+            ->setBody($this->templating->render('OktolabIntakeBundle:Email:new_user.html.twig', array('user' => $user)), 'text/html');
+        $this->mailer->send($message);
     }
 }

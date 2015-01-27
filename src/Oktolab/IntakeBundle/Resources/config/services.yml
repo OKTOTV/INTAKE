@@ -9,7 +9,7 @@ services:
 
     oktolab.user_command:
         class: %oktolab.user_command.class%
-        arguments: [ @doctrine.orm.entity_manager, @security.password_encoder ]
+        arguments: [ @doctrine.orm.entity_manager, @mailer, @templating ]
         tags:
             -  { name: console.command }
 
