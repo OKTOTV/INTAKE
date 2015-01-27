@@ -197,6 +197,14 @@
                 <source>intake.list_files.files</source>
                 <target>Dateien</target>
             </trans-unit>
+            <trans-unit id="705">
+                <source>intake.list_files.contact</source>
+                <target>Empfänger</target>
+            </trans-unit>
+            <trans-unit id="706">
+                <source>intake.list_files.description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
 
             <trans-unit id="800">
                 <source>intake.list_contacts.header</source>

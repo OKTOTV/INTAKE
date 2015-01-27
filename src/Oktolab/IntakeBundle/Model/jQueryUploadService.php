@@ -11,14 +11,12 @@ class jQueryUploadService
 {
     private $em;
     private $mailer;
-    private $templating;
     private $originalName;
 
-    public function __construct($entityManager, $mailer, $templating)
+    public function __construct($entityManager, $mailer)
     {
         $this->em = $entityManager;
         $this->mailer = $mailer;
-        $this->templating = $templating;
     }
 
     /**
@@ -67,23 +65,18 @@ class jQueryUploadService
             $databaseFile->setContact($file->getContact());
 
             $this->em->persist($databaseFile);
-            $this->sendMail($databaseFile);
+            $this->mailer->sendMail(
+                $file->getContact->getEmail(),
+                'OktolabIntakeBundle:Email:new_file.html.twig',
+                array('file' => $file),
+                'Neue Dateien abgegeben'
+            );
 
         } else {
             $this->em->persist($file);
         }
 
         $this->em->flush();
-    }
-
-    // Send an Email to the selected reciptient
-    public function sendMail(File $file) {
-        $message = \Swift_Message::newInstance()
-            ->setSubject('Neue Dateien abgegeben')
-            ->setFrom(array('intake@okto.tv' => 'OKTOBOT'))
-            ->setTo($file->getContact()->getEmail())
-            ->setBody($this->templating->render('OktolabIntakeBundle:Backend:email.html.twig', array('file' => $file)), 'text/html');
-        $this->mailer->send($message);
     }
 
     public function deleteFile(File $file) {
