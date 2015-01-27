@@ -38,6 +38,23 @@
             <div class="progress-bar progress-bar-success"></div>
         </div>
 
+    <p>
+    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">{{ 'intake.agb.button'|trans }}</button>
+</p>
+    <div class="collapse" id="collapseExample">
+        <div class="well">
+            {{ 'intake.agb.general'|trans }}
+            <ul>
+                <li>{{ 'intake.agb.first'|trans }}</li>
+                <li>{{ 'intake.agb.second'|trans }}</li>
+                <li>{{ 'intake.agb.third'|trans }}</li>
+                <li>{{ 'intake.agb.fourth'|trans }}</li>
+           </ul>
+            {{ 'intake.agb.extra'|trans({'%link%': '<a href="http://www.okto.tv/uploads/LESEN/Der_Sender/OKTO_Richtlinien.pdf" target="blank">Okto-Programmgrundsätze</a>'})|raw }}
+        </div>
+    </div>
+
+
         {{ form_row(form.readAGB) }}
         {{ form_row(form.uniqueID) }}
         {{ form_row(form.contact) }}

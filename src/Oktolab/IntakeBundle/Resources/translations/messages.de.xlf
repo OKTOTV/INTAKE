@@ -406,6 +406,39 @@
                 <source>intake.about.title</source>
                 <target>OKTO INTAKE</target>
             </trans-unit>
+
+            <trans-unit id="1700">
+                <source>intake.agb.button</source>
+                <target>Allgemeine Geschäftsbedingungen</target>
+            </trans-unit>
+            <trans-unit id="1701">
+                <source>intake.agb.button</source>
+                <target>Allgemeine Geschäftsbedingungen</target>
+            </trans-unit>
+            <trans-unit id="1702">
+                <source>intake.agb.general</source>
+                <target>Du akzeptierst</target>
+            </trans-unit>
+            <trans-unit id="1703">
+                <source>intake.agb.first</source>
+                <target>Unlimitierte Anzahl von Ausstrahlungen auf Okto (terrestrisch, via Kabel und im Internet als Livestream)</target>
+            </trans-unit>
+            <trans-unit id="1704">
+                <source>intake.agb.second</source>
+                <target>On demand streaming (zeitunabhängiger Abruf des Werkes auf den Websites von Okto)</target>
+            </trans-unit>
+            <trans-unit id="1705">
+                <source>intake.agb.third</source>
+                <target>Archivierung nach Ablauf der Vertragsdauer</target>
+            </trans-unit>
+            <trans-unit id="1706">
+                <source>intake.agb.fourth</source>
+                <target>Sollten im Zusammenhang mit der Sendung des vertragsgegenständlichen Filmes irgendwelche Ansprüche Dritter gegen Okto gestellt werden, so verpflichtet sich der/die VertragspartnerIn, Okto hinsichtlich dieser Forderungen schad- und klaglos zu halten.</target>
+            </trans-unit>
+            <trans-unit id="1707">
+                <source>intake.agb.extra</source>
+                <target>Weiter habe ich die %link% gelesen und aktzeptiert.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
