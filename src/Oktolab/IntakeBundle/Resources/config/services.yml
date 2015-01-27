@@ -1,37 +1,33 @@
-parameters:
-    oktolab.upload_listener.class:            Oktolab\IntakeBundle\Model\jQueryUploadService
-    oktolab.locale_listener.class:            Oktolab\IntakeBundle\Model\LocaleListener
-    oktolab.user_command.class:               Oktolab\IntakeBundle\Command\UserCommand
-    oktolab.warmup_command.class:             Oktolab\IntakeBundle\Command\WarmupCommand
-    oktolab.iforgot.class:                    Oktolab\IntakeBundle\Model\iForgotService
-
 services:
-
     oktolab.user_command:
-        class: %oktolab.user_command.class%
-        arguments: [ @doctrine.orm.entity_manager, @mailer, @templating ]
+        class:      Oktolab\IntakeBundle\Command\UserCommand
+        arguments: [ @doctrine.orm.entity_manager, @oktolab.mailer, "%oktolab_mail.host%" ]
         tags:
             -  { name: console.command }
 
     oktolab.warmup_command:
-        class: %oktolab.warmup_command.class%
+        class:      Oktolab\IntakeBundle\Command\WarmupCommand
         arguments: [ @doctrine.orm.entity_manager ]
         tags:
             - { name: console.command }
 
     oktolab.upload_listener:
-        class:     %oktolab.upload_listener.class%
-        arguments: [ @doctrine.orm.entity_manager, @mailer, @templating ]
+        class:     Oktolab\IntakeBundle\Model\jQueryUploadService
+        arguments: [ @doctrine.orm.entity_manager, @oktolab.mailer ]
         tags:
             - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: uploadedFile }
             - { name: kernel.event_listener, event: oneup_uploader.pre_upload, method: onUpload }
 
     oktolab.locale_listener:
-        class:     %oktolab.locale_listener.class%
+        class:     Oktolab\IntakeBundle\Model\LocaleListener
         arguments: ["%kernel.default_locale%"]
         tags:
             - { name: kernel.event_subscriber }
 
     oktolab.iforgot:
-        class:     %oktolab.iforgot.class%
-        arguments: [ @doctrine.orm.entity_manager, @mailer, @templating, @security.password_encoder ]
+        class:     Oktolab\IntakeBundle\Model\iForgotService
+        arguments: [ @doctrine.orm.entity_manager, @oktolab.mailer, @security.password_encoder ]
+
+    oktolab.mailer:
+        class:     Oktolab\IntakeBundle\Model\MailService
+        arguments: [ @mailer, @templating, "%oktolab.mail_from%", "%oktolab.mail_name%" ]

@@ -2,25 +2,26 @@
 
 namespace Oktolab\IntakeBundle\Command;
 
-use Symfony\Component\Console\Command\Command;
+// use Symfony\Component\Console\Command\Command;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 use Oktolab\IntakeBundle\Entity\User;
 
-class UserCommand extends Command
+//class UserCommand extends Command
+class UserCommand extends ContainerAwareCommand 
 {
     private $em;
     private $mailer;
-    private $templating;
+    private $mailerHost;
 
-
-    public function __construct($entityManager, $mailer, $templating)
+    public function __construct($entityManager, $mailer, $mailerHost)
     {
         $this->em = $entityManager;
         $this->mailer = $mailer;
-        $this->templating = $templating;
+        $this->mailerHost = $mailerHost;
         parent::__construct();
     }
 
@@ -41,6 +42,9 @@ class UserCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $context = $this->getContainer()->get('router')->getContext();
+        $context->setHost($this->mailerHost);
+
         $user = new User();
         $user->setIsActive(true);
         $user->setUsername($input->getOption('name'));
@@ -52,12 +56,11 @@ class UserCommand extends Command
         $this->em->persist($user);
         $this->em->flush();
 
-        //TODO: send email
-        $message = \Swift_Message::newInstance()
-            ->setSubject('INTAKE Willkommen')
-            ->setFrom(array('intake@okto.tv' => 'OKTOBOT'))
-            ->setTo($user->getEmail())
-            ->setBody($this->templating->render('OktolabIntakeBundle:Email:new_user.html.twig', array('user' => $user)), 'text/html');
-        $this->mailer->send($message);
+        $this->mailer->sendMail(
+            $user->getEmail(), 
+            'OktolabIntakeBundle:Email:new_user.html.twig', 
+            array('user' => $user), 
+            'INTAKE Willkommen'
+        );
     }
 }

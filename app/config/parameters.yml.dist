@@ -12,6 +12,10 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
+    oktolab_mail.host:   www.yourhost.com
+    oktolab.mail_from:   your.robot@example.com   
+    oktolab.mail_name:   EMAILROBOT
+
     locale:            de
     secret:            ThisTokenIsNotSoSecretChangeIt
 
