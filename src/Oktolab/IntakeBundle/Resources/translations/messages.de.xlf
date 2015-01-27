@@ -407,10 +407,7 @@
                 <source>intake.agb.button</source>
                 <target>Allgemeine Geschäftsbedingungen</target>
             </trans-unit>
-            <trans-unit id="1701">
-                <source>intake.agb.button</source>
-                <target>Allgemeine Geschäftsbedingungen</target>
-            </trans-unit>
+
             <trans-unit id="1702">
                 <source>intake.agb.general</source>
                 <target>Du akzeptierst</target>

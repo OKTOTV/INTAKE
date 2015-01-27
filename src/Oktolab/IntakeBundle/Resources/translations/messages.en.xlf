@@ -6,6 +6,14 @@
                 <source>intake.project_name</source>
                 <target>INTAKE</target>
             </trans-unit>
+            <trans-unit id="1">
+                <source>ROLE_USER</source>
+                <target>User</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>ROLE_ADMIN</source>
+                <target>Admin</target>
+            </trans-unit>
 
             <trans-unit id="100">
                 <source>intake.menu.list_files</source>
@@ -26,6 +34,18 @@
             <trans-unit id="104">
                 <source>intake.menu.about</source>
                 <target>About OKTO Intake</target>
+            </trans-unit>
+            <trans-unit id="105">
+                <source>intake.menu.list_users</source>
+                <target>Users</target>
+            </trans-unit>
+            <trans-unit id="106">
+                <source>intake.menu.login</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="107">
+                <source>intake.menu.logout</source>
+                <target>Logout</target>
             </trans-unit>
 
             <trans-unit id="200">
@@ -64,14 +84,34 @@
                 <source>intake.message.file_delete_success</source>
                 <target>Successfully deleted files</target>
             </trans-unit>
+            <trans-unit id="209">
+                <source>intake.message.user_removeRole_success</source>
+                <target>Removed user from group successfully</target>
+            </trans-unit>
+            <trans-unit id="210">
+                <source>intake.message.user_addRole_success</source>
+                <target>Added user to group successfully</target>
+            </trans-unit>
+            <trans-unit id="211">
+                <source>intake.message.user_not_allowed</source>
+                <target>Computer says no</target>
+            </trans-unit>
+            <trans-unit id="212">
+                <source>intake.message.iforgot_error</source>
+                <target>An error occured while resetting your password</target>
+            </trans-unit>
+            <trans-unit id="213">
+                <source>intake.message.user_delete_success</source>
+                <target>Deleted user successfully</target>
+            </trans-unit>
+            <trans-unit id="214">
+                <source>intake.message.iforgot_reset_success</source>
+                <target>New password accepted</target>
+            </trans-unit>
 
             <trans-unit id="300">
                 <source>intake.file.series</source>
                 <target>Title</target>
-            </trans-unit>
-            <trans-unit id="301">
-                <source>intake.file.episode_name</source>
-                <target>Episode name</target>
             </trans-unit>
             <trans-unit id="302">
                 <source>intake.file.episode_description</source>
@@ -88,10 +128,6 @@
             <trans-unit id="305">
                 <source>intake.file.series_placeholder</source>
                 <target>Name of your series or project (max 100 characters)</target>
-            </trans-unit>
-            <trans-unit id="306">
-                <source>intake.file.episodeName_placeholder</source>
-                <target>Name of the episode (max 100 characters)</target>
             </trans-unit>
             <trans-unit id="307">
                 <source>intake.file.episodeDescription_placeholder</source>
@@ -164,6 +200,10 @@
             <trans-unit id="705">
                 <source>intake.list_files.episodeName</source>
                 <target>Episode name</target>
+            </trans-unit>
+            <trans-unit id="706">
+                <source>intake.list_files.description</source>
+                <target>Description</target>
             </trans-unit>
 
             <trans-unit id="800">
@@ -249,6 +289,148 @@
             <trans-unit id="1202">
                 <source>intake.edit_contact.submit</source>
                 <target>Save changes</target>
+            </trans-unit>
+
+            <trans-unit id="1300">
+                <source>intake.list_users.header</source>
+                <target>Users</target>
+            </trans-unit>
+            <trans-unit id="1301">
+                <source>intake.list_users.new_user</source>
+                <target>New user</target>
+            </trans-unit>
+            <trans-unit id="1302">
+                <source>intake.list_users.user_name</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="1303">
+                <source>intake.list_users.user_email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="1304">
+                <source>intake.list_users.user_edit</source>
+                <target>Edit</target>
+            </trans-unit>
+
+            <trans-unit id="1400">
+                <source>intake.edit_user.header</source>
+                <target>Edit user</target>
+            </trans-unit>
+            <trans-unit id="1401">
+                <source>intake.user.name</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="1402">
+                <source>intake.user.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="1403">
+                <source>intake.user.isActive</source>
+                <target>Account active</target>
+            </trans-unit>
+            <trans-unit id="1404">
+                <source>intake.edit_user.submit</source>
+                <target>save changes</target>
+            </trans-unit>
+            <trans-unit id="1405">
+                <source>intake.edit_user.user_delete</source>
+                <target>delete account</target>
+            </trans-unit>
+            <trans-unit id="1406">
+                <source>intake.user.name_placeholder</source>
+                <target>shortcut</target>
+            </trans-unit>
+            <trans-unit id="1407">
+                <source>intake.user.email_placeholder</source>
+                <target>m.mustermann@example.com</target>
+            </trans-unit>
+            <trans-unit id="1408">
+                <source>intake.new_user.header</source>
+                <target>New user</target>
+            </trans-unit>
+            <trans-unit id="1409">
+                <source>intake.new_user.submit</source>
+                <target>create user</target>
+            </trans-unit>
+
+            <trans-unit id="1500">
+                <source>intake.login.header</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="1501">
+                <source>intake.login.username_label</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="1502">
+                <source>intake.login.password_label</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="1503">
+                <source>intake.login.submit</source>
+                <target>Login</target>
+            </trans-unit>
+            <trans-unit id="1504">
+                <source>intake.login.reset_password</source>
+                <target>forgot password?</target>
+            </trans-unit>
+            <trans-unit id="1505">
+                <source>intake.login.reset_password_mail_header</source>
+                <target>Reset password</target>
+            </trans-unit>
+            <trans-unit id="1506">
+                <source>intake.iforgot.username</source>
+                <target>Your username</target>
+            </trans-unit>
+            <trans-unit id="1507">
+                <source>intake.iforgot.reset_password_submit</source>
+                <target>reset password</target>
+            </trans-unit>
+            <trans-unit id="1508">
+                <source>intake.login.reset_password_header</source>
+                <target>New password</target>
+            </trans-unit>
+            <trans-unit id="1509">
+                <source>intake.iforgot.password</source>
+                <target>your new password</target>
+            </trans-unit>
+            <trans-unit id="1510">
+                <source>intake.iforgot.save_password</source>
+                <target>save password</target>
+            </trans-unit>
+
+            <trans-unit id="1600">
+                <source>intake.about.title</source>
+                <target>OKTO INTAKE</target>
+            </trans-unit>
+
+            <trans-unit id="1700">
+                <source>intake.agb.button</source>
+                <target>Terms and conditions</target>
+            </trans-unit>
+
+            <trans-unit id="1702">
+                <source>intake.agb.general</source>
+                <target>You agree to</target>
+            </trans-unit>
+            <trans-unit id="1703">
+                <source>intake.agb.first</source>
+                <target>Unlimited broadcast on Okto (terrestrial, cable and on the internet as livestream)</target>
+            </trans-unit>
+            <trans-unit id="1704">
+                <source>intake.agb.second</source>
+                <target>On demand streaming</target>
+            </trans-unit>
+            <trans-unit id="1705">
+                <source>intake.agb.third</source>
+                <target>archiving beyond contract duration</target>
+            </trans-unit>
+            <trans-unit id="1706">
+                <source>intake.agb.fourth</source>
+                <target>If any third party claims made against Okto related to the mission of the contractual film, then the contractual partner, Okto indemnify relation to these claims and hold harmless obligation.</target>
+            </trans-unit>
+            <trans-unit id="1707">
+                <source>intake.agb.extra</source>
+                <target>I've also read %link% and agree with said terms</target>
             </trans-unit>
         </body>
     </file>
