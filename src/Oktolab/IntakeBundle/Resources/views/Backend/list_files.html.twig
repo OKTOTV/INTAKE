@@ -13,7 +13,6 @@
         <thead>
             <tr>
                 <th>{{ 'intake.list_files.name'|trans }}</th>
-                <th>{{ 'intake.list_files.episodeName'|trans }}</th>
                 <th>{{ 'intake.list_files.files'|trans }}</th>
                 <th><span class="glyphicon glyphicon-cog"></span></th>
             </tr>
@@ -22,7 +21,6 @@
             {% for file in files %}
             <tr>
                 <td>{{ file.series }}</td>
-                <td>{{ file.episodeName }}</td>
                 <td>
                     {% for source in file.sources %}
                         <p><a href="{{ path('intake_download', { 'source': source.id}) }}"><span class="glyphicon glyphicon-download"></span> {{ source.originalName }}</a></p>

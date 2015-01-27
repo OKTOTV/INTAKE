@@ -113,10 +113,6 @@
                 <source>intake.file.series</source>
                 <target>Titel</target>
             </trans-unit>
-            <trans-unit id="301">
-                <source>intake.file.episode_name</source>
-                <target>Episode</target>
-            </trans-unit>
             <trans-unit id="302">
                 <source>intake.file.episode_description</source>
                 <target>Beschreibung</target>
@@ -132,10 +128,6 @@
             <trans-unit id="305">
                 <source>intake.file.series_placeholder</source>
                 <target>Name der Serie oder des Projekts (max 100 Zeichen)</target>
-            </trans-unit>
-            <trans-unit id="306">
-                <source>intake.file.episodeName_placeholder</source>
-                <target>Name der Folge (max 100 Zeichen)</target>
             </trans-unit>
             <trans-unit id="307">
                 <source>intake.file.episodeDescription_placeholder</source>
@@ -204,10 +196,6 @@
             <trans-unit id="704">
                 <source>intake.list_files.files</source>
                 <target>Dateien</target>
-            </trans-unit>
-            <trans-unit id="705">
-                <source>intake.list_files.episodeName</source>
-                <target>Episodenname</target>
             </trans-unit>
 
             <trans-unit id="800">

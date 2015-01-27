@@ -20,14 +20,6 @@ class FileType extends AbstractType
                 )
             )
             ->add(
-                'episodeName', 
-                'text', 
-                array(
-                    'label' => 'intake.file.episode_name',
-                    'attr' => array('placeholder' => 'intake.file.episodeName_placeholder')
-                )
-            )
-            ->add(
                 'episodeDescription', 
                 'textarea', 
                 array(

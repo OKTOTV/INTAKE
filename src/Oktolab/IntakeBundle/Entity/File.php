@@ -43,18 +43,6 @@ class File
     /**
      * @var string
      *
-     * @Assert\NotBlank(message = "intake.file.episode_name.notblank" )
-     * @Assert\Length(
-     *      max = 100,
-     *      maxMessage = "intake.file.episode_name.lengthMax"
-     * )
-     * @ORM\Column(name="episodeName", type="string", length=100, nullable=true)
-     */
-    private $episodeName;
-
-    /**
-     * @var string
-     *
      * @Assert\NotBlank(message = "intake.file.episode_description.notblank" )
      * @Assert\Length(
      *      max = 500,
@@ -121,29 +109,6 @@ class File
     public function getSeries()
     {
         return $this->series;
-    }
-
-    /**
-     * Set episodeName
-     *
-     * @param string $episodeName
-     * @return File
-     */
-    public function setEpisodeName($episodeName)
-    {
-        $this->episodeName = $episodeName;
-
-        return $this;
-    }
-
-    /**
-     * Get episodeName
-     *
-     * @return string 
-     */
-    public function getEpisodeName()
-    {
-        return $this->episodeName;
     }
 
     /**
