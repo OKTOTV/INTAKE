@@ -23,7 +23,7 @@
         <tbody>
             {% for file in files %}
             <tr>
-                <td>{{ file.uploaderEmail|default('') }}</td>
+                <td><a href="mailto:{{ file.uploaderEmail }}">{{ file.uploaderEmail|default('') }}</a></td>
                 <td><a href="mailto:{{ file.contact.email|default('') }}" title="{{ file.contact.email|default('') }}">{{ file.contact.name|default('') }}</a></td>
                 <td>{{ file.series }}</td>
                 <td>{{ file.episodeDescription }}</td>
