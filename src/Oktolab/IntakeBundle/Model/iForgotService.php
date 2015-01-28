@@ -10,11 +10,10 @@ class iForgotService
     private $mailer;
     private $templating;
 
-    public function __construct($entityManager, $mailer, $templating, $passwEnc)
+    public function __construct($entityManager, $mailer, $passwEnc)
     {
         $this->em = $entityManager;
         $this->mailer = $mailer;
-        $this->templating = $templating;
         $this->password_encoder = $passwEnc;
     }
 
@@ -31,7 +30,12 @@ class iForgotService
             $this->em->persist($user);
             $this->em->flush();
 
-            $this->sendMail($user);
+            $this->mailer->sendMail(
+                $user->getEmail(),
+                'OktolabIntakeBundle:Email:iforgot.html.twig',
+                array('user' => $user),
+                'INTAKE Passwort zurücksetzen'
+            );
         }
     }
 
@@ -49,14 +53,5 @@ class iForgotService
             $this->em->persist($user);
             $this->em->flush();
         }
-    }
-
-    public function sendMail(User $user) {
-        $message = \Swift_Message::newInstance()
-            ->setSubject('INTAKE Passwort zurücksetzen')
-            ->setFrom(array('intake@okto.tv' => 'OKTOBOT'))
-            ->setTo($user->getEmail())
-            ->setBody($this->templating->render('OktolabIntakeBundle:Backend:iforgot.html.twig', array('user' => $user)), 'text/html');
-        $this->mailer->send($message);
     }
 }
