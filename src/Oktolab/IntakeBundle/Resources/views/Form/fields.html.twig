@@ -1,5 +1,6 @@
 {% block form_row %}
 {% spaceless %}
+    {#{ dump(form) }#}
     <div class="form-group">
         {{ form_label(form) }}
         {{ form_errors(form) }}
@@ -37,3 +38,15 @@
 {% block button_row -%}
     {{- form_widget(form) -}}
 {%- endblock button_row %}
+
+{% block checkbox_row %}
+{% spaceless %}
+    <div class="form-group">
+        <div class="checkbox">
+        {{ form_errors(form) }}
+        {{ form_widget(form) }}
+        {{ form_label(form) }}
+    </div>
+    </div>
+{% endspaceless %}
+{% endblock checkbox_row%}
