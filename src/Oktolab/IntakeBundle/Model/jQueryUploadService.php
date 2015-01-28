@@ -60,18 +60,17 @@ class jQueryUploadService
 
         if ($databaseFile) {
             $databaseFile->setSeries($file->getSeries());
-            $databaseFile->setEpisodeName($file->getEpisodeName());
             $databaseFile->setEpisodeDescription($file->getEpisodeDescription());
             $databaseFile->setContact($file->getContact());
+            $databaseFile->setUploaderEmail($file->getUploaderEmail());
 
             $this->em->persist($databaseFile);
-            $this->mailer->sendMail(
-                $file->getContact->getEmail(),
+                    $this->mailer->sendMail(
+                $file->getContact()->getEmail(),
                 'OktolabIntakeBundle:Email:new_file.html.twig',
-                array('file' => $file),
+                array('file' => $databaseFile),
                 'Neue Dateien abgegeben'
             );
-
         } else {
             $this->em->persist($file);
         }

@@ -206,12 +206,16 @@
                 <target>Files</target>
             </trans-unit>
             <trans-unit id="705">
-                <source>intake.list_files.episodeName</source>
-                <target>Episode name</target>
+                <source>intake.list_files.contact</source>
+                <target>Receiver</target>
             </trans-unit>
             <trans-unit id="706">
                 <source>intake.list_files.description</source>
                 <target>Description</target>
+            </trans-unit>
+            <trans-unit id="707">
+                <source>intake.list_files.uploaderEmail</source>
+                <target>Sender</target>
             </trans-unit>
 
             <trans-unit id="800">

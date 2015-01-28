@@ -12,6 +12,7 @@
     <table class="table table-striped table-hover">
         <thead>
             <tr>
+                <th>{{ 'intake.list_files.uploaderEmail'|trans }}</th>
                 <th>{{ 'intake.list_files.contact'|trans }}</th>
                 <th>{{ 'intake.list_files.name'|trans }}</th>
                 <th>{{ 'intake.list_files.description'|trans }}</th>
@@ -22,7 +23,8 @@
         <tbody>
             {% for file in files %}
             <tr>
-                <td><a href="mailto:{{ file.contact.email }}" title="{{ file.contact.email }}">{{ file.contact.name }}</a></td>
+                <td>{{ file.uploaderEmail|default('') }}</td>
+                <td><a href="mailto:{{ file.contact.email|default('') }}" title="{{ file.contact.email|default('') }}">{{ file.contact.name|default('') }}</a></td>
                 <td>{{ file.series }}</td>
                 <td>{{ file.episodeDescription }}</td>
                 <td>
