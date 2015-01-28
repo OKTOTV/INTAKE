@@ -30,6 +30,14 @@
                 <source>intake.file.readAGB.notFalse</source>
                 <target>You have to agree to our terms and conditions</target>
             </trans-unit>
+            <trans-unit id="17">
+                <source>intake.file.uploaderEmail.notblank</source>
+                <target>You need to give as an email adress so we can contact you</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>intake.file.email_wrong</source>
+                <target>Your email adress could not be validated</target>
+            </trans-unit>
 
             <trans-unit id="20">
                 <source>intake.contact.email_notblank</source>

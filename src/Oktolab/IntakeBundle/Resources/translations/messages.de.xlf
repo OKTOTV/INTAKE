@@ -113,6 +113,10 @@
                 <source>intake.file.series</source>
                 <target>Titel</target>
             </trans-unit>
+            <trans-unit id="301">
+                <source>intake.file.uploaderEmail</source>
+                <target>Dein Kontakt</target>
+            </trans-unit>
             <trans-unit id="302">
                 <source>intake.file.episode_description</source>
                 <target>Beschreibung</target>
@@ -140,6 +144,10 @@
             <trans-unit id="309">
                 <source>intake.file.add_files</source>
                 <target>Dateien auswählen</target>
+            </trans-unit>
+            <trans-unit id="310">
+                <source>intake.file.uploaderEmail_placeholder</source>
+                <target>m.mustermann@example.com</target>
             </trans-unit>
 
             <trans-unit id="400">

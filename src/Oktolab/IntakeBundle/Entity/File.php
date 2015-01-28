@@ -79,6 +79,17 @@ class File
     private $contact;
 
     /**
+     * @Assert\NotBlank(message = "intake.file.uploaderEmail.notblank")
+     * @Assert\Email(
+     *     message = "intake.file.email_wrong",
+     *     checkMX = true
+     * )
+     * @ORM\Column(name="uploaderEmail", type="string", length=255, nullable=true)
+     * @var string
+     */
+    private $uploaderEmail;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -221,6 +232,17 @@ class File
     public function setContact(Contact $contact)
     {
         $this->contact = $contact;
+        return $this;
+    }
+
+    public function getUploaderEmail()
+    {
+        return $this->uploaderEmail;
+    }
+
+    public function setUploaderEmail($uploaderEmail)
+    {
+        $this->uploaderEmail = $uploaderEmail;
         return $this;
     }
 }

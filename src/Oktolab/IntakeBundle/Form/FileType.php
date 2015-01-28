@@ -35,6 +35,14 @@ class FileType extends AbstractType
                 )
             )
             ->add(
+                'uploaderEmail', 
+                'email', 
+                array(
+                    'label' => 'intake.file.uploaderEmail', 
+                    'attr' => array('placeholder' => 'intake.file.uploaderEmail_placeholder')
+                )
+            )
+            ->add(
                 'contact',
                 'entity',
                 array(
