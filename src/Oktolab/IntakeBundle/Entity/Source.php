@@ -48,6 +48,12 @@ class Source
     private $originalName;
 
     /**
+     * @ORM\Column(name="filesize", type="bigint")
+     * @var integer
+     */
+    private $filesize;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -136,5 +142,28 @@ class Source
     public function getOriginalName()
     {
         return $this->originalName;
+    }
+
+    /**
+     * Set filesize
+     *
+     * @param integer $filesize
+     * @return Source
+     */
+    public function setFilesize($filesize)
+    {
+        $this->filesize = $filesize;
+
+        return $this;
+    }
+
+    /**
+     * Get filesize
+     *
+     * @return integer 
+     */
+    public function getFilesize()
+    {
+        return $this->filesize;
     }
 }
