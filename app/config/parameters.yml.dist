@@ -15,6 +15,7 @@ parameters:
     oktolab_mail.host:   www.yourhost.com
     oktolab.mail_from:   your.robot@example.com   
     oktolab.mail_name:   EMAILROBOT
+    oktolab_filecap: 50
 
     locale:            de
     secret:            ThisTokenIsNotSoSecretChangeIt
