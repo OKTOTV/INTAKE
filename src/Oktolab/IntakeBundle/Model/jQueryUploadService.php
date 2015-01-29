@@ -36,6 +36,7 @@ class jQueryUploadService
         
         $source->setName($event->getFile()->getFilename());
         $source->setPath($event->getFile()->getRealPath());
+        $source->setFilesize(filesize($source->getPath()));
         $source->setOriginalName($this->originalName);
 
         $file->addSource($source);

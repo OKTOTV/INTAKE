@@ -31,3 +31,8 @@ services:
     oktolab.mailer:
         class:     Oktolab\IntakeBundle\Model\MailService
         arguments: [ @mailer, @templating, "%oktolab.mail_from%", "%oktolab.mail_name%" ]
+
+    oktolab.filesizeExtension:
+        class:     Oktolab\IntakeBundle\Extension\FilesizeExtension
+        tags:
+            - { name: twig.extension }
