@@ -90,4 +90,15 @@ class jQueryUploadService
 
         $this->em->flush();
     }
+
+    public function getTotalFilesize()
+    {
+        $sources = $this->em->getRepository('OktolabIntakeBundle:Source')->findAll();
+        $size = 0; 
+        foreach ($sources as $source) {
+            $size += $source->getFilesize();
+        }
+
+        return $size;
+    }
 }

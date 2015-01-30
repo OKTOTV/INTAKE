@@ -30,6 +30,8 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         version:            %version%
+        filecap:    %oktolab_filecap%
+        junksize:   %oktolab_junksize%
     form:
         resources:
             - 'OktolabIntakeBundle:Form:fields.html.twig'

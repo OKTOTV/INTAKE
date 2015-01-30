@@ -444,6 +444,15 @@
                 <source>intake.agb.extra</source>
                 <target>Weiter habe ich die %link% gelesen und aktzeptiert.</target>
             </trans-unit>
+
+            <trans-unit id="1800">
+                <source>intake.filecap.header</source>
+                <target>Server voll</target>
+            </trans-unit>
+            <trans-unit id="1801">
+                <source>intake.filecap.paragraph</source>
+                <target>Wir können leider derzeit keine neuen Dateien entgegen nehmen. Bitte versuche es später noch einmal</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

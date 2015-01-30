@@ -39,7 +39,7 @@ class DefaultController extends Controller
             }
         }
         $databasefile = $this->getDoctrine()->getManager()->getRepository('OktolabIntakeBundle:File')->findOneBy(array('uniqueID' => $file->getUniqueID()));
-        return array('form' => $form->createView(), 'databasefile' => $databasefile);
+        return array('form' => $form->createView(), 'databasefile' => $databasefile, 'filesize' => $this->get('oktolab.upload_listener')->getTotalFilesize());
     }
 
     /**
