@@ -5,8 +5,6 @@ $(document).ready( function() {
         }
     });
 
-    console.log($('#fileupload').data('junksize'));
-
     $('#fileupload').fileupload({
         maxChunkSize: $('#fileupload').data('junksize'),
         autoUpload:false
