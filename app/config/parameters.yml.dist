@@ -16,6 +16,7 @@ parameters:
     oktolab.mail_from:   your.robot@example.com   
     oktolab.mail_name:   EMAILROBOT
     oktolab_filecap: 50
+    oktolab_junksize: 2000000
 
     locale:            de
     secret:            ThisTokenIsNotSoSecretChangeIt

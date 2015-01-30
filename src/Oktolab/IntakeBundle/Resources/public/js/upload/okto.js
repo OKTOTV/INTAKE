@@ -5,8 +5,10 @@ $(document).ready( function() {
         }
     });
 
+    console.log($('#fileupload').data('junksize'));
+
     $('#fileupload').fileupload({
-        maxChunkSize: 2000000, // 2 MB, TODO: 10MB
+        maxChunkSize: $('#fileupload').data('junksize'),
         autoUpload:false
 
     }).on('fileuploadadd', function (e, data) {

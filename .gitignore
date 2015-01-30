@@ -5,5 +5,5 @@
 /app/logs/
 /app/intake.db3
 composer.lock
-
+/web/bundles
 web/app_dev.php

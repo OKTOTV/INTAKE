@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block body_main %}
-    {% if filecap <= filesize %}
+    {{ dump(filecap*1000*1000*1000)}}
+    {{ dump(filesize)}}
+    {{ dump(filecap*1000*1000*1000 >= filesize)}}
+    {% if filecap*1000*1000*1000 >= filesize %}
         <h1>{{ 'intake.index.header'|trans }}</h1>
         {{ form_start(form) }}
             {{ form_errors(form) }}
@@ -19,7 +22,7 @@
                 <span class="btn btn-default fileinput-button">
                     <i class="glyphicon glyphicon-plus"></i>
                     <span>{{ 'intake.file.add_files'|trans }}</span>
-                    <input id="fileupload" type="file" name="files[]" data-url="{{ oneup_uploader_endpoint('files') }}" multiple />
+                    <input id="fileupload" type="file" name="files[]" data-junksize="{{ junksize }}" data-url="{{ oneup_uploader_endpoint('files') }}" multiple />
                 </span>
             </div>
             <div class="form-group" id="div-fileupload">
