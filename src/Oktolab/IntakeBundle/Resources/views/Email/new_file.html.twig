@@ -2,7 +2,7 @@
             <ul>
                 {% for source in file.sources %}
                     <li>
-                        <a href="{{ url('intake_download', { 'source': source.id }) }}">{{ source.originalName }}</a> ({{ source.filesize|filesize }})
+                        <a href="{{ url('intake_download', { 'name': source.name }) }}">{{ source.originalName }}</a> ({{ source.filesize|filesize }})
                     </li>
                 {% endfor %}
             </ul>
