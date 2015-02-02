@@ -65,14 +65,16 @@ class DefaultController extends Controller
 
     /**
      * Allows download of all sources available
-     * @Route("/download/{source}", name="intake_download")
+     * @Route("/download/{name}", name="intake_download")
      */
     public function download(Source $source)
     {
+        $finfo = \finfo_open(FILEINFO_MIME_TYPE);
+
         if ($this->container->getParameter('xsendfile')) {
             $response = new Response();
             $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"', $source->getOriginalName()));
-            $response->headers->set('Content-type', \finfo_file($source->getPath()));
+            $response->headers->set('Content-type', \finfo_file($finfo, $source->getPath()));
             $response->headers->set('X-Sendfile', $source->getPath());
             $response->sendHeaders();
             return $response;
@@ -81,9 +83,11 @@ class DefaultController extends Controller
 
         // Set headers
         $response->headers->set('Cache-Control', 'private');
-        $response->headers->set('Content-type', \finfo_file($source->getPath()));
+        $response->headers->set('Content-type', \finfo_file($finfo, $source->getPath()));
         $response->headers->set('Content-Disposition', sprintf('attachment; filename="%s"',$source->getOriginalName()));
         $response->headers->set('Content-length', filesize($source->getPath()));
+
+        \finfo_close($finfo);
 
         // // Send headers before outputting anything
         $response->sendHeaders();

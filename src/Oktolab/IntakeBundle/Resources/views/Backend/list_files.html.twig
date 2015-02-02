@@ -30,7 +30,7 @@
                 <td>
                     {% for source in file.sources %}
                         <p>
-                            <a href="{{ path('intake_download', { 'source': source.id}) }}">
+                            <a href="{{ path('intake_download', { 'name': source.name}) }}">
                                 <span class="glyphicon glyphicon-download"></span> {{ source.originalName~' ('~source.filesize|filesize~')' }}
                             </a>
                         </p>
