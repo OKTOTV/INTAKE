@@ -24,12 +24,12 @@
             </div>
             <div class="form-group" id="div-fileupload">
                 {% for source in form.vars.value.sources if form.vars.value.sources is not empty %}
-                    <p class="text-success">{{ source.name }}</p>
+                    <p class="text-success">{{ source.originalName }}</p>
                 {% endfor %}
                 {% if databasefile is not empty %}
                     {% for source in databasefile.sources %}
                         <div>
-                            <p class="text-success"><span>{{ source.name }}</span></p>
+                            <p class="text-success"><span>{{ source.originalName }}</span></p>
                         </div>
                     {% endfor %}
                 {% endif %}
