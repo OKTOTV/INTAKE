@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body_main %}
-    {% if filecap*1000*1000*1000 >= filesize %}
+    {% if filecap >= filesize %}
         <h1>{{ 'intake.index.header'|trans }}</h1>
         {{ form_start(form) }}
             {{ form_errors(form) }}
