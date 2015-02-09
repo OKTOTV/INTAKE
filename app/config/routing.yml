@@ -1,3 +1,8 @@
+bprs_user:
+    resource: "@BprsUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 oktolab_intake:
     resource: "@OktolabIntakeBundle/Resources/config/routing.yml"
     prefix:   /

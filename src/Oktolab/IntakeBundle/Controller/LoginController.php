@@ -84,7 +84,7 @@ class LoginController extends Controller
     public function reset_passwordAction(Request $request, $resetHash)
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository('OktolabIntakeBundle:User')->findOneBy(array('resetHash' => $resetHash));
+        $user = $em->getRepository('BprsUserBundle:User')->findOneBy(array('resetHash' => $resetHash));
         if (!$user) {
             return $this->redirect($this->generateUrl('intake_new'));
         }

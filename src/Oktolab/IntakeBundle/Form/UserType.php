@@ -40,7 +40,7 @@ class UserType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'Oktolab\IntakeBundle\Entity\User'
+                'data_class' => 'Bprs\UserBundle\Entity\User'
             )
         );
     }
