@@ -1,7 +1,7 @@
-{% extends "OktolabIntakeBundle::layout.html.twig" %}
+{% extends "BprsStyleBundle::layout.html.twig" %}
 
 {% block nav_head%}
-    {% include 'OktolabIntakeBundle::menu.html.twig' with {'selected': 'intake_new', 'dropdown': ''} %}
+    {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'intake_new', 'dropdown': ''} %}
 {% endblock %}
 
 {% block body_main %}
@@ -68,6 +68,11 @@
     {% else %}
         {% include 'OktolabIntakeBundle::Default/filecap.html.twig' %}
     {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/oktolabintake/css/jquery.fileupload.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block javascripts %}

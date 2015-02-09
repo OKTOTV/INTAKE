@@ -7,19 +7,62 @@
     "hash": "a8c819d3887b6481fc40c3459cb873cf",
     "packages": [
         {
+            "name": "bprs/style-bundle",
+            "version": "v1.0.0",
+            "target-dir": "Bprs/StyleBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/SrgSteak/BPRSStyleBundle.git",
+                "reference": "5962f63ca81a17c76f4b588c79dcb2cc2df9cfad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/SrgSteak/BPRSStyleBundle/zipball/5962f63ca81a17c76f4b588c79dcb2cc2df9cfad",
+                "reference": "5962f63ca81a17c76f4b588c79dcb2cc2df9cfad",
+                "shasum": ""
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-0": {
+                    "Bprs\\StyleBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robin Schmidt",
+                    "email": "rs@okto.tv",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple Bootstrap style for applications",
+            "homepage": "https://github.com/SrgSteak/BPRSStyleBundle",
+            "keywords": [
+                "Simple",
+                "bootstrap"
+            ],
+            "time": "2015-02-09 12:00:59"
+        },
+        {
             "name": "bprs/user-bundle",
             "version": "dev-master",
             "target-dir": "Bprs/UserBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SrgSteak/BPRSUserBundle.git",
-                "reference": "df51c2a8f7a4fa9a554e27a4c4e52b9f00b5335c"
+                "reference": "eba954c5889986a48cd40764476caa9b9ef7548d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SrgSteak/BPRSUserBundle/zipball/df51c2a8f7a4fa9a554e27a4c4e52b9f00b5335c",
-                "reference": "df51c2a8f7a4fa9a554e27a4c4e52b9f00b5335c",
+                "url": "https://api.github.com/repos/SrgSteak/BPRSUserBundle/zipball/eba954c5889986a48cd40764476caa9b9ef7548d",
+                "reference": "eba954c5889986a48cd40764476caa9b9ef7548d",
                 "shasum": ""
+            },
+            "require": {
+                "bprs/style-bundle": "1.0.*"
             },
             "type": "symfony-bundle",
             "autoload": {
@@ -46,7 +89,7 @@
                 "roles",
                 "user"
             ],
-            "time": "2015-02-09 10:25:44"
+            "time": "2015-02-09 17:03:48"
         },
         {
             "name": "doctrine/annotations",
