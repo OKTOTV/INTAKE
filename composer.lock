@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/SrgSteak/BPRSUserBundle.git",
-                "reference": "cd6ebf4efaf6e1668d46eebc5530fc970a378aa0"
+                "reference": "df51c2a8f7a4fa9a554e27a4c4e52b9f00b5335c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SrgSteak/BPRSUserBundle/zipball/cd6ebf4efaf6e1668d46eebc5530fc970a378aa0",
-                "reference": "cd6ebf4efaf6e1668d46eebc5530fc970a378aa0",
+                "url": "https://api.github.com/repos/SrgSteak/BPRSUserBundle/zipball/df51c2a8f7a4fa9a554e27a4c4e52b9f00b5335c",
+                "reference": "df51c2a8f7a4fa9a554e27a4c4e52b9f00b5335c",
                 "shasum": ""
             },
             "type": "symfony-bundle",
@@ -46,7 +46,7 @@
                 "roles",
                 "user"
             ],
-            "time": "2015-02-09 10:10:46"
+            "time": "2015-02-09 10:25:44"
         },
         {
             "name": "doctrine/annotations",
