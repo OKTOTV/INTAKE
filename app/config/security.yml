@@ -19,13 +19,13 @@ security:
             pattern:    /
             http_basic: ~
             form_login:
-                login_path: intake_login
-                check_path: intake_login_check
+                login_path: bprs_user_login
+                check_path: bprs_user_login_check
                 default_target_path: intake_backend
                 csrf_provider: form.csrf_provider
                 default_target_path: /de
             logout: 
-                path: oktolab_intake_logout
+                path: bprs_user_logout
                 target: /de
             anonymous: ~
 
