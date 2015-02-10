@@ -1,15 +1,11 @@
-bprs_user:
-    resource: "@BprsUserBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 oktolab_intake:
     resource: "@OktolabIntakeBundle/Resources/config/routing.yml"
     prefix:   /
 
-oktolab_intake_logout:
-    path: /backend/logout
-
 oneup_uploader:
     resource: .
     type: uploader
+
+bprs_user:
+    resource: .
+    type: bprs_user
