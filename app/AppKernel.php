@@ -18,7 +18,9 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Oneup\UploaderBundle\OneupUploaderBundle(),
             new Oktolab\IntakeBundle\OktolabIntakeBundle(),
-            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle()
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+            new Bprs\UserBundle\BprsUserBundle(),
+            new Bprs\StyleBundle\BprsStyleBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

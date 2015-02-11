@@ -1,11 +1,11 @@
-{% extends "OktolabIntakeBundle::layout.html.twig" %}
+{% extends "BprsStyleBundle::layout.html.twig" %}
 
 {% block nav_head%}
-    {% include 'OktolabIntakeBundle::menu.html.twig' with {'selected': 'intake_new', 'dropdown': ''} %}
+    {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'intake_new', 'dropdown': ''} %}
 {% endblock %}
 
 {% block body_main %}
-    {% if filecap*1000*1000*1000 >= filesize %}
+    {% if filecap >= filesize %}
         <h1>{{ 'intake.index.header'|trans }}</h1>
         {{ form_start(form) }}
             {{ form_errors(form) }}
@@ -24,12 +24,12 @@
             </div>
             <div class="form-group" id="div-fileupload">
                 {% for source in form.vars.value.sources if form.vars.value.sources is not empty %}
-                    <p class="text-success">{{ source.name }}</p>
+                    <p class="text-success">{{ source.originalName }}</p>
                 {% endfor %}
                 {% if databasefile is not empty %}
                     {% for source in databasefile.sources %}
                         <div>
-                            <p class="text-success"><span>{{ source.name }}</span></p>
+                            <p class="text-success"><span>{{ source.originalName }}</span></p>
                         </div>
                     {% endfor %}
                 {% endif %}
@@ -68,6 +68,11 @@
     {% else %}
         {% include 'OktolabIntakeBundle::Default/filecap.html.twig' %}
     {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/oktolabintake/css/jquery.fileupload.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block javascripts %}

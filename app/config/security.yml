@@ -1,17 +1,16 @@
 security:
-
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
 
     encoders:
-        Oktolab\IntakeBundle\Entity\User:
+        Bprs\UserBUndle\Entity\User:
             algorithm: bcrypt
             cost: 12
 
     providers:
         database:
             entity: 
-                class: OktolabIntakeBundle:User
+                class: BprsUserBundle:User
                 property: username
 
     firewalls:
@@ -19,17 +18,16 @@ security:
             pattern:    /
             http_basic: ~
             form_login:
-                login_path: intake_login
-                check_path: intake_login_check
+                login_path: bprs_user_login
+                check_path: bprs_user_login_check
                 default_target_path: intake_backend
                 csrf_provider: form.csrf_provider
                 default_target_path: /de
             logout: 
-                path: oktolab_intake_logout
+                path: bprs_user_logout
                 target: /de
             anonymous: ~
 
     access_control:
         - { path: /backend, roles: ROLE_USER }
         - { path: /backend/admin, roles: ROLE_ADMIN}
-

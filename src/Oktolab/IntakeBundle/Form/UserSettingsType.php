@@ -43,7 +43,7 @@ class UserSettingsType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Oktolab\IntakeBundle\Entity\User',
+            'data_class' => 'Bprs\UserBundle\Entity\User',
         ));
     }
 

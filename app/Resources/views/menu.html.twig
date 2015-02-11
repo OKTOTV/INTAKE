@@ -28,7 +28,7 @@
                         </li>
                         {% if is_granted('ROLE_ADMIN') %}
                             <li {% if selected == "intake_list_users" %}class="active"{% endif %}>
-                                <a href="{{ path('intake_backend_users') }}">{{ 'intake.menu.list_users'|trans }}</a>
+                                <a href="{{ path('bprs_user_backend_users') }}">{{ 'intake.menu.list_users'|trans }}</a>
                             </li>
                         {% endif %}
                     </ul>

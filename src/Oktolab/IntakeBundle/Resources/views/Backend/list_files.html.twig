@@ -1,11 +1,20 @@
-{% extends "OktolabIntakeBundle::layout.html.twig" %}
+{% extends "BprsStyleBundle::layout.html.twig" %}
 
 {% block nav_head %}
-    {% include 'OktolabIntakeBundle::menu.html.twig' with {'selected': 'intake_list_files', 'dropdown': 'backend'} %}
+    {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'intake_list_files', 'dropdown': 'backend'} %}
 {% endblock %}
 
 {% block body_main %}
-<h1>{{ 'intake.list_files.header'|trans }}</h1>
+<div class="row">
+    <div class="col-md-10"><h1>{{ 'intake.list_files.header'|trans }}</h1></div>
+    {% set allfiles = 0 %}
+    {% for file in files %}
+        {% for source in file.sources %}
+            {% set allfiles = allfiles + source.filesize %}
+        {% endfor %}
+    {% endfor %}
+    <div class="col-md-2"><div class="well well-sm text-center"><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> {{allfiles|filesize~'/'~filecap|filesize}}</div></div>
+</div>
 {% if files is empty %}
 {{ 'intake.list_files.noFiles'|trans }}
 {% else %}
