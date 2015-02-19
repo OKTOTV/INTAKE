@@ -38,6 +38,10 @@
                 <source>intake.file.email_wrong</source>
                 <target>Your email adress could not be validated</target>
             </trans-unit>
+            <trans-unit id="19">
+                <source>intake.file.choose_a_contact</source>
+                <target>Select a contact, who shall receive your files</target>
+            </trans-unit>
 
             <trans-unit id="20">
                 <source>intake.contact.email_notblank</source>
