@@ -4,6 +4,7 @@ namespace Oktolab\IntakeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -147,5 +148,23 @@ class BackendController extends Controller
         $this->get('session')->getFlashBag()->add('error', 'intake.message.user_not_allowed');
         return $this->redirect($this->generateUrl('intake_backend_users'));
             
+    }
+
+    /**
+     * Allows sorting of contacts
+     * @Route("/contacts/sort", name="intake_backend_contact_sort")
+     */
+    public function sortContactAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $params = json_decode($request->getContent(), true);
+
+        foreach ($params as $key => $value) {
+            $contact = $em->getRepository('OktolabIntakeBundle:Contact')->findOneBy(array('id' => $key));
+            $contact->setOrder($value);
+            $em->persist($contact);
+        }
+        $em->flush();
+        return new Response(null, 200);
     }
 }

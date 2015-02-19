@@ -5,6 +5,7 @@ namespace Oktolab\IntakeBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Doctrine\ORM\EntityRepository;
 
 class FileType extends AbstractType
 {
@@ -48,7 +49,13 @@ class FileType extends AbstractType
                 array(
                     'label' => 'intake.file.contact',
                     'class' => 'OktolabIntakeBundle:Contact',
-                    'property' => 'name'
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->createQueryBuilder('u')
+                        ->orderBy('u.order', 'ASC');
+                    },
+                    'property' => 'name',
+                    'required'    => true,
+                    'placeholder' => 'intake.file.choose_contact',
                 )
             )
             ->add(

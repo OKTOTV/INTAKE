@@ -1,7 +1,7 @@
 services:
     oktolab.upload_listener:
         class:     Oktolab\IntakeBundle\Model\jQueryUploadService
-        arguments: [ @doctrine.orm.entity_manager, @oktolab.mailer ]
+        arguments: [ @doctrine.orm.entity_manager, @bprs_user.mailer ]
         tags:
             - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: uploadedFile }
             - { name: kernel.event_listener, event: oneup_uploader.pre_upload, method: onUpload }

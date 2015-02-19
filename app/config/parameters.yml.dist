@@ -1,28 +1,28 @@
 parameters:
-    database_driver:   pdo_sqlite
-    database_path:     "%kernel.root_dir%/intake.db"
-    database_host:     127.0.0.1
-    database_port:     ~
-    database_name:     symfony
-    database_user:     root
-    database_password: ~
+    oktolab_filecap:        50000000000
+    oktolab_junksize:       2000000
+    xsendfile:              true
 
-    mailer_transport:  smtp
-    mailer_host:       127.0.0.1
-    mailer_user:       ~
-    mailer_password:   ~
+    database_driver:        pdo_sqlite
+    database_path:          "%kernel.root_dir%/intake.db"
+    database_host:          127.0.0.1
+    database_port:          ~
+    database_name:          symfony
+    database_user:          root
+    database_password:      ~
 
-    oktolab_mail.host:   www.yourhost.com
-    oktolab.mail_from:   your.robot@example.com   
-    oktolab.mail_name:   EMAILROBOT
-    oktolab_filecap: 50
-    oktolab_junksize: 2000000
+    mailer_transport:       smtp
+    mailer_host:            127.0.0.1
+    mailer_user:            ~
+    mailer_password:        ~
 
-    locale:            de
-    secret:            ThisTokenIsNotSoSecretChangeIt
-
+    secret:                 ThisTokenIsNotSoSecretChangeIt
     debug_toolbar:          true
     debug_redirects:        false
     use_assetic_controller: true
-    version:           Beta
-    xsendfile:         ~
+    version:                v.1.1.2 "Colby Nolan"
+    locale:                 de
+
+    bprs_user.host:         www.yourhost.com
+    bprs_user.mailadress:   your.robot@example.com   
+    bprs_user.name:         EMAILROBOT

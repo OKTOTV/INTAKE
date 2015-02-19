@@ -11,7 +11,6 @@ security:
         database:
             entity: 
                 class: BprsUserBundle:User
-                property: username
 
     firewalls:
         main:

@@ -125,6 +125,10 @@
                 <source>intake.file.uploaderEmail_placeholder</source>
                 <target>m.mustermann@example.com</target>
             </trans-unit>
+            <trans-unit id="311">
+                <source>intake.file.choose_contact</source>
+                <target>Kontakt auswählen</target>
+            </trans-unit>
 
             <trans-unit id="400">
                 <source>intake.contact.name</source>

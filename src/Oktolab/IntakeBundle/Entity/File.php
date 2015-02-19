@@ -74,6 +74,7 @@ class File
 
     /**
      * @var integer
+     * @Assert\NotNull(message = "intake.file.choose_a_contact")
      * @ORM\ManyToOne(targetEntity="Contact", inversedBy="files")
      */
     private $contact;

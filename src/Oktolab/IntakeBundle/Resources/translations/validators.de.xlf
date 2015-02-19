@@ -38,6 +38,10 @@
                 <source>intake.file.email_wrong</source>
                 <target>Du musst eine gültige Email angeben</target>
             </trans-unit>
+            <trans-unit id="19">
+                <source>intake.file.choose_a_contact</source>
+                <target>Du musst entscheiden, wo die Dateien hin sollen</target>
+            </trans-unit>
 
             <trans-unit id="20">
                 <source>intake.contact.email_notblank</source>
