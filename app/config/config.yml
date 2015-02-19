@@ -82,3 +82,10 @@ oneup_uploader:
     mappings:
         files:
             frontend: blueimp
+
+# bprs_user Configuration
+bprs_user:
+    mail:
+        commandline_host: %bprs_user.host%
+        adress:           %bprs_user.mailadress%
+        name:             %bprs_user.name%

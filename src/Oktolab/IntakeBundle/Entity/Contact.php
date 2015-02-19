@@ -46,6 +46,12 @@ class Contact
     private $email;
 
     /**
+     * @var integer
+     * @ORM\Column(name="ordernumber", type="integer", nullable=true)
+     */
+    private $order;
+
+    /**
      * @var array
      * @ORM\OneToMany(targetEntity="File", mappedBy="contact")
      */
@@ -112,6 +118,17 @@ class Contact
         return $this->email;
     }
 
+    public function setOrder($order)
+    {
+        $this->order = $order;
+        return $this;
+    }
+
+    public function getOrder()
+    {
+        return $this->order;
+    }
+
     /**
      * Add file
      *
@@ -144,4 +161,12 @@ class Contact
     {
         return $this->files;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 }

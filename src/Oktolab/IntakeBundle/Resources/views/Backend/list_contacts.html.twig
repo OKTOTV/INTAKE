@@ -20,15 +20,16 @@
                     <th><span class="glyphicon glyphicon-cog"></span></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="sortable">
                 {% for contact in contacts %}
-                <tr>
+                <tr data-value="{{ contact.id }}">
                     <td>{{ contact.name }}</td>
                     <td><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></td>
                     <td>
                         <a class="btn btn-default btn-xs" href="{{ path('intake_backend_contact_edit', { 'contact': contact.id }) }}">
                             <span class="glyphicon glyphicon-edit"></span> {{ 'intake.list_contacts.contact_edit'|trans }}
                         </a>
+                        <span class="glyphicon glyphicon-align-justify"></span>
                     </td>
                 </tr>
                 {% endfor %}
@@ -36,3 +37,9 @@
         </table>
     {% endif %}
 {% endblock%}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/oktolabintake/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('bundles/oktolabintake/js/sortable.js') }}"></script>
+{% endblock %}
