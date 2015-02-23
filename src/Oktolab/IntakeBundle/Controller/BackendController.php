@@ -24,7 +24,7 @@ class BackendController extends Controller
      * @Route("/", name="intake_backend")
      * @Template
      */
-    public function list_filesAction()
+    public function listFilesAction()
     {
         $files = $this->getDoctrine()->getManager()->getRepository('OktolabIntakeBundle:File')->findAll();
 
@@ -166,5 +166,16 @@ class BackendController extends Controller
         }
         $em->flush();
         return new Response(null, 200);
+    }
+
+    /**
+     * Returns a representation of the actual amount of available space
+     * @Route("/files/total")
+     * @Template
+     */
+    public function totalSpaceAction()
+    {
+        $files = $this->getDoctrine()->getManager()->getRepository('OktolabIntakeBundle:File')->findAll();
+        return array('files' => $files);
     }
 }

@@ -20,6 +20,10 @@
                 <li {% if dropdown == "intake_backend" %}class="dropdown active"{% else %}class="dropdown"{% endif %}>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a>
                     <ul class="dropdown-menu" role="menu">
+                        <li {% if selected == "intake_my_files" %}class="active"{% endif %}>
+                            <a href="{{ path('intake_my_files') }}">{{ 'intake.menu.my_files'|trans }}</a>
+                        </li>
+                        <li role="presentation" class="divider"></li>
                         <li {% if selected == "intake_list_files" %}class="active"{% endif %}>
                             <a href="{{ path('intake_backend') }}">{{ 'intake.menu.list_files'|trans }}</a>
                         </li>
@@ -31,6 +35,8 @@
                                 <a href="{{ path('bprs_user_backend_users') }}">{{ 'intake.menu.list_users'|trans }}</a>
                             </li>
                         {% endif %}
+                        <li role="presentation" class="divider"></li>
+                        <li><a role="menuitem" tabindex="-1" href="#">{{ render(controller('OktolabIntakeBundle:Backend:totalSpace')) }}</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ path('bprs_user_logout')}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a><li>

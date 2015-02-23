@@ -1,0 +1,8 @@
+{% set allfiles = 0 %}
+{% for file in files %}
+    {% for source in file.sources %}
+        {% set allfiles = allfiles + source.filesize %}
+    {% endfor %}
+{% endfor %}
+
+<span class="glyphicon glyphicon-hdd" aria-hidden="true"></span> {{allfiles|filesize~'/'~filecap|filesize}}
