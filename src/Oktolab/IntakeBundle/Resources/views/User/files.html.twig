@@ -15,7 +15,7 @@
         {% for contact in contacts %}   
             <p>
                 <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse{{loop.index}}"
-                aria-expanded="false" aria-controls="collapseExample"><span class="badge">{{ contact.files|length }}</span> {{ contact.name }}</button>
+                aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-inbox"></span> {{ contact.name }} <span class="badge">{{ contact.files|length }}</span></button>
             </p>
             <div class="collapse {% if contacts|length < 2 %}in{% endif %}" id="collapse{{ loop.index }}">
                 <div class="container-fluid">
