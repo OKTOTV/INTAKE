@@ -18,10 +18,14 @@
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
             <ul class="nav navbar-nav navbar-right">
                 <li {% if dropdown == "intake_backend" %}class="dropdown active"{% else %}class="dropdown"{% endif %}>
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }} {{ render(controller('OktolabIntakeBundle:Backend:numberMyFiles')) }}</a>
                     <ul class="dropdown-menu" role="menu">
+                        <li {% if selected == "intake_my_files" %}class="active"{% endif %}>
+                            <a href="{{ path('intake_my_files') }}">{{ 'intake.menu.my_files'|trans }} {{ render(controller('OktolabIntakeBundle:Backend:numberMyFiles')) }}</a>
+                        </li>
+                        <li role="presentation" class="divider"></li>
                         <li {% if selected == "intake_list_files" %}class="active"{% endif %}>
-                            <a href="{{ path('intake_backend') }}">{{ 'intake.menu.list_files'|trans }}</a>
+                            <a href="{{ path('intake_backend') }}">{{ 'intake.menu.list_files'|trans }} {{ render(controller('OktolabIntakeBundle:Backend:numberFiles')) }}</a>
                         </li>
                         <li {% if selected == "intake_list_contacts" %}class="active"{% endif %}>
                             <a href="{{ path('intake_backend_contacts') }}">{{ 'intake.menu.list_contacts'|trans }}</a>
@@ -31,6 +35,8 @@
                                 <a href="{{ path('bprs_user_backend_users') }}">{{ 'intake.menu.list_users'|trans }}</a>
                             </li>
                         {% endif %}
+                        <li role="presentation" class="divider"></li>
+                        <li><a role="menuitem" tabindex="-1" href="{{ path('intake_backend') }}">{{ render(controller('OktolabIntakeBundle:Backend:totalSpace')) }}</a></li>
                     </ul>
                 </li>
                 <li><a href="{{ path('bprs_user_logout')}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a><li>

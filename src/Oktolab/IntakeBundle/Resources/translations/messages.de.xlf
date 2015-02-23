@@ -47,6 +47,11 @@
                 <source>intake.menu.logout</source>
                 <target>Abmelden</target>
             </trans-unit>
+            <trans-unit id="108">
+                <source>intake.menu.my_files</source>
+                <target>Meine Dateien</target>
+            </trans-unit>
+
 
             <trans-unit id="200">
                 <source>intake.message.file_already_deleted</source>
@@ -325,6 +330,39 @@
             <trans-unit id="1801">
                 <source>intake.filecap.paragraph</source>
                 <target>Wir können leider derzeit keine neuen Dateien entgegen nehmen. Bitte versuche es später noch einmal</target>
+            </trans-unit>
+
+            <trans-unit id="1900">
+                <source>intake.user.subscriptions</source>
+                <target>Abonnements</target>
+            </trans-unit>
+            <trans-unit id="1901">
+                <source>intake.user.settings</source>
+                <target>Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="1902">
+                <source>intake.user.contacts_label</source>
+                <target>In meinen Abonnements anzeigen</target>
+            </trans-unit>
+            <trans-unit id="1903">
+                <source>intake.user_settings.submit</source>
+                <target>Änderungen speichern</target>
+            </trans-unit>
+            <trans-unit id="1904">
+                <source>intake.message.user_settings_edit_success</source>
+                <target>Abonnements wurden aktualisiert</target>
+            </trans-unit>
+            <trans-unit id="1905">
+                <source>intake.message.user_settings_edit_error</source>
+                <target>Änderungen an deinene Abonnements konnten nicht gespeichert werden</target>
+            </trans-unit>
+            <trans-unit id="1906">
+                <source>intake.user.subscriptions_empty</source>
+                <target>Du hast noch keinen Empfänger abonniert. Du kannst deine Abos in %link% ändern.</target>
+            </trans-unit>
+            <trans-unit id="1907">
+                <source>intake.user.subscriptions_link</source>
+                <target>deinen Einstellungen</target>
             </trans-unit>
         </body>
     </file>

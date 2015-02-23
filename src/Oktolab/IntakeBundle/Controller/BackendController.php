@@ -24,7 +24,7 @@ class BackendController extends Controller
      * @Route("/", name="intake_backend")
      * @Template
      */
-    public function list_filesAction()
+    public function listFilesAction()
     {
         $files = $this->getDoctrine()->getManager()->getRepository('OktolabIntakeBundle:File')->findAll();
 
@@ -166,5 +166,54 @@ class BackendController extends Controller
         }
         $em->flush();
         return new Response(null, 200);
+    }
+
+    /**
+     * Returns a representation of the actual amount of available space
+     * @Route("/files/total")
+     * @Template
+     */
+    public function totalSpaceAction()
+    {
+        $files = $this->getDoctrine()->getManager()->getRepository('OktolabIntakeBundle:File')->findAll();
+        return array('files' => $files);
+    }
+
+    /**
+     * Returns a representation of all files
+     * @Route("/files/count")
+     * @Template
+     */
+    public function numberFilesAction()
+    {
+        $files = $this->getDoctrine()->getManager()->getRepository('OktolabIntakeBundle:File')->findAll();
+        return array('files' => $files);
+    }
+
+        /**
+     * Returns a representation of all files
+     * @Route("/files/count_mine")
+     * @Template("OktolabIntakeBundle:Backend:numberFiles.html.twig")
+     */
+    public function numberMyFilesAction()
+    {
+        if (!$this->getUser()->getExtendedUser()) { //no extended user available. TODO: move this to a service
+            $intakeUser = new IntakeUser();
+            $this->getUser()->setExtendedUser($intakeUser);
+            $intakeUser->setBaseUser($this->getUser());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($intakeUser);
+            $em->persist($this->getUser());
+            $em->flush();
+        }
+
+        $files = array();
+        foreach ($this->getUser()->getExtendedUser()->getContacts() as $contact) {
+            foreach ($contact->getFiles() as $file)
+            {
+                $files[] = $file;
+            }
+        }
+        return array('files' => $files);
     }
 }

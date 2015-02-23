@@ -67,7 +67,7 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
         resolve_target_entities:
-            Bprs\UserBundle\Entity\BprsUserInterface: Bprs\UserBundle\Entity\User
+            Bprs\UserBundle\Entity\BprsUserInterface: Oktolab\IntakeBundle\Entity\IntakeUser
 
 # Swiftmailer Configuration
 swiftmailer:

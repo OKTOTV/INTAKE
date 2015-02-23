@@ -57,6 +57,11 @@ class Contact
      */
     private $files;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="IntakeUser", mappedBy="contacts")
+     */
+    private $users;
+
     public function __toString()
     {
         return $this->name;
@@ -167,6 +172,7 @@ class Contact
     public function __construct()
     {
         $this->files = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
 }

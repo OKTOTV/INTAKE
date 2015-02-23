@@ -1,0 +1,61 @@
+{% extends "BprsStyleBundle::layout.html.twig" %}
+
+{% block nav_head %}
+    {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'intake_list_files', 'dropdown': 'backend'} %}
+{% endblock %}
+
+{% block body_main %}
+    <div class="page-header">
+        <h1>{{ 'intake.list_files.header'|trans }}</h1>
+    </div>
+    {% if files is empty %}
+    {{ 'intake.list_files.noFiles'|trans }}
+    {% else %}
+        <div class="container-fluid">
+                <div class="row">
+                {% for file in files %}
+                    <div class=" col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <button type="button" class="close" data-toggle="modal" data-target=".delete-modal-{{ loop.index }}">
+                                    <span aria-hidden="true" class="glyphicon glyphicon-trash"></span>
+                                </button>
+                                <div class="modal fade delete-modal-{{ loop.index }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <h4 class="modal-title">Bist du sicher?</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <a type="button" class="btn btn-danger" href="{{ path('intake_backend_delete', { 'file': file.id }) }}">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-trash"></span> {{ 'intake.list_files.deleteFile'|trans}}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="mailto:{{ file.uploaderEmail }}">{{ file.uploaderEmail|default('') }}</a>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item">{{ file.series }}</li>
+                            </ul>
+                            <div class="panel-body">
+                                {{ file.episodeDescription }}
+                            </div>
+                                <ul class="list-group">
+                                    {% for source in file.sources %}
+                                        <li class="list-group-item">
+                                            <a href="{{ path('intake_download', { 'name': source.name}) }}"><span class="glyphicon glyphicon-save"></span> {{ source.originalName~' ('~source.filesize|filesize~')' }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>  
+    {% endif %}
+{% endblock%}
