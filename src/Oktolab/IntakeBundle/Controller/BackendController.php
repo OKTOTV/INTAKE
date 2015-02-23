@@ -178,4 +178,42 @@ class BackendController extends Controller
         $files = $this->getDoctrine()->getManager()->getRepository('OktolabIntakeBundle:File')->findAll();
         return array('files' => $files);
     }
+
+    /**
+     * Returns a representation of all files
+     * @Route("/files/count")
+     * @Template
+     */
+    public function numberFilesAction()
+    {
+        $files = $this->getDoctrine()->getManager()->getRepository('OktolabIntakeBundle:File')->findAll();
+        return array('files' => $files);
+    }
+
+        /**
+     * Returns a representation of all files
+     * @Route("/files/count_mine")
+     * @Template("OktolabIntakeBundle:Backend:numberFiles.html.twig")
+     */
+    public function numberMyFilesAction()
+    {
+        if (!$this->getUser()->getExtendedUser()) { //no extended user available. TODO: move this to a service
+            $intakeUser = new IntakeUser();
+            $this->getUser()->setExtendedUser($intakeUser);
+            $intakeUser->setBaseUser($this->getUser());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($intakeUser);
+            $em->persist($this->getUser());
+            $em->flush();
+        }
+
+        $files = array();
+        foreach ($this->getUser()->getExtendedUser()->getContacts() as $contact) {
+            foreach ($contact->getFiles() as $file)
+            {
+                $files[] = $file;
+            }
+        }
+        return array('files' => $files);
+    }
 }
