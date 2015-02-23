@@ -57,7 +57,7 @@ class IntakeUser implements BprsUserInterface
 
     public function addContact($contact)
     {
-        $this->contacts[] = $contacts;
+        $this->contacts[] = $contact;
     }
 
     public function removeContact($contact)

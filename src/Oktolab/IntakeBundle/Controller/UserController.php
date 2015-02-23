@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 use Oktolab\IntakeBundle\Form\User\UserContactSubscriptionType;
+use Oktolab\IntakeBundle\Entity\IntakeUser;
 
 /**
  * @Route("/backend/user")
@@ -20,7 +21,16 @@ class UserController extends Controller
      * @Template
      */
     public function filesAction()
-    {
+    {   
+        if (!$this->getUser()->getExtendedUser()) { //no extended user available. TODO: move this to a service
+            $intakeUser = new IntakeUser();
+            $this->getUser()->setExtendedUser($intakeUser);
+            $intakeUser->setBaseUser($this->getUser());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($intakeUser);
+            $em->persist($this->getUser());
+            $em->flush();
+        }
         $contacts = $this->getUser()->getExtendedUser()->getContacts();
         return array('contacts' => $contacts);
     }
