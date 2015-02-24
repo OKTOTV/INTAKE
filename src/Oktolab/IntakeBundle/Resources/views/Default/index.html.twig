@@ -81,4 +81,14 @@
     <script src="{{ asset('bundles/oktolabintake/js/upload/jquery.iframe-transport.js') }}"></script>
     <script src="{{ asset('bundles/oktolabintake/js/upload/jquery.fileupload.js') }}"></script>
     <script src="{{ asset('bundles/oktolabintake/js/upload/okto.js') }}"></script>
+    <script src="{{ asset('bundles/bprsstyle/js/charactercounter.js')}}"></script>
+    <script type="text/javascript">
+        $(function(){
+            $("#oktolab_intake_bundle_filetype_episodeDescription").characterCounter({
+            counterCssClass: 'help-block',
+            limit: 1000,
+            renderTotal: true
+            });
+        });
+    </script>
 {% endblock %}
