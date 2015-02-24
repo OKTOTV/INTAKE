@@ -24,7 +24,7 @@
             </trans-unit>
             <trans-unit id="15">
                 <source>intake.file.episode_description.lengthMax</source>
-                <target>The contents description is too long (max. 500 characters). (Contents description)</target>
+                <target>The contents description is too long (max. 1000 characters). (Contents description)</target>
             </trans-unit>
             <trans-unit id="16">
                 <source>intake.file.readAGB.notFalse</source>

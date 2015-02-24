@@ -135,7 +135,7 @@
             </trans-unit>
             <trans-unit id="307">
                 <source>intake.file.episodeDescription_placeholder</source>
-                <target>Contents description (max. 500 characters)</target>
+                <target>Contents description (max. 1000 characters)</target>
             </trans-unit>
             <trans-unit id="308">
                 <source>intake.file.contact</source>
