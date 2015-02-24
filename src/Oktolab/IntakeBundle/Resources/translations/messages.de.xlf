@@ -134,6 +134,10 @@
                 <source>intake.file.choose_contact</source>
                 <target>Kontakt auswählen</target>
             </trans-unit>
+            <trans-unit id="312">
+                <source>intake.file.submit_uploading</source>
+                <target>Upload läuft</target>
+            </trans-unit>
 
             <trans-unit id="400">
                 <source>intake.contact.name</source>

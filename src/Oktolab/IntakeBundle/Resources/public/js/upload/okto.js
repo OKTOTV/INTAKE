@@ -19,6 +19,10 @@ $(document).ready( function() {
         $('#oktolab_intake_bundle_filetype_save').data('value', '');
         $('#oktolab_intake_bundle_filetype_save').click(function (e) {
             data.submit();
+            // add visual info for upload start
+            $('#progress .progress-bar').css('min-width', "2em");
+            $('#oktolab_intake_bundle_filetype_save').text($('#oktolab_intake_bundle_filetype_save').data('uploading'));
+            $('#oktolab_intake_bundle_filetype_save').prop('disabled', true);
         });
 
     }).on('fileuploadprogressall', function (e, data) {
@@ -27,6 +31,7 @@ $(document).ready( function() {
             'width',
             progress + '%'
         );
+        $('#progress .progress-bar').text(progress + '%');
 
     }).on('fileuploadstop', function (e, data) {
         document.oktolab_intake_bundle_filetype.submit();
