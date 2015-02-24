@@ -66,17 +66,21 @@ class jQueryUploadService
             $databaseFile->setUploaderEmail($file->getUploaderEmail());
 
             $this->em->persist($databaseFile);
-                    $this->mailer->sendMail(
-                $file->getContact()->getEmail(),
-                'OktolabIntakeBundle:Email:new_file.html.twig',
-                array('file' => $databaseFile),
-                'Neue Dateien abgegeben'
-            );
+
+            if ($file->getSources() > 0) {
+                $this->sendOkayMail($file, $databaseFile);
+                $this->em->flush();
+                return true;
+            }
+            $this->sendErrorMail($file);
+            $this->em->flush();
+            return false;
+
         } else {
             $this->em->persist($file);
+            $this->sendErrorMail($file);
+            return false;
         }
-
-        $this->em->flush();
     }
 
     public function deleteFile(File $file) {
@@ -100,5 +104,25 @@ class jQueryUploadService
         }
 
         return $size;
+    }
+
+    private function sendOkayMail($file, $databaseFile)
+    {
+        $this->mailer->sendMail(
+                $file->getContact()->getEmail(),
+                'OktolabIntakeBundle:Email:new_file.html.twig',
+                array('file' => $databaseFile),
+                'Neue Dateien abgegeben'
+            );
+    }
+
+    private function sendErrorMail($file)
+    {
+        $this->mailer->sendMail(
+                $file->getContact()->getEmail(),
+                'OktolabIntakeBundle:Email:error_file.html.twig',
+                array('file' => $databaseFile),
+                'Fehler bei Abgabe'
+            );        
     }
 }
