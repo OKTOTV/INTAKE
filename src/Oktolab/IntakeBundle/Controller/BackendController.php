@@ -12,6 +12,7 @@ use Oktolab\IntakeBundle\Entity\File;
 use Oktolab\IntakeBundle\Entity\Contact;
 use Oktolab\IntakeBundle\Form\ContactType;
 use Oktolab\IntakeBundle\Form\UserSettingsType;
+use Oktolab\IntakeBundle\Entity\IntakeUser;
 
 /**
  * @Route("/backend")
