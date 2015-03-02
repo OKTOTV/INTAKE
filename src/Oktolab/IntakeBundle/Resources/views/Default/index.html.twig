@@ -6,7 +6,9 @@
 
 {% block body_main %}
     {% if filecap >= filesize %}
-        <h1>{{ 'intake.index.header'|trans }}</h1>
+        <div class="page-header">
+            <h1>{{ 'intake.index.header'|trans }}</h1>
+        </div>
         {{ form_start(form) }}
             {{ form_errors(form) }}
             

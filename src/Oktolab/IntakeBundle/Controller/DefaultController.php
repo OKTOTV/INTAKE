@@ -32,11 +32,11 @@ class DefaultController extends Controller
 
             if ($form->isValid()) { 
                 if ($this->get('oktolab.upload_listener')->saveFile($file)) {
-
-                $this->get('session')->getFlashBag()->add('success', "intake.message.file_submit_success");
-                return $this->redirect($this->generateUrl('intake_success'));
+                    $this->get('session')->getFlashBag()->add('success', "intake.message.file_submit_success");
+                    return $this->redirect($this->generateUrl('intake_success'));
                 }
-                $this->get('session')->getFlashBag()->add('success', "intake.message.file_submit_error");
+                
+                $this->get('session')->getFlashBag()->add('error', "intake.message.file_submit_error");
                 return $this->redirect($this->generateUrl('intake_success'));
 
             } else {

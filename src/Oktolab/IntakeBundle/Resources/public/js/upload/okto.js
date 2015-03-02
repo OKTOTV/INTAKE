@@ -23,6 +23,7 @@ $(document).ready( function() {
             $('#progress .progress-bar').css('min-width', "2em");
             $('#oktolab_intake_bundle_filetype_save').text($('#oktolab_intake_bundle_filetype_save').data('uploading'));
             $('#oktolab_intake_bundle_filetype_save').prop('disabled', true);
+            $('#oktolab_intake_bundle_filetype_save').parent().parent().prop('disabled', true);
         });
 
     }).on('fileuploadprogressall', function (e, data) {
@@ -34,6 +35,7 @@ $(document).ready( function() {
         $('#progress .progress-bar').text(progress + '%');
 
     }).on('fileuploadstop', function (e, data) {
+        $('#oktolab_intake_bundle_filetype_save').parent().parent().prop('disabled', false);
         document.oktolab_intake_bundle_filetype.submit();
     });
 });
