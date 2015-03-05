@@ -96,7 +96,7 @@
             </trans-unit>
             <trans-unit id="301">
                 <source>intake.file.uploaderEmail</source>
-                <target>Dein Kontakt</target>
+                <target>Deine Email</target>
             </trans-unit>
             <trans-unit id="302">
                 <source>intake.file.episode_description</source>
@@ -120,7 +120,7 @@
             </trans-unit>
             <trans-unit id="308">
                 <source>intake.file.contact</source>
-                <target>Email senden an</target>
+                <target>Abgeben an</target>
             </trans-unit>
             <trans-unit id="309">
                 <source>intake.file.add_files</source>

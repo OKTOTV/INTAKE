@@ -12,6 +12,7 @@
         {{ form_start(form) }}
             {{ form_errors(form) }}
             
+            {{ form_row(form.uploaderEmail) }}
             {{ form_row(form.series) }}
             {{ form_row(form.episodeDescription) }}
 
@@ -58,7 +59,6 @@
 
             {{ form_row(form.readAGB) }}
             {{ form_row(form.uniqueID) }}
-            {{ form_row(form.uploaderEmail) }}
             {{ form_row(form.contact) }}
             {% if databasefile is not empty%}
                 {% do form.save.setRendered %}
