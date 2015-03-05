@@ -162,7 +162,7 @@
             </trans-unit>
             <trans-unit id="501">
                 <source>intake.index.header</source>
-                <target>Abgabemaske</target>
+                <target>Abgabe</target>
             </trans-unit>
 
             <trans-unit id="600">
