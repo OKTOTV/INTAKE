@@ -50,7 +50,7 @@
 
             <trans-unit id="200">
                 <source>intake.message.file_already_deleted</source>
-                <target>File has been deleted already.</target>
+                <target>File has been deleted already</target>
             </trans-unit>
             <trans-unit id="201">
                 <source>intake.message.file_submit_success</source>
@@ -58,31 +58,31 @@
             </trans-unit>
             <trans-unit id="202">
                 <source>intake.message.file_submit_error</source>
-                <target>Blank form could not be editted.</target>
+                <target>Blank form could not be editted</target>
             </trans-unit>
             <trans-unit id="203">
                 <source>intake.message.contact_delete_success</source>
-                <target>Contact has been deleted successfully.</target>
+                <target>Contact has been deleted successfully</target>
             </trans-unit>
             <trans-unit id="204">
                 <source>intake.message.contact_create_success</source>
-                <target>Contact has been created successfully.</target>
+                <target>Contact has been created successfully</target>
             </trans-unit>
             <trans-unit id="205">
                 <source>intake.message.contact_create_error</source>
-                <target>Contact could not be created.</target>
+                <target>Contact could not be created</target>
             </trans-unit>
             <trans-unit id="206">
                 <source>intake.message.contact_edit_success</source>
-                <target>Contact has been changed successfully.</target>
+                <target>Contact has been changed successfully</target>
             </trans-unit>
             <trans-unit id="207">
                 <source>intake.message.contact_edit_error</source>
-                <target>Changes could not be saved.</target>
+                <target>Changes could not be saved</target>
             </trans-unit>
             <trans-unit id="208">
                 <source>intake.message.file_delete_success</source>
-                <target>File has been deleted successfully.</target>
+                <target>File has been deleted successfully</target>
             </trans-unit>
             <trans-unit id="209">
                 <source>intake.message.user_removeRole_success</source>
@@ -111,7 +111,7 @@
 
             <trans-unit id="300">
                 <source>intake.file.series</source>
-                <target>Title</target>
+                <target>Heading</target>
             </trans-unit>
             <trans-unit id="301">
                 <source>intake.file.uploaderEmail</source>
@@ -123,11 +123,11 @@
             </trans-unit>
             <trans-unit id="303">
                 <source>intake.file.submit</source>
-                <target>Upload and send file.</target>
+                <target>Upload and send file</target>
             </trans-unit>
             <trans-unit id="304">
                 <source>intake.file.readAGB</source>
-                <target>I have read and consent to the GTC.</target>
+                <target>I have read and consent to the GTC</target>
             </trans-unit>
             <trans-unit id="305">
                 <source>intake.file.series_placeholder</source>
@@ -143,7 +143,7 @@
             </trans-unit>
             <trans-unit id="309">
                 <source>intake.file.add_files</source>
-                <target>Select files.</target>
+                <target>Select files</target>
             </trans-unit>
             <trans-unit id="310">
                 <source>intake.file.uploaderEmail_placeholder</source>
@@ -195,7 +195,7 @@
             </trans-unit>
             <trans-unit id="702">
                 <source>intake.list_files.deleteFile</source>
-                <target>Delete files.</target>
+                <target>Delete files</target>
             </trans-unit>
             <trans-unit id="703">
                 <source>intake.list_files.noFiles</source>
@@ -228,7 +228,7 @@
             </trans-unit>
             <trans-unit id="802">
                 <source>intake.list_contacts.no_contacts</source>
-                <target>No contacts were found in the database.</target>
+                <target>No contacts were found in the database</target>
             </trans-unit>
             <trans-unit id="803">
                 <source>intake.list_contacts.contact_name</source>
@@ -257,11 +257,11 @@
             </trans-unit>
             <trans-unit id="903">
                 <source>intake.error404.report_button</source>
-                <target>Report error.</target>
+                <target>Report error</target>
             </trans-unit>
             <trans-unit id="904">
                 <source>intake.error404.upload_button</source>
-                <target>Submit new file.</target>
+                <target>Submit new file</target>
             </trans-unit>
 
             <trans-unit id="1005">
@@ -278,7 +278,7 @@
             </trans-unit>
             <trans-unit id="1008">
                 <source>intake.error.report_button</source>
-                <target>Report error.</target>
+                <target>Report error</target>
             </trans-unit>
 
             <trans-unit id="1100">
@@ -287,20 +287,20 @@
             </trans-unit>
             <trans-unit id="1101">
                 <source>intake.new_contact.submit</source>
-                <target>Create contact.</target>
+                <target>Create contact</target>
             </trans-unit>
 
             <trans-unit id="1200">
                 <source>intake.edit_contact.header</source>
-                <target>Edit contact.</target>
+                <target>Edit contact</target>
             </trans-unit>
             <trans-unit id="1201">
                 <source>intake.edit_contact.contact_delete</source>
-                <target>Delete.</target>
+                <target>Delete</target>
             </trans-unit>
             <trans-unit id="1202">
                 <source>intake.edit_contact.submit</source>
-                <target>Save changes.</target>
+                <target>Save changes</target>
             </trans-unit>
 
             <trans-unit id="1600">
@@ -310,7 +310,7 @@
 
             <trans-unit id="1700">
                 <source>intake.agb.button</source>
-                <target>General standard terms and conditions.</target>
+                <target>General standard terms and conditions</target>
             </trans-unit>
 
             <trans-unit id="1702">
@@ -340,7 +340,7 @@
 
             <trans-unit id="1800">
                 <source>intake.filecap.header</source>
-                <target>Maximum server capacity has been reached.</target>
+                <target>Maximum server capacity has been reached</target>
             </trans-unit>
             <trans-unit id="1801">
                 <source>intake.filecap.paragraph</source>
