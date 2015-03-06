@@ -60,7 +60,7 @@ class jQueryUploadService
 
         $databaseFile = $this->em->getRepository('OktolabIntakeBundle:File')->findOneBy( array('uniqueID' => $file->getUniqueID()));
 
-        if ($databaseFile) {
+        if ($databaseFile) { //already tried to send something?
             $databaseFile->setSeries($file->getSeries());
             $databaseFile->setEpisodeDescription($file->getEpisodeDescription());
             $databaseFile->setContact($file->getContact());
@@ -70,14 +70,18 @@ class jQueryUploadService
             $this->em->flush();
 
             if (count($databaseFile->getSources()) > 0) {
-                $this->sendOkayMail($file, $databaseFile);
+                $this->sendOkayMail($databaseFile);
                 return true;
             }
 
             $this->sendErrorMail($databaseFile);
             return false;
 
-        } else {
+        } else { //files does not exist, something went wrong
+
+            $this->em->persist($file);
+            $this->em->flush();
+
             $this->sendErrorMail($file);
             return false;
         }
@@ -106,12 +110,12 @@ class jQueryUploadService
         return $size;
     }
 
-    private function sendOkayMail($file, $databaseFile)
+    private function sendOkayMail($file)
     {
         $this->mailer->sendMail(
                 $file->getContact()->getEmail(),
                 'OktolabIntakeBundle:Email:new_file.html.twig',
-                array('file' => $databaseFile),
+                array('file' => $file),
                 'Neue Dateien abgegeben'
             );
     }
