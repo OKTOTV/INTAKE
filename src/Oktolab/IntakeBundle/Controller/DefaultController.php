@@ -23,15 +23,20 @@ class DefaultController extends Controller
     {
         $file = new File();
         $form = $this->createForm(new FileType(), $file);
-        $form->add('save', 'submit', array('label' => 'intake.file.submit'));
+        $translated = $this->get('translator')->trans('intake.file.submit_uploading');
+
+        $form->add('save', 'submit', array('label' => 'intake.file.submit', 'attr' => array('data-uploading' => $translated)));
 
         if ($request->getMethod() == "POST") { //form sent
             $form->handleRequest($request);
 
             if ($form->isValid()) { 
-                $this->get('oktolab.upload_listener')->saveFile($file);
-
-                $this->get('session')->getFlashBag()->add('success', "intake.message.file_submit_success");
+                if ($this->get('oktolab.upload_listener')->saveFile($file)) {
+                    $this->get('session')->getFlashBag()->add('success', "intake.message.file_submit_success");
+                    return $this->redirect($this->generateUrl('intake_success'));
+                }
+                
+                $this->get('session')->getFlashBag()->add('error', "intake.message.file_submit_error");
                 return $this->redirect($this->generateUrl('intake_success'));
 
             } else {

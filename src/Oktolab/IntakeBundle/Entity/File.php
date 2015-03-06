@@ -45,10 +45,10 @@ class File
      *
      * @Assert\NotBlank(message = "intake.file.episode_description.notblank" )
      * @Assert\Length(
-     *      max = 500,
+     *      max = 1000,
      *      maxMessage = "intake.file.episode_description.lengthMax"
      * )
-     * @ORM\Column(name="episodeDescription", type="string", length=500, nullable=true)
+     * @ORM\Column(name="episodeDescription", type="string", length=1000, nullable=true)
      */
     private $episodeDescription;
 

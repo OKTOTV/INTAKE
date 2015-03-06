@@ -25,7 +25,7 @@ class FileType extends AbstractType
                 'textarea', 
                 array(
                     'label' => 'intake.file.episode_description',
-                    'attr' => array('placeholder' => 'intake.file.episodeDescription_placeholder')
+                    'attr' => array('placeholder' => 'intake.file.episodeDescription_placeholder', 'style' => 'height:200px')
                 )
             )
             ->add(

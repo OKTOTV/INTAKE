@@ -34,7 +34,7 @@ twig:
         junksize:   %oktolab_junksize%
     form:
         resources:
-            - 'OktolabIntakeBundle:Form:fields.html.twig'
+            - 'BprsStyleBundle:Form:fields.html.twig'
 
 # Assetic Configuration
 assetic:

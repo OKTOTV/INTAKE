@@ -96,7 +96,7 @@
             </trans-unit>
             <trans-unit id="301">
                 <source>intake.file.uploaderEmail</source>
-                <target>Dein Kontakt</target>
+                <target>Deine Email</target>
             </trans-unit>
             <trans-unit id="302">
                 <source>intake.file.episode_description</source>
@@ -116,11 +116,11 @@
             </trans-unit>
             <trans-unit id="307">
                 <source>intake.file.episodeDescription_placeholder</source>
-                <target>Inhaltsbeschreibung (max 500 Zeichen)</target>
+                <target>Inhaltsbeschreibung (max 1000 Zeichen)</target>
             </trans-unit>
             <trans-unit id="308">
                 <source>intake.file.contact</source>
-                <target>Email senden an</target>
+                <target>Abgeben an</target>
             </trans-unit>
             <trans-unit id="309">
                 <source>intake.file.add_files</source>
@@ -133,6 +133,10 @@
             <trans-unit id="311">
                 <source>intake.file.choose_contact</source>
                 <target>Kontakt auswählen</target>
+            </trans-unit>
+            <trans-unit id="312">
+                <source>intake.file.submit_uploading</source>
+                <target>Upload läuft</target>
             </trans-unit>
 
             <trans-unit id="400">
@@ -158,7 +162,7 @@
             </trans-unit>
             <trans-unit id="501">
                 <source>intake.index.header</source>
-                <target>Abgabemaske</target>
+                <target>Abgabe</target>
             </trans-unit>
 
             <trans-unit id="600">

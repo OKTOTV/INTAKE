@@ -54,6 +54,7 @@ class jQueryUploadService
 
     /**
      * Saves a file to the database. Adds info to an already saved file
+     * @return  boolean [true if files contains sources, false if otherwise]
      */
     public function saveFile(File $file) {
 
@@ -66,17 +67,20 @@ class jQueryUploadService
             $databaseFile->setUploaderEmail($file->getUploaderEmail());
 
             $this->em->persist($databaseFile);
-                    $this->mailer->sendMail(
-                $file->getContact()->getEmail(),
-                'OktolabIntakeBundle:Email:new_file.html.twig',
-                array('file' => $databaseFile),
-                'Neue Dateien abgegeben'
-            );
-        } else {
-            $this->em->persist($file);
-        }
+            $this->em->flush();
 
-        $this->em->flush();
+            if (count($databaseFile->getSources()) > 0) {
+                $this->sendOkayMail($file, $databaseFile);
+                return true;
+            }
+
+            $this->sendErrorMail($databaseFile);
+            return false;
+
+        } else {
+            $this->sendErrorMail($file);
+            return false;
+        }
     }
 
     public function deleteFile(File $file) {
@@ -100,5 +104,25 @@ class jQueryUploadService
         }
 
         return $size;
+    }
+
+    private function sendOkayMail($file, $databaseFile)
+    {
+        $this->mailer->sendMail(
+                $file->getContact()->getEmail(),
+                'OktolabIntakeBundle:Email:new_file.html.twig',
+                array('file' => $databaseFile),
+                'Neue Dateien abgegeben'
+            );
+    }
+
+    private function sendErrorMail($file)
+    {
+        $this->mailer->sendMail(
+                $file->getContact()->getEmail(),
+                'OktolabIntakeBundle:Email:error_file.html.twig',
+                array('file' => $file),
+                'Fehler bei Abgabe'
+            );        
     }
 }
