@@ -79,6 +79,10 @@ swiftmailer:
 
 # oneup Configuration
 oneup_uploader:
+    chunks:
+        maxage: 86400
+        storage:
+            directory: %kernel.cache_dir%/uploader/chunks
     mappings:
         files:
             frontend: blueimp
