@@ -6,10 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Oktolab\IntakeBundle\Entity\Contact;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * File
  *
  * @ORM\Table()
+ * @ORM\HasLifecycleCallbacks()
  * @ORM\Entity
  */
 class File
@@ -91,9 +93,14 @@ class File
     private $uploaderEmail;
 
     /**
+    * @ORM\Column(name="createdAt", type="datetime")
+    */
+    private $createdAt;
+
+    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -116,7 +123,7 @@ class File
     /**
      * Get series
      *
-     * @return string 
+     * @return string
      */
     public function getSeries()
     {
@@ -139,7 +146,7 @@ class File
     /**
      * Get episodeDescription
      *
-     * @return string 
+     * @return string
      */
     public function getEpisodeDescription()
     {
@@ -162,7 +169,7 @@ class File
     /**
      * Get readAGB
      *
-     * @return bool 
+     * @return bool
      */
     public function getReadAGB()
     {
@@ -244,6 +251,20 @@ class File
     public function setUploaderEmail($uploaderEmail)
     {
         $this->uploaderEmail = $uploaderEmail;
+        return $this;
+    }
+
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function setCreatedAt()
+    {
+        $this->createdAt = new \DateTime();
         return $this;
     }
 }

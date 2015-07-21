@@ -85,6 +85,7 @@ oneup_uploader:
 
 # bprs_user Configuration
 bprs_user:
+    class: "Oktolab\IntakeBundle\Entity\IntakeUser"
     mail:
         commandline_host: %bprs_user.host%
         adress:           %bprs_user.mailadress%

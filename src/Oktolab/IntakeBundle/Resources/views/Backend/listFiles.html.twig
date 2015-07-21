@@ -40,6 +40,7 @@
                                 <a href="mailto:{{ file.uploaderEmail }}">{{ file.uploaderEmail|default('') }}</a>
                             </div>
                             <ul class="list-group">
+                                <li class="list-group-item">{{ file.createdAt|date("H:i d.m.Y")}}</li>
                                 <li class="list-group-item">{{ file.series }}</li>
                             </ul>
                             <div class="panel-body">
@@ -56,6 +57,6 @@
                 {% endfor %}
                 </div>
             </div>
-        </div>  
+        </div>
     {% endif %}
 {% endblock%}

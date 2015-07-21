@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block body_main %}
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active"><a href="{{ path('intake_my_files')}}">{{ 'intake.user.subscriptions'|trans }}</a></li>
-  <li role="presentation"><a href="{{ path('intake_my_settings') }}">{{ 'intake.user.settings'|trans }}</a></li>
-</ul>
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="{{ path('intake_my_files')}}">{{ 'intake.user.subscriptions'|trans }}</a></li>
+      <li role="presentation"><a href="{{ path('intake_my_settings') }}">{{ 'intake.user.settings'|trans }}</a></li>
+    </ul>
     {% if contacts is empty %}
     {{ 'intake.user.subscriptions_empty'|trans({'%link%': '<a href="'~path('intake_my_settings')~'">'~'intake.user.subscriptions_link'|trans~'</a>'})|raw }}
     {% else %}
-        {% for contact in contacts %}   
+        {% for contact in contacts %}
             <p>
                 <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapse{{loop.index}}"
                 aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-inbox"></span> {{ contact.name }} <span class="badge">{{ contact.files|length }}</span></button>
@@ -47,6 +47,7 @@
                                     <a href="mailto:{{ file.uploaderEmail }}">{{ file.uploaderEmail|default('') }}</a>
                                 </div>
                                 <ul class="list-group">
+                                    <li class="list-group-item">{{ file.createdAt|date("H:i d.m.Y")}}</li>
                                     <li class="list-group-item">{{ file.series }}</li>
                                 </ul>
                                 <div class="panel-body">
@@ -63,7 +64,7 @@
                     {% endfor %}
                     </div>
                 </div>
-            </div>  
+            </div>
         {% endfor %}
     {% endif %}
 {% endblock%}

@@ -20,7 +20,7 @@ use Oktolab\IntakeBundle\Entity\IntakeUser;
 class BackendController extends Controller
 {
     /**
-     * Show a nice backend with all currently submitted files. 
+     * Show a nice backend with all currently submitted files.
      *
      * @Route("/", name="intake_backend")
      * @Template
@@ -68,15 +68,15 @@ class BackendController extends Controller
         if ($request->getMethod() == "POST") { //form sent
             $form->handleRequest($request);
 
-            if ($form->isValid()) { 
+            if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($contact);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('success', "intake.message.contact_create_success");
                 return $this->redirect($this->generateUrl('intake_backend_contacts'));
-            
+
             }
-            $this->get('session')->getFlashBag()->add('error', "intake.message.contact_create_error"); 
+            $this->get('session')->getFlashBag()->add('error', "intake.message.contact_create_error");
         }
         return array('form' => $form->createView());
     }
@@ -94,15 +94,15 @@ class BackendController extends Controller
         if ($request->getMethod() == "POST") { //form sent
             $form->handleRequest($request);
 
-            if ($form->isValid()) { 
+            if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($contact);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('success', "intake.message.contact_edit_success");
                 return $this->redirect($this->generateUrl('intake_backend_contacts'));
-            
+
             }
-            $this->get('session')->getFlashBag()->add('error', "intake.message.contact_edit_error"); 
+            $this->get('session')->getFlashBag()->add('error', "intake.message.contact_edit_error");
         }
         return array('form' => $form->createView());
     }
@@ -122,8 +122,8 @@ class BackendController extends Controller
 
     /**
      * Allow users to change their settings. (Email, password)
-     * TODO: 
-     * 
+     * TODO:
+     *
      * @Route("/user/{user}/edit", name="intake_backend_user_change_settings")
      * @Template
      */
@@ -148,7 +148,7 @@ class BackendController extends Controller
 
         $this->get('session')->getFlashBag()->add('error', 'intake.message.user_not_allowed');
         return $this->redirect($this->generateUrl('intake_backend_users'));
-            
+
     }
 
     /**
@@ -198,18 +198,8 @@ class BackendController extends Controller
      */
     public function numberMyFilesAction()
     {
-        if (!$this->getUser()->getExtendedUser()) { //no extended user available. TODO: move this to a service
-            $intakeUser = new IntakeUser();
-            $this->getUser()->setExtendedUser($intakeUser);
-            $intakeUser->setBaseUser($this->getUser());
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($intakeUser);
-            $em->persist($this->getUser());
-            $em->flush();
-        }
-
         $files = array();
-        foreach ($this->getUser()->getExtendedUser()->getContacts() as $contact) {
+        foreach ($this->getUser()->getContacts() as $contact) {
             foreach ($contact->getFiles() as $file)
             {
                 $files[] = $file;

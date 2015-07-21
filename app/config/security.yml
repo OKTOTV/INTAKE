@@ -3,14 +3,14 @@ security:
         ROLE_ADMIN: ROLE_USER
 
     encoders:
-        Bprs\UserBUndle\Entity\User:
+        Bprs\UserBundle\Entity\User:
             algorithm: bcrypt
             cost: 12
 
     providers:
         database:
-            entity: 
-                class: BprsUserBundle:User
+            entity:
+                class: OktolabIntakeBundle:IntakeUser
 
     firewalls:
         main:
@@ -22,7 +22,7 @@ security:
                 default_target_path: intake_backend
                 csrf_provider: form.csrf_provider
                 default_target_path: /de
-            logout: 
+            logout:
                 path: bprs_user_logout
                 target: /de
             anonymous: ~

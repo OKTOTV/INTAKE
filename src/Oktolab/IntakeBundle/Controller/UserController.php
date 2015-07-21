@@ -21,17 +21,8 @@ class UserController extends Controller
      * @Template
      */
     public function filesAction()
-    {   
-        if (!$this->getUser()->getExtendedUser()) { //no extended user available. TODO: move this to a service
-            $intakeUser = new IntakeUser();
-            $this->getUser()->setExtendedUser($intakeUser);
-            $intakeUser->setBaseUser($this->getUser());
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($intakeUser);
-            $em->persist($this->getUser());
-            $em->flush();
-        }
-        $contacts = $this->getUser()->getExtendedUser()->getContacts();
+    {
+        $contacts = $this->getUser()->getContacts();
         return array('contacts' => $contacts);
     }
 
@@ -41,7 +32,7 @@ class UserController extends Controller
      */
     public function settingsAction(Request $request)
     {
-        $intakeUser = $this->getUser()->getExtendedUser();
+        $intakeUser = $this->getUser();
         $form = $this->createForm(new UserContactSubscriptionType(), $intakeUser);
         $form->add('save', 'submit', array('label' => 'intake.user_settings.submit'));
 
