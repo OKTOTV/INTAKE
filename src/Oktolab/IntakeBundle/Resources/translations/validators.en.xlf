@@ -1,4 +1,4 @@
-<?xml version="1.0"?> 
+<?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
@@ -24,7 +24,7 @@
             </trans-unit>
             <trans-unit id="15">
                 <source>intake.file.episode_description.lengthMax</source>
-                <target>The contents description is too long (max. 1000 characters) (Contents description)</target>
+                <target>The contents description is too long (max. 500 characters) (Contents description)</target>
             </trans-unit>
             <trans-unit id="16">
                 <source>intake.file.readAGB.notFalse</source>

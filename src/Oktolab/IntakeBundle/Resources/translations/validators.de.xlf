@@ -24,7 +24,7 @@
             </trans-unit>
             <trans-unit id="15">
                 <source>intake.file.episode_description.lengthMax</source>
-                <target>Der Beschreibungstext ist zu lang. (1000 zeichen) (Inhaltsbeschreibung)</target>
+                <target>Der Beschreibungstext ist zu lang. (500 zeichen) (Inhaltsbeschreibung)</target>
             </trans-unit>
             <trans-unit id="16">
                 <source>intake.file.readAGB.notFalse</source>

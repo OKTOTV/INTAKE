@@ -11,7 +11,7 @@
         </div>
         {{ form_start(form) }}
             {{ form_errors(form) }}
-            
+
             {{ form_row(form.uploaderEmail) }}
             {{ form_row(form.series) }}
             {{ form_row(form.episodeDescription) }}
@@ -88,7 +88,7 @@
         $(function(){
             $("#oktolab_intake_bundle_filetype_episodeDescription").characterCounter({
             counterCssClass: 'help-block',
-            limit: 1000,
+            limit: 500,
             renderTotal: true
             });
         });
