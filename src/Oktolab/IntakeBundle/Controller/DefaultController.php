@@ -30,17 +30,17 @@ class DefaultController extends Controller
         if ($request->getMethod() == "POST") { //form sent
             $form->handleRequest($request);
 
-            if ($form->isValid()) { 
+            if ($form->isValid()) {
                 if ($this->get('oktolab.upload_listener')->saveFile($file)) {
                     $this->get('session')->getFlashBag()->add('success', "intake.message.file_submit_success");
                     return $this->redirect($this->generateUrl('intake_success'));
                 }
-                
+
                 $this->get('session')->getFlashBag()->add('error', "intake.message.file_submit_error");
                 return $this->redirect($this->generateUrl('intake_success'));
 
             } else {
-                $this->get('session')->getFlashBag()->add('error', "intake.message.file_submit_error"); 
+                $this->get('session')->getFlashBag()->add('error', "intake.message.file_submit_error");
             }
         }
         $databasefile = $this->getDoctrine()->getManager()->getRepository('OktolabIntakeBundle:File')->findOneBy(array('uniqueID' => $file->getUniqueID()));
@@ -66,6 +66,15 @@ class DefaultController extends Controller
     {
         $license = file_get_contents($this->get('kernel')->getRootDir().'/../LICENSE');
         return array('license' => $license);
+    }
+
+    /**
+    * @Route("/about_okto", name="intake_about_okto")
+    * @Template
+    */
+    public function aboutOktoAction()
+    {
+        return array();
     }
 
     /**
@@ -100,6 +109,6 @@ class DefaultController extends Controller
         $response->setContent(readfile($source->getPath()));
 
         return $response;
-        
+
     }
 }

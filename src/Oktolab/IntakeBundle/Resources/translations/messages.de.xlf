@@ -51,7 +51,10 @@
                 <source>intake.menu.my_files</source>
                 <target>Meine Dateien</target>
             </trans-unit>
-
+            <trans-unit id="109">
+                <source>intake.menu.languages</source>
+                <target>Sprachen</target>
+            </trans-unit>
 
             <trans-unit id="200">
                 <source>intake.message.file_already_deleted</source>

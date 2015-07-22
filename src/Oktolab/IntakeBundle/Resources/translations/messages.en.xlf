@@ -47,6 +47,14 @@
                 <source>intake.menu.logout</source>
                 <target>Logout</target>
             </trans-unit>
+            <trans-unit id="108">
+                <source>intake.menu.my_files</source>
+                <target>My files</target>
+            </trans-unit>
+            <trans-unit id="109">
+                <source>intake.menu.languages</source>
+                <target>Sprachen</target>
+            </trans-unit>
 
             <trans-unit id="200">
                 <source>intake.message.file_already_deleted</source>

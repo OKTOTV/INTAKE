@@ -1,10 +1,11 @@
 {% extends "BprsStyleBundle::layout.html.twig" %}
 
 {% block nav_head%}
-    {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'intake_about', 'dropdown': ''} %}
+    {% include 'BprsStyleBundle::menu.html.twig' %}
 {% endblock %}
 
 {% block body_main %}
     <h1>{{ 'intake.about.title'|trans}}</h1>
     <p>{{ license|markdown }}</p>
+    <p>{{ version|default('') }}</p>
 {% endblock%}
