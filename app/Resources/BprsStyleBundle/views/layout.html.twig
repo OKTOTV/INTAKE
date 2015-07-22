@@ -3,6 +3,7 @@
 {% block stylesheets %}
     <link href="{{ asset('bundles/bprsstyle/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('bundles/bprsstyle/css/custom.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bundles/oktolabintake/css/intake.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block header %}
@@ -15,7 +16,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">{{ name|default('') }}</a>
+                <a class="navbar-brand" href="#"><img src="http://localhost/INTAKE/web/asdf.png" class="logo" />{{ name|default('') }}</a>
             </div>
             <div class="collapse navbar-collapse">
                 {% block nav_head%}
@@ -65,7 +66,7 @@
 {% block footer %}
     <div class="navbar-fixed-bottom footer">
       <div class="container">
-          <p class="text-muted text-center"><a href="{{ path('intake_about') }}">{{ 'intake.menu.about'|trans }}</a> <a href="http://www.okto.tv">Okto. Community TV-GmbH</a>, Goldschlagstraße 172/4, 1140 Wien, Tel.: +43 1 786 2442-0 Feedback bitte an <a href="mailto:feedback@okto.tv?subject=INTAKE%20Feedback">feedback@okto.tv</a></p>
+          <p class="text-muted text-center"><a href="{{ path('intake_about') }}">{{ 'intake.menu.about'|trans }}</a> | <a href="http://www.okto.tv">Okto. Community TV-GmbH</a>, Goldschlagstraße 172/4, 1140 Wien, Tel.: +43 1 786 2442 Feedback bitte an <a href="mailto:feedback@okto.tv?subject=INTAKE%20Feedback">feedback@okto.tv</a></p>
       </div>
     </div>
 {% endblock %}

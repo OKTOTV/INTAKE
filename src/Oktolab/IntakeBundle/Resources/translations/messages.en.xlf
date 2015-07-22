@@ -33,7 +33,7 @@
             </trans-unit>
             <trans-unit id="104">
                 <source>intake.menu.about</source>
-                <target>About OKTO Intake</target>
+                <target>About INTAKE</target>
             </trans-unit>
             <trans-unit id="105">
                 <source>intake.menu.list_users</source>
@@ -54,6 +54,10 @@
             <trans-unit id="109">
                 <source>intake.menu.languages</source>
                 <target>Sprachen</target>
+            </trans-unit>
+            <trans-unit id="110">
+                <source>intake.menu.about_okto</source>
+                <target>About OKTO</target>
             </trans-unit>
 
             <trans-unit id="200">

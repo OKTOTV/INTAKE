@@ -4,72 +4,75 @@
     {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'intake_new', 'dropdown': ''} %}
 {% endblock %}
 
-{% block body_main %}
-    {% if filecap >= filesize %}
-        <div class="page-header">
-            <h1>{{ 'intake.index.header'|trans }}</h1>
-        </div>
-        {{ form_start(form) }}
-            {{ form_errors(form) }}
-
-            {{ form_row(form.uploaderEmail) }}
-            {{ form_row(form.series) }}
-            {{ form_row(form.episodeDescription) }}
-
-            <div class="form-group">
-                <label for="fileupload" class="required">{{ 'intake.index.fileupload_label'|trans }}</label>
-                <br />
-                <span class="btn btn-default fileinput-button">
-                    <i class="glyphicon glyphicon-plus"></i>
-                    <span>{{ 'intake.file.add_files'|trans }}</span>
-                    <input id="fileupload" type="file" name="files[]" data-junksize="{{ junksize }}" data-url="{{ oneup_uploader_endpoint('files') }}" multiple />
-                </span>
+{% block body %}
+    <div class="container">
+        {% if filecap >= filesize %}
+            <div class="page-header">
+                <p>Okto macht Platz für dich und deine Ideen.
+Schön, dass du dein Filmprojekt mit uns und der Welt teilen willst!</p>
             </div>
-            <div class="form-group" id="div-fileupload">
-                {% for source in form.vars.value.sources if form.vars.value.sources is not empty %}
-                    <p class="text-success">{{ source.originalName }}</p>
-                {% endfor %}
-                {% if databasefile is not empty %}
-                    {% for source in databasefile.sources %}
-                        <div>
-                            <p class="text-success"><span>{{ source.originalName }}</span></p>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-            </div>
-            <div id="progress" class="progress">
-                <div class="progress-bar progress-bar-success"></div>
-            </div>
+            {{ form_start(form) }}
+                {{ form_errors(form) }}
 
-            <p>
-                <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">{{ 'intake.agb.button'|trans }}</button>
-            </p>
-            <div class="collapse" id="collapseExample">
-                <div class="well">
-                    {{ 'intake.agb.general'|trans }}
-                    <ul>
-                        <li>{{ 'intake.agb.first'|trans }}</li>
-                        <li>{{ 'intake.agb.second'|trans }}</li>
-                        <li>{{ 'intake.agb.third'|trans }}</li>
-                        <li>{{ 'intake.agb.fourth'|trans }}</li>
-                   </ul>
-                    {{ 'intake.agb.extra'|trans({'%link%': '<a href="http://www.okto.tv/uploads/LESEN/Der_Sender/OKTO_Richtlinien.pdf" target="blank">Okto-Programmgrundsätze</a>'})|raw }}
+                {{ form_row(form.uploaderEmail) }}
+                {{ form_row(form.series) }}
+                {{ form_row(form.episodeDescription) }}
+
+                <div class="form-group">
+                    <label for="fileupload" class="required">{{ 'intake.index.fileupload_label'|trans }}</label>
+                    <br />
+                    <span class="btn btn-default fileinput-button">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        <span>{{ 'intake.file.add_files'|trans }}</span>
+                        <input id="fileupload" type="file" name="files[]" data-junksize="{{ junksize }}" data-url="{{ oneup_uploader_endpoint('files') }}" multiple />
+                    </span>
                 </div>
-            </div>
+                <div class="form-group" id="div-fileupload">
+                    {% for source in form.vars.value.sources if form.vars.value.sources is not empty %}
+                        <p class="text-success">{{ source.originalName }}</p>
+                    {% endfor %}
+                    {% if databasefile is not empty %}
+                        {% for source in databasefile.sources %}
+                            <div>
+                                <p class="text-success"><span>{{ source.originalName }}</span></p>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                <div id="progress" class="progress">
+                    <div class="progress-bar progress-bar-success"></div>
+                </div>
 
-            {{ form_row(form.readAGB) }}
-            {{ form_row(form.uniqueID) }}
-            {{ form_row(form.contact) }}
-            {% if databasefile is not empty%}
-                {% do form.save.setRendered %}
-                <button type="submit" data-value="resend" id="oktolab_intake_bundle_filetype_save" name="oktolab_intake_bundle_filetype[save]" class="btn btn-default">{{ 'intake.file.submit'|trans }}</button>
-            {% else %}
-                {{ form_row(form.save, {'disabled': 'disabled'}) }}
-            {% endif %}
-        {{ form_end(form) }}
-    {% else %}
-        {% include 'OktolabIntakeBundle::Default/filecap.html.twig' %}
-    {% endif %}
+                <p>
+                    <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">{{ 'intake.agb.button'|trans }}</button>
+                </p>
+                <div class="collapse" id="collapseExample">
+                    <div class="well">
+                        {{ 'intake.agb.general'|trans }}
+                        <ul>
+                            <li>{{ 'intake.agb.first'|trans }}</li>
+                            <li>{{ 'intake.agb.second'|trans }}</li>
+                            <li>{{ 'intake.agb.third'|trans }}</li>
+                            <li>{{ 'intake.agb.fourth'|trans }}</li>
+                       </ul>
+                        {{ 'intake.agb.extra'|trans({'%link%': '<a href="http://www.okto.tv/uploads/LESEN/Der_Sender/OKTO_Richtlinien.pdf" target="blank">Okto-Programmgrundsätze</a>'})|raw }}
+                    </div>
+                </div>
+
+                {{ form_row(form.readAGB) }}
+                {{ form_row(form.uniqueID) }}
+                {{ form_row(form.contact) }}
+                {% if databasefile is not empty%}
+                    {% do form.save.setRendered %}
+                    <button type="submit" data-value="resend" id="oktolab_intake_bundle_filetype_save" name="oktolab_intake_bundle_filetype[save]" class="btn btn-default">{{ 'intake.file.submit'|trans }}</button>
+                {% else %}
+                    {{ form_row(form.save, {'disabled': 'disabled'}) }}
+                {% endif %}
+            {{ form_end(form) }}
+        {% else %}
+            {% include 'OktolabIntakeBundle::Default/filecap.html.twig' %}
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block stylesheets %}

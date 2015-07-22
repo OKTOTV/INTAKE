@@ -32,6 +32,7 @@ twig:
         version:            %version%
         filecap:    %oktolab_filecap%
         junksize:   %oktolab_junksize%
+        name:       INTAKE
     form:
         resources:
             - 'BprsStyleBundle:Form:fields.html.twig'
