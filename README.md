@@ -1,4 +1,4 @@
-INTAKE
+INTAKE [![Build Status](https://travis-ci.org/OKTOTV/INTAKE.svg?branch=master)](https://travis-ci.org/OKTOTV/INTAKE)
 ======
 
 Online Abgabemaske
