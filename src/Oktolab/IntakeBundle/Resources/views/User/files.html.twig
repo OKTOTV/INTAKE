@@ -10,7 +10,7 @@
       <li role="presentation"><a href="{{ path('intake_my_settings') }}">{{ 'intake.user.settings'|trans }}</a></li>
     </ul>
     {% if contacts is empty %}
-    {{ 'intake.user.subscriptions_empty'|trans({'%link%': '<a href="'~path('intake_my_settings')~'">'~'intake.user.subscriptions_link'|trans~'</a>'})|raw }}
+        {{ 'intake.user.subscriptions_empty'|trans({'%link%': '<a href="'~path('intake_my_settings')~'">'~'intake.user.subscriptions_link'|trans~'</a>'})|html }}
     {% else %}
         {% for contact in contacts %}
             <p>
