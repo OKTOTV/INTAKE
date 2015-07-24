@@ -37,13 +37,14 @@
                         {% endif %}
                         <li role="presentation" class="divider"></li>
                         <li><a role="menuitem" tabindex="-1" href="{{ path('intake_backend') }}">{{ render(controller('OktolabIntakeBundle:Backend:totalSpace')) }}</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li><a href="{{ path('bprs_user_logout')}}"><span class="glyphicon glyphicon-off" style="color:red" aria-hidden="true"></span> {{ 'bprs_user.button.logout'|trans }}</a><li>
                     </ul>
                 </li>
-                <li><a href="{{ path('bprs_user_logout')}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a><li>
             </ul>
         {% else %}
             <ul class="nav navbar-nav navbar-right">
-                <li {% if selected == "intake_backend" %}class="active"{% endif %}><a href="{{ path('bprs_user_login')}}"><span class="glyphicon glyphicon-user"></span> {{ 'intake.menu.login'|trans }}</a></li>
+                <li {% if selected == "intake_backend" %}class="active"{% endif %}><a href="{{ path('bprs_user_login')}}"><span class="glyphicon glyphicon-user"></span> {{ 'bprs_user.button.login'|trans }}</a></li>
             </ul>
         {% endif %}
 {% endblock %}
