@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Oktolab\IntakeBundle\Entity\File;
 use Oktolab\IntakeBundle\Entity\Contact;
@@ -36,7 +35,7 @@ class BackendController extends Controller
      * Delete Files in the backend
      * @Route("/delete/{file}", name="intake_backend_delete")
      */
-    public function delete(File $file)
+    public function deleteAction(File $file)
     {
         $this->get('oktolab.upload_listener')->deleteFile($file);
         $this->get('session')->getFlashBag()->add('success', 'intake.message.file_delete_success');
@@ -48,7 +47,7 @@ class BackendController extends Controller
      * @Route("/contacts", name="intake_backend_contacts")
      * @Template
      */
-    public function list_contactsAction()
+    public function listContactsAction()
     {
         $contacts = $this->getDoctrine()->getManager()->getRepository('OktolabIntakeBundle:Contact')->findAll();
         return array ('contacts' => $contacts);
@@ -59,7 +58,7 @@ class BackendController extends Controller
      * @Route("/contact/new", name="intake_backend_contact_new")
      * @Template
      */
-    public function new_contactAction(Request $request)
+    public function newContactAction(Request $request)
     {
         $contact = new Contact();
         $form = $this->createForm(new ContactType(), $contact);
@@ -86,7 +85,7 @@ class BackendController extends Controller
      * @Route("/contact/{contact}/edit", name="intake_backend_contact_edit")
      * @Template
      */
-    public function edit_contactAction(Request $request, Contact $contact)
+    public function editContactAction(Request $request, Contact $contact)
     {
         $form = $this->createForm(new ContactType(), $contact);
         $form->add('save', 'submit', array('label' => 'intake.edit_contact.submit'));
@@ -111,7 +110,7 @@ class BackendController extends Controller
      * Delete Files in the backend
      * @Route("/contact/{contact}/delete", name="intake_backend_contact_delete")
      */
-    public function deleteContact(Contact $contact)
+    public function deleteContactAction(Contact $contact)
     {
         $em = $this->getDoctrine()->getManager();
         $em->remove($contact);
@@ -122,12 +121,11 @@ class BackendController extends Controller
 
     /**
      * Allow users to change their settings. (Email, password)
-     * TODO:
      *
      * @Route("/user/{user}/edit", name="intake_backend_user_change_settings")
      * @Template
      */
-    public function changeSettings(Request $request, User $user)
+    public function changeSettingsAction(Request $request, IntakeUser $user)
     {
         // only admins and the user himself can change his settings
         if (in_array('ROLE_ADMIN', $user->getRoles()) || $user == $this->getUser()) {

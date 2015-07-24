@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Oktolab\IntakeBundle\Entity\File;
 use Oktolab\IntakeBundle\Entity\Source;
@@ -81,7 +80,7 @@ class DefaultController extends Controller
      * Allows download of all sources available
      * @Route("/download/{name}", name="intake_download")
      */
-    public function download(Source $source)
+    public function downloadAction(Source $source)
     {
         $finfo = \finfo_open(FILEINFO_MIME_TYPE);
 

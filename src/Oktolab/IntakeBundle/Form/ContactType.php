@@ -12,16 +12,16 @@ class ContactType extends AbstractType
     {
         $builder
             ->add(
-                'name', 
-                'text', 
+                'name',
+                'text',
                 array(
-                    'label' => 'intake.contact.name', 
+                    'label' => 'intake.contact.name',
                     'attr' => array('placeholder' => 'intake.contact.name_placeholder')
                 )
             )
             ->add(
-                'email', 
-                'email', 
+                'email',
+                'email',
                 array(
                     'label' => 'intake.contact.email',
                     'attr' => array('placeholder' => 'intake.contact.email_placeholder')

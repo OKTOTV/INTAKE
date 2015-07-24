@@ -21,8 +21,8 @@ class UserBaseSettingsType extends AbstractType
                 )
             )
             ->add(
-                'email', 
-                'email', 
+                'email',
+                'email',
                 array(
                     'label' => 'intake.user.email',
                     'attr' => array('placeholder' => 'intake.user.email_placeholder')

@@ -13,33 +13,33 @@ class FileType extends AbstractType
     {
         $builder
             ->add(
-                'series', 
-                'text', 
+                'series',
+                'text',
                 array(
-                    'label' => 'intake.file.series', 
+                    'label' => 'intake.file.series',
                     'attr' => array('placeholder' => 'intake.file.series_placeholder')
                 )
             )
             ->add(
-                'episodeDescription', 
-                'textarea', 
+                'episodeDescription',
+                'textarea',
                 array(
                     'label' => 'intake.file.episode_description',
                     'attr' => array('placeholder' => 'intake.file.episodeDescription_placeholder', 'style' => 'height:200px')
                 )
             )
             ->add(
-                'readAGB', 
-                'checkbox', 
+                'readAGB',
+                'checkbox',
                 array(
                     'label' => 'intake.file.readAGB'
                 )
             )
             ->add(
-                'uploaderEmail', 
-                'email', 
+                'uploaderEmail',
+                'email',
                 array(
-                    'label' => 'intake.file.uploaderEmail', 
+                    'label' => 'intake.file.uploaderEmail',
                     'attr' => array('placeholder' => 'intake.file.uploaderEmail_placeholder')
                 )
             )
@@ -59,7 +59,7 @@ class FileType extends AbstractType
                 )
             )
             ->add(
-                'uniqueID', 
+                'uniqueID',
                 'hidden'
             );
     }

@@ -33,7 +33,7 @@ class jQueryUploadService
             $file->setUniqueID($uniqueID);
         }
         $source = new Source();
-        
+
         $source->setName($event->getFile()->getFilename());
         $source->setPath($event->getFile()->getRealPath());
         $source->setFilesize(filesize($source->getPath()));
@@ -102,7 +102,7 @@ class jQueryUploadService
     public function getTotalFilesize()
     {
         $sources = $this->em->getRepository('OktolabIntakeBundle:Source')->findAll();
-        $size = 0; 
+        $size = 0;
         foreach ($sources as $source) {
             $size += $source->getFilesize();
         }
@@ -110,7 +110,7 @@ class jQueryUploadService
         return $size;
     }
 
-    private function sendOkayMail($file)
+    private function sendOkayMail(File $file)
     {
         $this->mailer->sendMail(
                 $file->getContact()->getEmail(),
@@ -120,13 +120,13 @@ class jQueryUploadService
             );
     }
 
-    private function sendErrorMail($file)
+    private function sendErrorMail(File $file)
     {
         $this->mailer->sendMail(
                 $file->getContact()->getEmail(),
                 'OktolabIntakeBundle:Email:error_file.html.twig',
                 array('file' => $file),
                 'Fehler bei Abgabe'
-            );        
+            );
     }
 }
