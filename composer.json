@@ -20,7 +20,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "oneup/uploader-bundle": "~1.3",
         "knplabs/knp-markdown-bundle": "~1.3",
-        "bprs/user-bundle": "dev-master",
+        "bprs/user-bundle": "^2.0",
         "doctrine/doctrine-fixtures-bundle": "^2.2"
     },
     "require-dev": {
