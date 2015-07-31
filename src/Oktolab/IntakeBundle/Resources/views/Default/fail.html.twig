@@ -7,14 +7,14 @@
 {% block body_main %}
 
     <div class="page-header">
-        <h1>{{ 'intake.success.header'|trans}}</h1>
-        <p>{{ 'intake.success.paragraph'|trans }}</p>
+        <h1>{{ 'intake.fail.header'|trans}}</h1>
+        <p>{{ 'intake.fail.paragraph'|trans }}</p>
     </div>
-    <img src="{{ asset('bundles/oktolabintake/img/success.png') }}" style="width:50%" class="img-responsive center-block" />
+    <img src="{{ asset('bundles/oktolabintake/img/fail.png') }}" style="width:50%" class="img-responsive center-block" />
 
     <div class="row">
         <div class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 col-log-offset-4">
-            <a class="btn btn-default center-block" href="{{ path('intake_new') }}">Weitere Dateien hochladen</a>
+            <a class="btn btn-default center-block" href="{{ path('intake_new') }}">Erneut versuchen</a>
         </div>
     </div>
 {% endblock %}

@@ -36,7 +36,7 @@ class DefaultController extends Controller
                 }
 
                 $this->get('session')->getFlashBag()->add('error', "intake.message.file_submit_error");
-                return $this->redirect($this->generateUrl('intake_success'));
+                return $this->redirect($this->generateUrl('intake_fail'));
 
             } else {
                 $this->get('session')->getFlashBag()->add('error', "intake.message.file_submit_error");
@@ -52,6 +52,16 @@ class DefaultController extends Controller
      * @Template
      */
     public function successAction()
+    {
+        return array();
+    }
+
+    /**
+     * Show after successful sent File
+     * @Route("/fail", name="intake_fail")
+     * @Template
+     */
+    public function failAction()
     {
         return array();
     }

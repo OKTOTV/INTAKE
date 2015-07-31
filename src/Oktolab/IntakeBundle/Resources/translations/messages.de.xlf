@@ -180,6 +180,17 @@
                 <source>intake.success.paragraph</source>
                 <target>Unsere Mitarbeiter werden sich so bald wie möglich darum kümmern</target>
             </trans-unit>
+            <trans-unit id="602">
+                <source>intake.fail.header</source>
+                <target>Upload fehlgeschlagen!</target>
+            </trans-unit>
+            <trans-unit id="603">
+                <source>intake.fail.paragraph</source>
+                <target>Bitte versuche es erneut und achte dabei auf eine stabile Internetverbindung.
+Wenn einfach nichts funktionieren will, schreib eine Email an support@okto.tv
+</target>
+            </trans-unit>
+
 
             <trans-unit id="700">
                 <source>intake.list_files.name</source>
