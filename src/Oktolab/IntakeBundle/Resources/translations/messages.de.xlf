@@ -174,11 +174,11 @@
 
             <trans-unit id="600">
                 <source>intake.success.header</source>
-                <target>Vielen Dank</target>
+                <target>Upload erfolgreich!</target>
             </trans-unit>
             <trans-unit id="601">
                 <source>intake.success.paragraph</source>
-                <target>Unsere Mitarbeiter werden sich so bald wie möglich darum kümmern</target>
+                <target>Vielen Dank für dein Video, unsere MitarbeiterInnen werden in den nächsten Tagen mit dir Kontakt aufnehmen.</target>
             </trans-unit>
             <trans-unit id="602">
                 <source>intake.fail.header</source>
