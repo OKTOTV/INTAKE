@@ -1,50 +1,45 @@
+{# Here is an example Menu. You'll want to overwrite this in app/Resources/BprsStyleBundle/views/menu.html.twig #}
 {% block menu %}
     <ul class="nav navbar-nav">
-        <li {% if selected == "intake_new" %}class="active"{% endif %}>
-            <a href="{{ path('intake_new') }}">{{ 'intake.menu.uploadForm'|trans }}</a>
+        <li {% if selected == "index" %}class="active"{% endif %}>
+            <a href="{{ path('homepage') }}">Hochladen</a>
         </li>
-        <li {% if selected == "intake_about" %}class="active"{% endif %}>
-            <a href="{{ path('intake_about_okto')}}">{{ 'intake.menu.about_okto'|trans }}</a>
+        <li {% if selected == "about" %}class="active"{% endif %}>
+            <a href="{{ path('about') }}">Über OKTO</a>
         </li>
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-globe"></span> {{ 'intake.menu.languages'|trans }}</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-globe"></span></a>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="{{ path('intake_new', {'_locale': 'de'}) }}">Deutsch</a></li>
-                <li><a href="{{ path('intake_new', {'_locale': 'en'}) }}">English</a></li>
-                <li></li>
+                <li><a href="#">Deutsch</a></li>
+                <li><a href="#">English</a></li>
             </ul>
         </li>
     </ul>
-    {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
-        <ul class="nav navbar-nav navbar-right">
-            <li {% if dropdown == "intake_backend" %}class="dropdown active"{% else %}class="dropdown"{% endif %}>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }} {{ render(controller('OktolabIntakeBundle:Backend:numberMyFiles')) }}</a>
-                <ul class="dropdown-menu" role="menu">
-                    <li {% if selected == "intake_my_files" %}class="active"{% endif %}>
-                        <a href="{{ path('intake_my_files') }}">{{ 'intake.menu.my_files'|trans }} {{ render(controller('OktolabIntakeBundle:Backend:numberMyFiles')) }}</a>
-                    </li>
-                    <li role="presentation" class="divider"></li>
-                    <li {% if selected == "intake_list_files" %}class="active"{% endif %}>
-                        <a href="{{ path('intake_backend') }}">{{ 'intake.menu.list_files'|trans }} {{ render(controller('OktolabIntakeBundle:Backend:numberFiles')) }}</a>
-                    </li>
-                    <li {% if selected == "intake_list_contacts" %}class="active"{% endif %}>
-                        <a href="{{ path('intake_backend_contacts') }}">{{ 'intake.menu.list_contacts'|trans }}</a>
-                    </li>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <li {% if selected == "intake_list_users" %}class="active"{% endif %}>
-                            <a href="{{ path('bprs_user_backend_users') }}">{{ 'intake.menu.list_users'|trans }}</a>
+        {# example for an login area #}
+        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
+            <ul class="nav navbar-nav navbar-right">
+                <li {% if dropdown == "dropdown_1" %}class="dropdown active"{% else %}class="dropdown"{% endif %}>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li {% if selected == "selected_3" %}class="active"{% endif %}>
+                            <a href="#">menu point 1</a>
                         </li>
-                    {% endif %}
-                    <li role="presentation" class="divider"></li>
-                    <li><a role="menuitem" tabindex="-1" href="{{ path('intake_backend') }}">{{ render(controller('OktolabIntakeBundle:Backend:totalSpace')) }}</a></li>
-                    <li role="presentation" class="divider"></li>
-                    <li><a href="{{ path('bprs_user_logout')}}"><span class="glyphicon glyphicon-off" style="color:red" aria-hidden="true"></span> {{ 'bprs_user.button.logout'|trans }}</a><li>
-                </ul>
-            </li>
-        </ul>
-    {% else %}
-        <ul class="nav navbar-nav navbar-right">
-            <li {% if selected == "intake_backend" %}class="active"{% endif %}><a href="{{ path('bprs_user_login')}}"><span class="glyphicon glyphicon-user"></span> {{ 'bprs_user.button.login'|trans }}</a></li>
-        </ul>
-    {% endif %}
+                        <li {% if selected == "selected_4" %}class="active"{% endif %}>
+                            <a href="#">menu point 2</a>
+                        </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li {% if selected == "selected_5" %}class="active"{% endif %}>
+                                <a href="#">menu point 3</a>
+                            </li>
+                        {% endif %}
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ path('bprs_user_logout') }}"><span class="glyphicon glyphicon-off" aria-hidden="true" style="color:red"></span> Logout</a><li>
+                    </ul>
+                </li>
+            </ul>
+        {% else %}
+            <ul class="nav navbar-nav navbar-right">
+                <li {% if selected == "selected_6" %}class="active"{% endif %}><a href="#"><span class="glyphicon glyphicon-user"></span> login</a></li>
+            </ul>
+        {% endif %}
 {% endblock %}

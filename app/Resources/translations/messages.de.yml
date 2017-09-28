@@ -1,0 +1,18 @@
+intake.project.assets_label:                "Dateien"
+intake.project.name_label:                  "Name des Videos"
+intake.project.name_placeholder:            "Katzeklo macht die Katze froh (max 255 Zeichen)"
+intake.project.description_label:           "Inhaltsbeschreibung"
+intake.project.description_placeholder:     "Mein Kater macht Theater.... (max 900 Zeichen)"
+intake.project.email_label:                 "Deine Email"
+intake.project.email_placeholder:           "max.musterfrau@mail.com"
+intake.project.readAGB_label:               'Ich habe die <a data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Allgemeinen Geschäftsbedingungen</a> gelesen und stimme ihnen zu'
+intake.project.contact_label:               "Abzugeben an"
+
+intake.index_submit_button:                 '<span class="glyphicon glyphicon-upload" aria-hidden="true"></span> Jetzt abgeben'
+
+intake.agb.general:                         "Du akzeptierst"
+intake.agb.first:                           "Unlimitierte Anzahl von Ausstrahlungen auf Okto (terrestrisch, via Kabel und im Internet als Livestream)"
+intake.agb.second:                          "On demand streaming (zeitunabhängiger Abruf des Werkes auf den Websites von Okto)"
+intake.agb.third:                           "Archivierung nach Ablauf der Vertragsdauer"
+intake.agb.fourth:                          "Sollten im Zusammenhang mit der Sendung des vertragsgegenständlichen Filmes irgendwelche Ansprüche Dritter gegen Okto gestellt werden, so verpflichtet sich der/die VertragspartnerIn, Okto hinsichtlich dieser Forderungen schad- und klaglos zu halten."
+intake.agb.extra:                           "Weiter habe ich die %link% gelesen und aktzeptiert."

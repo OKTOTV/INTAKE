@@ -1,0 +1,46 @@
+{% extends "BprsStyleBundle::layout.html.twig" %}
+{% block metas %}
+    <meta name="description" content="{{ 'oktothek_default_meta_description'|trans }}">
+{% endblock %}
+{% block title %}Okto Community TV{% endblock %}
+
+{% block nav_head%}
+    {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'index', 'dropdown': ''} %}
+{% endblock %}
+
+{% block body_main %}
+<div class="page-header">
+                <p>Okto macht Platz für dich und deine Ideen.
+Schön, dass du dein Filmprojekt mit uns und der Welt teilen willst!</p>
+            </div>
+    {{ form_start(form) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+        {% include "BprsAssetBundle::singleUpload.html.twig" with {'widget': form.assets, 'adapter': 'cache', 'hidePrevious': false, 'junksize': 1000000} %}
+           <div class="collapse" id="collapseExample">
+               <div class="well">
+                   {{ 'intake.agb.general'|trans }}
+                   <ul>
+                       <li>{{ 'intake.agb.first'|trans }}</li>
+                       <li>{{ 'intake.agb.second'|trans }}</li>
+                       <li>{{ 'intake.agb.third'|trans }}</li>
+                       <li>{{ 'intake.agb.fourth'|trans }}</li>
+                  </ul>
+                   {{ 'intake.agb.extra'|trans({'%link%': '<a href="http://www.okto.tv/uploads/LESEN/Der_Sender/OKTO_Richtlinien.pdf" target="blank">Okto-Programmgrundsätze</a>'})|raw }}
+               </div>
+           </div>
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/bprsasset/css/jquery.fileupload.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {# if you don't use the BprsStylBundle, you'll need to include jquery yourself! #}
+    {% include "BprsAssetBundle::singleUpload.js.twig" %}
+{% endblock %}

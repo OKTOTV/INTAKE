@@ -1,11 +1,25 @@
-oktolab_intake:
-    resource: "@OktolabIntakeBundle/Resources/config/routing.yml"
-    prefix:   /
+start:
+    path:      /
+    defaults:  { _controller: AppBundle:Default:index, _locale: de }
+    requirements:
+        _locale:  de|en
 
-oneup_uploader:
-    resource: .
-    type: uploader
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+    defaults:  { _locale: de } #new
+    prefix: /{_locale}
+    requirements:
+        _locale: de|en
 
 bprs_user:
     resource: .
     type: bprs_user
+
+bprs_asset:
+    resource: .
+    type: bprs_asset
+
+oneup_uploader:
+    resource: .
+    type: uploader

@@ -1,94 +1,117 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: de
 
 framework:
-    #esi:             ~
-    translator:      { fallback: "de" }
-    secret:          "%secret%"
+    #esi: ~
+    translator: { fallbacks: ['%locale%'] }
+    secret: '%secret%'
     router:
-        resource: "%kernel.root_dir%/config/routing.yml"
+        resource: '%kernel.project_dir%/app/config/routing.yml'
         strict_requirements: ~
-    form:            ~
+    form: ~
     csrf_protection: ~
-    validation:      { enable_annotations: true }
+    validation: { enable_annotations: true }
+    #serializer: { enable_annotations: true }
     templating:
         engines: ['twig']
-        #assets_version: SomeVersionScheme
-    default_locale:  "%locale%"
-    trusted_hosts:   ~
-    trusted_proxies: ~
+    default_locale: '%locale%'
+    trusted_hosts: ~
     session:
-        # handler_id set to null will use default session handler from php.ini
-        handler_id:  ~
-        name: INTAKESSID
-    fragments:       ~
+        # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id: session.handler.native_file
+        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+    fragments: ~
     http_method_override: true
+    assets: ~
+    php_errors:
+        log: true
 
 # Twig Configuration
 twig:
-    debug:            "%kernel.debug%"
-    strict_variables: "%kernel.debug%"
-    globals:
-        version:            %version%
-        filecap:    %oktolab_filecap%
-        junksize:   %oktolab_junksize%
-        name:       INTAKE
-    form:
-        resources:
-            - 'BprsStyleBundle:Form:fields.html.twig'
-
-# Assetic Configuration
-assetic:
-    debug:          "%kernel.debug%"
-    use_controller: false
-    bundles:        [ ]
-    #java: /usr/bin/java
-    filters:
-        cssrewrite: ~
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    form_themes:
+        - 'BprsStyleBundle:Form:fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   %database_driver%
-        host:     %database_host%
-        port:     %database_port%
-        dbname:   %database_name%
-        user:     %database_user%
-        password: %database_password%
-        charset:  UTF8
-        # if using pdo_sqlite as your database driver, add the path in parameters.yml
-        # e.g. database_path: "%kernel.root_dir%/data/data.db3"
-        path:     "%database_path%"
+        driver: '%database_driver%'
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset: UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        path: '%database_path%'
 
     orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         resolve_target_entities:
-            Bprs\UserBundle\Entity\BprsUserInterface: Oktolab\IntakeBundle\Entity\IntakeUser
+            Bprs\UserBundle\Entity\UserInterface:           AppBundle\Entity\User
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+    transport: '%mailer_transport%'
+    host: '%mailer_host%'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
+    spool: { type: memory }
 
-# oneup Configuration
+bprs_user:
+    class: "AppBundle\\Entity\\User"
+    mail:
+        commandline_host: "%bprs_user.host%"
+        adress:           "%bprs_user.mailadress%"
+        name:             "%bprs_user.name%"
+    permissions:
+        - ROLE_ADMIN
+        - ROLE_USER
+        - ROLE_BPRS_USER_BACKEND
+        - ROLE_BPRS_COMMANDLINE_BACKEND
+        - ROLE_BPRS_ASSET_READ
+        - ROLE_BPRS_ASSET_WRITE
+        - ROLE_BPRS_ASSET_DELETE
+        - ROLE_OKTOLAB_USER
+    user_defaults:
+        - ROLE_OKTOLAB_USER
+
+bprs_asset:
+    #class:  AppBundle\Entity\Asset
+    thumb_filesystem: posterframe
+    404:      "%bprs_asset_404%"
+    adapters: "%bprs_asset_adapters%"
+    filesystem_map: oneup_flysystem.mount_manager
+
+oneup_flysystem:
+    adapters: "%oneup_flysystem_adapters%"
+    filesystems:
+        cache:
+            adapter: cache
+            mount: cache
+
 oneup_uploader:
     chunks:
         maxage: 86400
         storage:
-            directory: %kernel.cache_dir%/uploader/chunks
+            directory: "%kernel.cache_dir%/uploader/chunks"
     mappings:
-        files:
+        cache:
             frontend: blueimp
-
-# bprs_user Configuration
-bprs_user:
-    class: "Oktolab\IntakeBundle\Entity\IntakeUser"
-    mail:
-        commandline_host: %bprs_user.host%
-        adress:           %bprs_user.mailadress%
-        name:             %bprs_user.name%
+            storage:
+                type: flysystem
+                filesystem: oneup_flysystem.cache_filesystem

@@ -1,32 +1,42 @@
+# To get started with security, check out the documentation:
+# https://symfony.com/doc/current/security.html
 security:
-    role_hierarchy:
-        ROLE_ADMIN: ROLE_USER
 
-    encoders:
-        Bprs\UserBundle\Entity\User:
-            algorithm: bcrypt
-            cost: 12
-
+    # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
+        in_memory:
+            memory: ~
+
         database:
             entity:
-                class: OktolabIntakeBundle:IntakeUser
+                class: AppBundle:User
 
     firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
         main:
             pattern:    /
             http_basic: ~
             form_login:
                 login_path: bprs_user_login
                 check_path: bprs_user_login_check
-                default_target_path: intake_backend
-                csrf_provider: form.csrf_provider
-                default_target_path: /de
+                default_target_path: homepage
+                csrf_token_generator: security.csrf.token_manager #form.csrf_provider
             logout:
                 path: bprs_user_logout
                 target: /de
             anonymous: ~
+            provider: database
+            remember_me:
+                secret: '%secret%'
+                httponly: false
+                secure: '%secure_cookie%'
+            switch_user: { role: ROLE_ADMIN }
 
-    access_control:
-        - { path: /backend, roles: ROLE_USER }
-        - { path: /backend/admin, roles: ROLE_ADMIN}
+    encoders:
+        Bprs\UserBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 12
