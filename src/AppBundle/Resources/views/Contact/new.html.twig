@@ -1,0 +1,16 @@
+{% extends "BprsStyleBundle::layout.html.twig" %}
+{% block metas %}
+    <meta name="description" content="{{ 'oktothek_default_meta_description'|trans }}">
+{% endblock %}
+{% block title %}Neuer Kontakt | INTAKE{% endblock %}
+
+{% block nav_head%}
+    {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'selected_contacts', 'dropdown': 'dropdown_backend'} %}
+{% endblock %}
+
+{% block body_main %}
+    <div class="page-header">
+        <a href="{{ path('intake_contacts') }}" class="btn btn-default">{{ 'intake_contact_new_cancel'|trans }}</a>
+    </div>
+    {{ form(form) }}
+{% endblock %}

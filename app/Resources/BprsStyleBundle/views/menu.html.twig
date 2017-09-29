@@ -18,18 +18,22 @@
         {# example for an login area #}
         {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_USER') %}
             <ul class="nav navbar-nav navbar-right">
-                <li {% if dropdown == "dropdown_1" %}class="dropdown active"{% else %}class="dropdown"{% endif %}>
+                <li {% if dropdown == "dropdown_backend" %}class="dropdown active"{% else %}class="dropdown"{% endif %}>
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> {{ app.user.username }}</a>
                     <ul class="dropdown-menu" role="menu">
-                        <li {% if selected == "selected_3" %}class="active"{% endif %}>
-                            <a href="#">menu point 1</a>
+                        <li{% if selected == "selected_projects" %} class="active"{% endif %}>
+                            <a href="{{ path('intake_projects') }}">Projekte</a>
                         </li>
-                        <li {% if selected == "selected_4" %}class="active"{% endif %}>
-                            <a href="#">menu point 2</a>
+                        <li {% if selected == "selected_contacts" %}class="active"{% endif %}>
+                            <a href="{{ path('intake_contacts') }}">Kontakte</a>
                         </li>
                         {% if is_granted('ROLE_ADMIN') %}
+                            <li role="separator" class="divider"></li>
+                            <li {% if selected == "selected_files" %}class="active"{% endif %}>
+                                <a href="{{ path('bprs_asset_list')}}">Dateien</a>
+                            </li>
                             <li {% if selected == "selected_5" %}class="active"{% endif %}>
-                                <a href="#">menu point 3</a>
+                                <a href="{{ path('bprs_user_backend_users')}}">Benutzer</a>
                             </li>
                         {% endif %}
                         <li role="separator" class="divider"></li>
@@ -39,7 +43,7 @@
             </ul>
         {% else %}
             <ul class="nav navbar-nav navbar-right">
-                <li {% if selected == "selected_6" %}class="active"{% endif %}><a href="#"><span class="glyphicon glyphicon-user"></span> login</a></li>
+                <li{% if selected == "login" %} class="active"{% endif %}><a href="{{ path('bprs_user_login') }}"><span class="glyphicon glyphicon-user"></span> login</a></li>
             </ul>
         {% endif %}
 {% endblock %}

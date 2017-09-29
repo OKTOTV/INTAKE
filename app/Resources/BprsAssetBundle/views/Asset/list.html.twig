@@ -1,0 +1,56 @@
+{% extends "BprsStyleBundle::layout.html.twig" %}
+
+{% block nav_head%}
+    {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'selected_files', 'dropdown': 'dropdown_backend'} %}
+{% endblock %}
+
+{% block body_main %}
+
+    <div class="page-header">
+        <h1><a href="{{ path('bprs_asset_list') }}">{{ 'bprs_asset.list_header'|trans({'%dateien%': assets.getTotalItemCount}) }}</a></h1>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ 'bprs_asset.index_sort_dropdown'|trans|raw }}
+          </button>
+          <ul class="dropdown-menu">
+            <li{% if assets.isSorted('a.name') %} class="active"{% endif %}>{{ knp_pagination_sortable(assets, 'bprs_asset.index_name'|trans, 'a.name') }}</li>
+            <li{% if assets.isSorted('a.filekey') %} class="active"{% endif %}>{{ knp_pagination_sortable(assets, 'bprs_asset.index_key'|trans, 'a.filekey') }}</li>
+            <li{% if assets.isSorted('a.mimetype') %} class="active"{% endif %}>{{ knp_pagination_sortable(assets, 'mimetype', 'a.mimetype') }}</li>
+            <li{% if assets.isSorted('a.adapter') %} class="active"{% endif %}>{{ knp_pagination_sortable(assets, 'adapter', 'a.adapter') }}</li>
+            <li{% if assets.isSorted('a.filesize') %} class="active"{% endif %}>{{ knp_pagination_sortable(assets, 'filesize', 'a.filesize') }}</li>
+            <li{% if assets.isSorted('a.updated_at') %} class="active"{% endif %}>{{ knp_pagination_sortable(assets, 'updated_at', 'a.updated_at') }}</li>
+            <li{% if assets.isSorted('a.created_at') %} class="active"{% endif %}>{{ knp_pagination_sortable(assets, 'created_at', 'a.created_at')}}</li>
+          </ul>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ 'bprs_asset.index_filter_dropdown'|trans|raw }}
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="{{ path('bprs_asset_list') }}">{{ 'bprs_asset.index_filter_none'|trans }}</a>
+                </li>
+                {% for key, adapter in adapters %}
+                    <li{% if key == filtered %} class="active"{% endif %}>
+                        <a href="{{ path('bprs_asset_list', {'adapter': key}) }}">{{ key }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+    <div class="navigation">
+        {{ knp_pagination_render(assets) }}
+    </div>
+
+    <div class="row">
+        {% for asset in assets %}
+            {% include "BprsAssetBundle::Asset/_asset.html.twig" %}
+        {% endfor %}
+    </div>
+    {# display navigation #}
+    <div class="navigation">
+        {{ knp_pagination_render(assets) }}
+    </div>
+
+{% endblock %}

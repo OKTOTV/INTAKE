@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\ContactRepository")
  */
 class Contact {
 
@@ -28,7 +28,7 @@ class Contact {
     private $sortNumber;
 
     /**
-     * @ORM\OneToMany(targetEntity="Project", mappedBy="contact")
+     * @ORM\OneToMany(targetEntity="Project", mappedBy="contact", cascade={"persist", "remove"})
      */
     private $projects;
 
@@ -55,6 +55,11 @@ class Contact {
     public function __toString()
     {
         return $this->name;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function setName($name)

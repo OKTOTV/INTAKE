@@ -17,7 +17,7 @@ Schön, dass du dein Filmprojekt mit uns und der Welt teilen willst!</p>
         {{ form_row(form.email) }}
         {{ form_row(form.title) }}
         {{ form_row(form.description) }}
-        {% include "BprsAssetBundle::singleUpload.html.twig" with {'widget': form.assets, 'adapter': 'cache', 'hidePrevious': false, 'junksize': 1000000} %}
+        {% include "BprsAssetBundle::singleUpload.html.twig" with {'widget': form.assets, 'type': "multiple", 'adapter': 'cache', 'junksize': 1000000, 'assets': form.vars.value.assets} %}
            <div class="collapse" id="collapseExample">
                <div class="well">
                    {{ 'intake.agb.general'|trans }}

@@ -1,0 +1,43 @@
+{% extends "BprsStyleBundle::layout.html.twig" %}
+{% block metas %}
+    <meta name="description" content="{{ 'oktothek_default_meta_description'|trans }}">
+{% endblock %}
+{% block title %}%project% | INTAKE{% endblock %}
+
+{% block nav_head%}
+    {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'selected_projects', 'dropdown': 'dropdown_backend'} %}
+{% endblock %}
+
+{% block body_main %}
+    <div class="page-header">
+        <a href="{{ path('intake_projects') }}" class="btn btn-default">{{ 'intake_project_show_index'|trans }}</a>
+        <a href="{{ path('intake_project_delete', {'project': project.id}) }}" class="btn btn-link">{{ 'intake_project_show_delete'|trans }}</a>
+    </div>
+    <dl>
+        <dt>
+            Titel
+        </dt>
+        <dd>
+            {{ project.title }}
+        </dd>
+        <dt>
+            E-Mail
+        </dt>
+        <dd>
+            <a href="mailto:{{project.email}}">{{ project.email }}</a>
+        </dd>
+    </dl>
+    {% if project.assets is empty %}
+        <p>
+            {{ 'intake_project_show_assets_empty'|trans }}
+        </p>
+    {% endif %}
+    <ul class="list-group">
+        {% for asset in project.assets %}
+            <a href="{{ path('bprs_asset_download',{'filekey': asset.filekey}) }}" class="list-group-item">
+                <span class="badge">{{ asset|filesize }}</span>
+                {{ asset.name }}
+            </a>
+        {% endfor %}
+    </ul>
+{% endblock %}

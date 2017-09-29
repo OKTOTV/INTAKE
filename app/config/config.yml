@@ -62,7 +62,7 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
         resolve_target_entities:
-            Bprs\UserBundle\Entity\UserInterface:           AppBundle\Entity\User
+            Bprs\UserBundle\Entity\UserInterface:           "AppBundle\\Entity\\User"
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -91,18 +91,18 @@ bprs_user:
         - ROLE_OKTOLAB_USER
 
 bprs_asset:
-    #class:  AppBundle\Entity\Asset
-    thumb_filesystem: posterframe
+    class:  "AppBundle\\Entity\\Asset"
+    thumb_filesystem: "posterframe"
     404:      "%bprs_asset_404%"
     adapters: "%bprs_asset_adapters%"
-    filesystem_map: oneup_flysystem.mount_manager
+    filesystem_map: "oneup_flysystem.mount_manager"
 
 oneup_flysystem:
     adapters: "%oneup_flysystem_adapters%"
     filesystems:
         cache:
-            adapter: cache
-            mount: cache
+            adapter: "cache"
+            mount: "cache"
 
 oneup_uploader:
     chunks:
@@ -115,3 +115,14 @@ oneup_uploader:
             storage:
                 type: flysystem
                 filesystem: oneup_flysystem.cache_filesystem
+
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig   # sliding pagination controls template
+        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig # sort link template

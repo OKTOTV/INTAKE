@@ -1,0 +1,40 @@
+{% extends "BprsStyleBundle::layout.html.twig" %}
+{% block metas %}
+    <meta name="description" content="{{ 'oktothek_default_meta_description'|trans }}">
+{% endblock %}
+{% block title %}%contact% | INTAKE{% endblock %}
+
+{% block nav_head%}
+    {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'selected_contacts', 'dropdown': 'dropdown_backend'} %}
+{% endblock %}
+
+{% block body_main %}
+    <div class="page-header">
+        <a href="{{ path('intake_contacts') }}" class="btn btn-default">{{ 'intake_contact_show_index'|trans }}</a>
+        <a href="{{ path('intake_contact_new') }}" class="btn btn-default">{{ 'intake_contact_show_new_contact'|trans }}</a>
+    </div>
+    <dl>
+        <dt>
+            Name
+        </dt>
+        <dd>
+            {{ contact.name }}
+        </dd>
+        <dt>
+            E-Mail
+        </dt>
+        <dd>
+            <a href="mailto:{{contact.email}}">{{ contact.email }}</a>
+        </dd>
+    </dl>
+    {% if contact.projects is empty %}
+        <p>
+            {{ 'intake_contact_show_projects_empty'|trans }}
+        </p>
+    {% endif %}
+    <ul class="list-group">
+        {% for project in contact.projects %}
+                <a href="{{ path('intake_project_show',{'project': project.id}) }}" class="list-group-item">{{ project.name }}</a>
+        {% endfor %}
+    </ul>
+{% endblock %}

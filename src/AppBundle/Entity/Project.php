@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * A new project with description, files (assets) and additional informations
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\Repository\ProjectRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Project {
@@ -23,7 +23,7 @@ class Project {
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Asset", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="Asset", mappedBy="project", cascade={"persist", "remove"})
      */
     private $assets;
 
@@ -65,6 +65,11 @@ class Project {
     public function __toString()
     {
         return $title;
+    }
+
+    public function getId()
+    {
+        return $this->id;
     }
 
     public function setTitle($title)
@@ -114,6 +119,7 @@ class Project {
     public function addAsset($asset)
     {
         $this->assets[] = $asset;
+        $asset->setProject($this);
         return $this;
     }
 
@@ -146,5 +152,14 @@ class Project {
     public function getCreatedAt()
     {
         return $this->created_at;
+    }
+
+    public function getSize()
+    {
+        $size = 0;
+        foreach ($this->getAssets() as $asset) {
+            $size += $asset->getFilesize();
+        }
+        return $size;
     }
 }

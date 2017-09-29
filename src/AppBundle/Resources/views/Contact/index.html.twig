@@ -1,0 +1,25 @@
+{% extends "BprsStyleBundle::layout.html.twig" %}
+{% block metas %}
+    <meta name="description" content="{{ 'oktothek_default_meta_description'|trans }}">
+{% endblock %}
+{% block title %}Kontakte | INTAKE{% endblock %}
+
+{% block nav_head%}
+    {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'selected_contacts', 'dropdown': 'dropdown_backend'} %}
+{% endblock %}
+
+{% block body_main %}
+    <div class="page-header">
+        <a href="{{ path('intake_contact_new') }}" class="btn btn-default">{{ 'intake_contact_index_new_contact'|trans }}</a>
+    </div>
+    <ul class="list-group">
+        {% for contact in contacts %}
+                <a href="{{ path('intake_contact_show',{'contact': contact.id}) }}" class="list-group-item">{{ contact.name }}</a>
+        {% endfor %}
+        {% if contacts is empty %}
+            <p>
+                {{ 'intake_contact_index_contacts_empty'|trans }}
+            </p>
+        {% endif %}
+    </ul>
+{% endblock %}

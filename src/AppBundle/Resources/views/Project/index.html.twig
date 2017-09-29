@@ -1,0 +1,25 @@
+{% extends "BprsStyleBundle::layout.html.twig" %}
+{% block metas %}
+    <meta name="description" content="{{ 'oktothek_default_meta_description'|trans }}">
+{% endblock %}
+{% block title %}Projekte | INTAKE{% endblock %}
+
+{% block nav_head%}
+    {% include 'BprsStyleBundle::menu.html.twig' with {'selected': 'selected_projects', 'dropdown': 'dropdown_backend'} %}
+{% endblock %}
+
+{% block body_main %}
+    <ul class="list-group">
+        {% for project in projects %}
+                <a href="{{ path('intake_project_show',{'project': project.id}) }}" class="list-group-item">
+                    <span class="badge">{{ project.assets|length }}</span>
+                    {{ project.size|filesize }}{{ project.title }}
+                </a>
+        {% endfor %}
+        {% if projects is empty %}
+            <p>
+                {{ 'intake_project_index_projects_empty'|trans }}
+            </p>
+        {% endif %}
+    </ul>
+{% endblock %}

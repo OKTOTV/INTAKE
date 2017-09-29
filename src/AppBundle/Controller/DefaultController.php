@@ -35,6 +35,7 @@ class DefaultController extends Controller
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
+                // die(var_dump($project->getAssets()));
                 $em->persist($project);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add('success', 'intake.success_submit_project');
@@ -52,6 +53,15 @@ class DefaultController extends Controller
      * @Template()
      */
     public function aboutAction()
+    {
+        return [];
+    }
+
+    /**
+     * @Route("/thank_you", name="thank_you")
+     * @Template()
+     */
+    public function thankYouAction()
     {
         return [];
     }
